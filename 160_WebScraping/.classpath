@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="lib" path="/Applications/eclipse/plugins/jsoup-1.7.3.jar" sourcepath="/Applications/eclipse/plugins/jsoup-1.7.3.jar"/>
+	<classpathentry kind="lib" path="/Applications/eclipse/JsoupMysqlJarFiles/jsoup-1.7.2-javadoc.jar" sourcepath="/Applications/eclipse/JsoupMysqlJarFiles/jsoup-1.7.2-javadoc.jar"/>
+	<classpathentry kind="lib" path="/Applications/eclipse/JsoupMysqlJarFiles/jsoup-1.7.2-sources.jar" sourcepath="/Applications/eclipse/JsoupMysqlJarFiles/jsoup-1.7.2-sources.jar"/>
+	<classpathentry kind="lib" path="/Applications/eclipse/JsoupMysqlJarFiles/jsoup-1.7.2.jar" sourcepath="/Applications/eclipse/JsoupMysqlJarFiles/jsoup-1.7.2.jar"/>
+	<classpathentry kind="lib" path="/Applications/eclipse/JsoupMysqlJarFiles/mysql-connector-java-3.1.14-bin.jar" sourcepath="/Applications/eclipse/JsoupMysqlJarFiles/mysql-connector-java-3.1.14-bin.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
