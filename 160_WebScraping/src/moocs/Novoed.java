@@ -19,6 +19,11 @@ import java.util.Date;
 //
 //TODO: - David
 
+//TODO: Since the database code is run on a local computer, not all of us will be able to run the program.
+//TODO: In the future, I will probably make a Heroku repository with MySQL access on the cloud.
+//
+//TODO: - David
+
 public class Novoed {
 	
 	/**
