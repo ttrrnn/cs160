@@ -1,11 +1,17 @@
 package moocs;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
-import org.jsoup.nodes.Element;
-import java.sql.*;
+
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
+
+//TODO: Since the database code is run on a local computer, not all of us will be able to run the program.
+//TODO: In the future, I will probably make a Heroku repository with MySQL access on the cloud.
+//
+//TODO: - David
 
 public class Novoed {
 	
@@ -33,7 +39,10 @@ public class Novoed {
 
 		//The following few lines of code are used to connect to a database so the scraped course content can be stored.
 		Class.forName("com.mysql.jdbc.Driver").newInstance();
-		java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/scrapedcourse","root","");
+
+        //TODO: Use cloud database in future
+		//java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/scrapedcourse","root","");
+
 		//make sure you create a database named scrapedcourse in your local mysql database before running this code
 		//default mysql database in your local machine is ID:root with no password
 		//you can download scrapecourse database template from your Canvas account->modules->Team Project area
@@ -50,7 +59,8 @@ public class Novoed {
 
 			for (int j=0; j<link.size();j++)
 			{
-				Statement statement = connection.createStatement();
+                //TODO: Use cloud database in future
+				//Statement statement = connection.createStatement();
 				
 				String crsurl = link.get(j).attr("href"); // Get Course URL
 				System.out.println(crsurl);
@@ -172,12 +182,14 @@ public class Novoed {
 				// need to scrape following: course_fee (int), language (text), certificate (yes/no), university (text), and time_scraped (date time)
 				
 				String query = "insert into course_data values(null,'"+CourseName+"','"+SCrsDesrpTemp+"','"+CrsDes+"','"+crsurl+"','"+youtube+"','2014-01-01',"+crsduration+",'"+CrsImg+"','','NovoEd', 0, '', 'yes', 'university', '2014-03-24')";
-				System.out.println(query);   
-				
-				statement.executeUpdate(query); // skip writing to database; focus on data printout to a text file instead.
-				statement.close();
+				System.out.println(query);
+
+                //TODO: Use cloud database in future
+				//statement.executeUpdate(query); // skip writing to database; focus on data printout to a text file instead.
+				//statement.close();
 			 }
 		}
-		connection.close();
+        //TODO: Use cloud database in future
+		//connection.close();
 	}
 }
