@@ -16,7 +16,7 @@ import java.util.Set;
 //TODO: very few related fields. Feel free to add stuff.
 
 public class Udacity {
-    //TODO: JSON_DATA should be remove from this class and placed in an outside class that combines both MOOCs.
+    //TODO: JSON_DATA should be removed from this class and placed in an outside class that combines both MOOCs.
     public static String JSON_DATA = "https://www.udacity.com/api/nodes?depth=2&fresh=false&keys%5B%5D=course_catalog&projection=catalog&required_behavior=find";
 
     public static String TITLE_KEY = "title";
@@ -46,12 +46,10 @@ public class Udacity {
                 JsonElement courseElement = (JsonElement) entry.getValue();
                 JsonObject courseObject = courseElement.getAsJsonObject();
                 JsonElement courseTitle = courseObject.get(TITLE_KEY);
-
                 JsonElement courseCatalog = courseObject.get(CATALOG_KEY);
-                JsonElement courseDescription = null;
 
                 if (courseCatalog != null && courseCatalog.isJsonObject()) {
-                    courseDescription = courseCatalog.getAsJsonObject().get(DESCRIPTION_KEY);
+                    JsonElement courseDescription = courseCatalog.getAsJsonObject().get(DESCRIPTION_KEY);
 
                     // Print out for debugging
                     System.out.println(courseTitle);
