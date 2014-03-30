@@ -17,6 +17,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
 
+/*
+
+Cloud MySQL Login Information
+
+Host: us-cdbr-east-05.cleardb.net
+Username: bd887ba87d4a49
+Password: 93a9097d
+Database Name: heroku_229e6c24d3396ae
+
+ */
+
 //TODO: Need to add cost and category probably. Udacity doesn't have many categories. They refer to it as track.
 //TODO: I'm not sure if subtitle is needed since NovoEd doesn't have one.
 

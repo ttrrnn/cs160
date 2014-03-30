@@ -13,10 +13,16 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-//TODO: Since the database code is run on a local computer, not all of us will be able to run the program.
-//TODO: In the future, I will probably make a Heroku repository with MySQL access on the cloud.
-//
-//TODO: - David
+/*
+
+Cloud MySQL Login Information
+
+Host: us-cdbr-east-05.cleardb.net
+Username: bd887ba87d4a49
+Password: 93a9097d
+Database Name: heroku_229e6c24d3396ae
+
+ */
 
 public class Novoed {
 	
