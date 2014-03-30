@@ -15,8 +15,8 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.*;
 
-//TODO: I have only parsed out the title and description for now. I found out there is no date for Udacity. There seem to be
-//TODO: very few related fields. Feel free to add stuff.
+//TODO: Need to add cost and category probably. Udacity doesn't have many categories. They refer to it as track.
+//TODO: I'm not sure if subtitle is needed since NovoEd doesn't have one.
 
 public class Udacity {
     //TODO: JSON_DATA should be removed from this class and placed in an outside class that combines both MOOCs.
