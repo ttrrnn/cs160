@@ -6,14 +6,16 @@ import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.StringTokenizer;
 
 //TODO: Need to add cost and category probably. Udacity doesn't have many categories. They refer to it as track.
 //TODO: I'm not sure if subtitle is needed since NovoEd doesn't have one.
@@ -97,11 +99,10 @@ public class Udacity {
 
             for (int i = 0; i < instructorNames.size(); i++) {
                 instructors.add(new UdacityCourseInstructor (
-                        instructorNames.get(i).html(),
-                        instructorTitles.get(i).html(),
-                        instructorBiographies.get(i).html(),
-                        imageUrlExtractor(instructorImageUrls.get(i).attr("data-ng-src"))
-                    )
+                    instructorNames.get(i).html(),
+                    instructorTitles.get(i).html(),
+                    instructorBiographies.get(i).html(),
+                    imageUrlExtractor(instructorImageUrls.get(i).attr("data-ng-src")))
                 );
             }
         }

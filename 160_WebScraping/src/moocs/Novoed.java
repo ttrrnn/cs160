@@ -3,11 +3,10 @@ package moocs;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
-import java.sql.*;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
-
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
