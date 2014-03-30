@@ -2,10 +2,14 @@ package moocs;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
-import org.jsoup.nodes.Element;
 import java.sql.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class Novoed {
 	
@@ -20,11 +24,15 @@ public class Novoed {
 	public static void main(String[] args) throws IOException, InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
 		// Need Jsoup jar files to run this sample program. You may also need to rebuild path, etc.
 
-		/*
+		// Used for writing query outputs to file
+		File file = new File("dump.txt");
+		FileWriter fw = new FileWriter(file.getAbsoluteFile());
+		BufferedWriter bw = new BufferedWriter(fw);
+		
 		ArrayList<String> month = new ArrayList<String>();
 		month.add("January"); month.add("February"); month.add("March"); month.add("April"); month.add("May"); month.add("June"); 
 		month.add("July"); month.add("August"); month.add("September"); month.add("October"); month.add("November"); month.add("December"); 
-		*/
+		
 
 		String url1 = "https://novoed.com/courses";
 		 
@@ -32,8 +40,8 @@ public class Novoed {
 		pgcrs.add(url1);
 
 		//The following few lines of code are used to connect to a database so the scraped course content can be stored.
-		Class.forName("com.mysql.jdbc.Driver").newInstance();
-		java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/scrapedcourse","root","");
+		//Class.forName("com.mysql.jdbc.Driver").newInstance();
+		//java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/scrapedcourse","root","");
 		//make sure you create a database named scrapedcourse in your local mysql database before running this code
 		//default mysql database in your local machine is ID:root with no password
 		//you can download scrapecourse database template from your Canvas account->modules->Team Project area
@@ -50,7 +58,7 @@ public class Novoed {
 
 			for (int j=0; j<link.size();j++)
 			{
-				Statement statement = connection.createStatement();
+				//Statement statement = connection.createStatement();
 				
 				String crsurl = link.get(j).attr("href"); // Get Course URL
 				System.out.println(crsurl);
@@ -92,92 +100,111 @@ public class Novoed {
 				//System.out.println("Course Description: " +CrsDes);
 				String Date = crsdoc.select("div[class=timeline inline-block]").text();
 				//System.out.println("Date: " +Date);
-				String StrDate;
-				//String datechk;
-				String crsduration = "0";
+				
+				String StrDate;	// String Date for query
+				String crsduration = "0";	// default course duration to 0 for self-paced
+				
 				if (Date.contains("Starting Fall")) {
 					StrDate = Date.substring(Date.indexOf("l ")+2, Date.length());
-					StrDate = "September 1, " + StrDate;
+					StrDate = StrDate + "-09-01";	// September 1 for courses starting in the Fall
 					//System.out.println("Date: " +StrDate);
 				} else if (Date.contains("Starting Spring")) {
 					StrDate = Date.substring(Date.indexOf("l ")+2, Date.length());
-					StrDate = "February 1, " + StrDate;
+					StrDate = StrDate + "-02-01";	// February 1 for courses starting in the Spring
 					//System.out.println("Date2: " +StrDate);
 				} else if (Date.contains("Starting")){
-					StrDate = Date.substring(Date.indexOf("g ")+2, Date.length());
+					// did not consider case with Starting MONTH DD YYYY  only considered "Starting MONTH YYYY"  :(
+					
+					String tmp = Date.substring(Date.indexOf(" ")+1);	// tmp should be in format: MONTH YYYY
+					int monthNumber = month.indexOf(tmp.substring(0, tmp.indexOf(" "))) + 1;
+					if (monthNumber < 10) { // single digit months need that 0
+						StrDate = tmp.substring(tmp.indexOf(" ")+1) + "-0" + monthNumber + "-01";
+					} else { // two digit months are good to go
+						StrDate = tmp.substring(tmp.indexOf(" ")+1) + "-" + monthNumber + "-01";
+					}
 					//System.out.println("Date3: " +StrDate);
 				} else if (Date.contains("Registration closed")) {
-					String tmp = " Registration closed";
+					String tmp = " Registration closed";	// Date in format: MONTH DD, YYYY MONTH DD, YYYY
 					StrDate = Date.substring(0, (Date.length()-tmp.length()));
-					//crsduration = "0";
+					System.out.println("Date4: " +StrDate);
+				} else if (Date.contains("Started")) {
+					// format: Started MONTH DD, YYYY
+					String tmp = Date.substring(Date.indexOf(" ")+1);	// MONTH DD, YYYY
+					int monthNumber = month.indexOf(tmp.substring(0, tmp.indexOf(" "))) + 1;
+					if (monthNumber < 10) {
+						StrDate = tmp.substring(tmp.indexOf(",")+2) + "-0" + monthNumber + "-" + tmp.substring(tmp.indexOf(" ")+1, tmp.indexOf(","));
+					} else {
+						StrDate = tmp.substring(tmp.indexOf(",")+2) + "-" + monthNumber + "-" + tmp.substring(tmp.indexOf(" ")+1, tmp.indexOf(","));
+					}
 					//System.out.println("Date5: " +StrDate);
-				} else {
-					StrDate = Date;
-					//crsduration = Date;
-					//System.out.println("Date4: " +Date);
-				}
-				
-				
-				//String StrDate = Date.substring(Date.indexOf(":")+1, Date.length()); //Start date after the :
-				//String datechk = StrDate.substring(0, StrDate.indexOf(" "));
-				/*
-				if(!datechk.matches(".*\\d.*"))
-				{
-					if(StrDate.contains("n/a"))
-					{
-						StrDate = "write you own code";
+				} else {  // format of Date for parsing: MONTH DD, YYYY MONTH DD, YYYY
+					String Date2 = Date.substring(Date.indexOf(",")+7);
+					int month1 = month.indexOf(Date.substring(0, Date.indexOf(" "))) + 1; //System.out.println("month1: " + month1);
+					int month2 =  month.indexOf(Date2.substring(0, Date2.indexOf(" "))) + 1; //System.out.println("month2: " + month2);
+					String date1 = Date.substring(Date.indexOf(" ")+1, Date.indexOf(",")); //System.out.println("date1: " + date1);
+					String date2 = Date2.substring(Date2.indexOf(" ")+1, Date2.indexOf(",")); //System.out.println("date2: " + date2);
+					String year1 = Date.substring(Date.indexOf(",")+2, Date.indexOf(",")+6);
+					String year2 = Date2.substring(Date2.indexOf(",")+2);
+					
+					if (month1 < 10) {	// StrDate only cares about the STaRt Date?
+						StrDate = year1 + "-" + "-0" + month1 + "-" + date1;
+					} else {
+						StrDate = year1 + "-" + "-" + month1 + "-" + date1;
 					}
-					else
-					{
-						StrDate = "write your own code";
-					}
+					
+					int y1 = Integer.parseInt(year1);
+					int y2 = Integer.parseInt(year2);
+					int d1 = Integer.parseInt(date1);
+					int d2 = Integer.parseInt(date2);
+					/* Stacked Overflowed how to calculate range
+					 * http://stackoverflow.com/questions/3796841/getting-the-difference-between-date-in-days-in-java
+					 */
+					Calendar startDate = Calendar.getInstance();
+					Calendar endDate = Calendar.getInstance();
+					startDate.set(y1, month1, d1);
+					endDate.set(y2, month2, d2);
+					Date start = startDate.getTime();
+					Date end = endDate.getTime();
+					long stime = start.getTime();
+					long etime = end.getTime();
+					long timediff = etime - stime;
+					long days = timediff / (1000 * 60 * 60 * 24);
+					
+					crsduration = "" + days;
+					//System.out.println("Duration: " +crsduration);
+					//System.out.println("Date6: " +Date);
 				}
-				else
-				{
-					String date = StrDate.substring(0, StrDate.indexOf(" "));
-					String month = StrDate.substring(StrDate.indexOf(" ")+1, StrDate.indexOf(" ")+4);
-					String year = StrDate.substring(StrDate.length()-4,StrDate.length());
-					StrDate = "write your own code";
-				}
-				Element chk = crsdoc.select("div[class=effort last]").first();
-				Element crslenschk = crsdoc.select("div[class*=duration]").first();
-				String crsduration;
-				if (crslenschk==null)
-				{
-					crsduration = "0";
-				}
-				else if(StrDate.contains("n/a self-paced"))
-				{
-					crsduration = "0";
-				}
-				else
-				{
-					try{
-						String crsdurationtmp = crsdoc.select("div[class*=duration]").text();
-						int start = crsdurationtmp.indexOf(":")+1;
-						int end = crsdurationtmp.indexOf((" "),crsdurationtmp.indexOf(":"));
-						crsduration = crsdurationtmp.substring(start, end);
-					}
-					catch (Exception e)
-					{
-						crsduration ="0";
-						System.out.println("Exception");
-					}
-				} */ 
+
 				//The following is used to insert scraped data into your database table. Need to uncomment all database related code to run this.
-				//String query = "insert into course_data values(null,'"+CourseName+"','"+SCrsDesrpTemp+"','"+CrsDes+"','"+crsurl+"','"+youtube+"','"+StrDate+"',"+crsduration+",'"+CrsImg+"','','NovoEd', 0, '', 'yes', 'university', '2014-03-24')";
+				String query = "insert into course_data values(null,'"+CourseName+"','"+SCrsDesrpTemp+"','"+CrsDes+"','"+crsurl+"','"+youtube+"','"+StrDate+"',"+crsduration+",'"+CrsImg+"','','NovoEd')";
 				
-				// this isn't the actual query string. I hardcoded some values to test to see if it would work
-				// need to fix StrDate (convert to YYYY-MM-DD format)
-				// need to scrape following: course_fee (int), language (text), certificate (yes/no), university (text), and time_scraped (date time)
-				
-				String query = "insert into course_data values(null,'"+CourseName+"','"+SCrsDesrpTemp+"','"+CrsDes+"','"+crsurl+"','"+youtube+"','2014-01-01',"+crsduration+",'"+CrsImg+"','','NovoEd', 0, '', 'yes', 'university', '2014-03-24')";
+				/* this isn't the actual query string (the one below in this comment). 
+				 * I hardcoded some values to test to see if it would work
+				 * 
+				 * STILL NEED TO SCRAPE THE FOLLOWING CONTENT BELOW
+				 * course_fee (int), language (text), certificate (yes/no), university (text), and time_scraped (date time)
+				 * 
+				 * String query = "insert into course_data values(null,'"+CourseName+"','"+SCrsDesrpTemp+"','"+CrsDes+"','"+crsurl+"','"+youtube+"','2014-01-01',"+crsduration+",'"+CrsImg+"','','NovoEd', 0, '', 'yes', 'university', '2014-03-24')";
+				 */
 				System.out.println(query);   
 				
-				statement.executeUpdate(query); // skip writing to database; focus on data printout to a text file instead.
-				statement.close();
+				//statement.executeUpdate(query); // skip writing to database; focus on data printout to a text file instead.
+				//statement.close();
+				
+				try {								
+					// if file doesn't exists, then create it
+					if (!file.exists()) {
+						file.createNewFile();
+					}
+					
+					bw.write(query);
+					bw.newLine(); bw.newLine();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			 }
 		}
-		connection.close();
+		//connection.close();
+		bw.close();
 	}
 }
