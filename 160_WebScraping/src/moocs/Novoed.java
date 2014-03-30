@@ -17,6 +17,8 @@ import java.util.Date;
 
 Cloud MySQL Login Information
 
+mysql://bd887ba87d4a49:93a9097d@us-cdbr-east-05.cleardb.net/heroku_229e6c24d3396ae
+
 Host: us-cdbr-east-05.cleardb.net
 Username: bd887ba87d4a49
 Password: 93a9097d
