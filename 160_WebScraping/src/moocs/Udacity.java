@@ -52,8 +52,8 @@ public class Udacity {
                     JsonElement courseDescription = courseCatalog.getAsJsonObject().get(DESCRIPTION_KEY);
 
                     // Print out for debugging
-                    System.out.println(courseTitle);
-                    System.out.println(courseDescription + "\n");
+                    System.out.println("Title: " + courseTitle.getAsString());
+                    System.out.println("Description: " + courseDescription.getAsString() + "\n");
                 }
             }
         }
