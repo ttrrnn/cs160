@@ -1,4 +1,5 @@
 package moocs;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -6,10 +7,17 @@ import java.sql.*;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+
+//TODO: Since the database code is run on a local computer, not all of us will be able to run the program.
+//TODO: In the future, I will probably make a Heroku repository with MySQL access on the cloud.
+//
+//TODO: - David
 
 public class Novoed {
 	
@@ -58,6 +66,7 @@ public class Novoed {
 
 			for (int j=0; j<link.size();j++)
 			{
+                //TODO: Use cloud database in future
 				//Statement statement = connection.createStatement();
 				
 				String crsurl = link.get(j).attr("href"); // Get Course URL
