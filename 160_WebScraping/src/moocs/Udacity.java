@@ -90,34 +90,22 @@ public class Udacity {
             Document doc = Jsoup.connect(courseUrl).get();
             instructors = new ArrayList<UdacityCourseInstructor>();
             Elements instructorElements = doc.select(".instructor-information-entry");
-            List<String> instructorNames = new ArrayList<String>();
-            List<String> instructorTitles = new ArrayList<String>();
-            List<String> instructorBiographies = new ArrayList<String>();
-            List<String> instructorImageUrls = new ArrayList<String>();
-
-            for (Element instructorName : instructorElements.select("h3")) {
-                instructorNames.add(instructorName.html());
-            }
-
-            for (Element instructorTitle : instructorElements.select("h4")) {
-                instructorTitles.add(instructorTitle.html());
-            }
-
-            for (Element instructorBiography : instructorElements.select(".pretty-format p")) {
-                instructorBiographies.add(instructorBiography.html());
-            }
-
-            for (Element instructorImageUrl : instructorElements.select("img")) {
-                instructorImageUrls.add(imageUrlExtractor(instructorImageUrl.attr("data-ng-src")));
-            }
+            Elements instructorNames = instructorElements.select("h3");
+            Elements instructorTitles = instructorElements.select("h4");
+            Elements instructorBiographies = instructorElements.select(".pretty-format p");
+            Elements instructorImageUrls = instructorElements.select("img");
 
             for (int i = 0; i < instructorNames.size(); i++) {
-                instructors.add(new UdacityCourseInstructor(instructorNames.get(i),
-                                                            instructorTitles.get(i),
-                                                            instructorBiographies.get(i),
-                                                            instructorImageUrls.get(i)));
+                instructors.add(new UdacityCourseInstructor (
+                        instructorNames.get(i).html(),
+                        instructorTitles.get(i).html(),
+                        instructorBiographies.get(i).html(),
+                        imageUrlExtractor(instructorImageUrls.get(i).attr("data-ng-src"))
+                    )
+                );
             }
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
 
