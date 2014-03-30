@@ -44,9 +44,7 @@ public class Udacity {
             element = object.get("Node"); // Get JSON data inside "references['Node']"
             object = element.getAsJsonObject();
 
-            Set<Map.Entry<String, JsonElement>> dataSet = object.entrySet();
-
-            for (Map.Entry entry : dataSet) {
+            for (Map.Entry entry : object.entrySet()) {
                 JsonElement courseElement = (JsonElement) entry.getValue();
                 JsonObject courseObject = courseElement.getAsJsonObject();
                 JsonElement courseTitle = courseObject.get(TITLE_KEY);
@@ -57,7 +55,7 @@ public class Udacity {
                 if (courseCatalog != null && courseCatalog.isJsonObject()) {
                     courseDescription = courseCatalog.getAsJsonObject().get(DESCRIPTION_KEY);
 
-                    // Print our for debugging
+                    // Print out for debugging
                     System.out.println(courseTitle);
                     System.out.println(courseDescription + "\n");
                 }
