@@ -19,11 +19,6 @@ import java.util.Date;
 //
 //TODO: - David
 
-//TODO: Since the database code is run on a local computer, not all of us will be able to run the program.
-//TODO: In the future, I will probably make a Heroku repository with MySQL access on the cloud.
-//
-//TODO: - David
-
 public class Novoed {
 	
 	/**
@@ -195,7 +190,7 @@ public class Novoed {
 				/* this isn't the actual query string (the one below in this comment). 
 				 * I hardcoded some values to test to see if it would work
 				 * 
-				 * STILL NEED TO SCRAPE THE FOLLOWING CONTENT BELOW
+				 * TODO: STILL NEED TO SCRAPE THE FOLLOWING CONTENT BELOW
 				 * course_fee (int), language (text), certificate (yes/no), university (text), and time_scraped (date time)
 				 * 
 				 * String query = "insert into course_data values(null,'"+CourseName+"','"+SCrsDesrpTemp+"','"+CrsDes+"','"+crsurl+"','"+youtube+"','2014-01-01',"+crsduration+",'"+CrsImg+"','','NovoEd', 0, '', 'yes', 'university', '2014-03-24')";
