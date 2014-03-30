@@ -16,7 +16,7 @@ import java.util.Set;
 //TODO: very few related fields. Feel free to add stuff.
 
 public class Udacity {
-    //TODO: JSON_DATA will be the URL passed into the constructor in the future
+    //TODO: JSON_DATA should be remove from this class and placed in an outside class that combines both MOOCs.
     public static String JSON_DATA = "https://www.udacity.com/api/nodes?depth=2&fresh=false&keys%5B%5D=course_catalog&projection=catalog&required_behavior=find";
 
     public static String TITLE_KEY = "title";
@@ -39,10 +39,8 @@ public class Udacity {
             JsonElement element = parser.parse(reader);
             JsonObject object = element.getAsJsonObject();
 
-            element = object.get("references"); // Get JSON data inside "references"
-            object = element.getAsJsonObject();
-            element = object.get("Node"); // Get JSON data inside "references['Node']"
-            object = element.getAsJsonObject();
+            object = object.get("references").getAsJsonObject(); // Get JSON data inside "references"
+            object = object.get("Node").getAsJsonObject(); // Get JSON data inside "references['Node']"
 
             for (Map.Entry entry : object.entrySet()) {
                 JsonElement courseElement = (JsonElement) entry.getValue();
