@@ -133,15 +133,23 @@ public class Novoed {
 					StrDate = StrDate + "-02-01";	// February 1 for courses starting in the Spring
 					//System.out.println("Date2: " +StrDate);
 				} else if (Date.contains("Starting")){
-					// TODO: See comment below this one
-					// did not consider case with Starting MONTH DD YYYY  only considered "Starting MONTH YYYY"  :(
-					
-					String tmp = Date.substring(Date.indexOf("g")+2);	// tmp should be in format: MONTH YYYY
-					int monthNumber = month.indexOf(tmp.substring(0, tmp.indexOf(" "))) + 1;
-					if (monthNumber < 10) { // single digit months need that 0
-						StrDate = tmp.substring(tmp.indexOf(" ")+1) + "-0" + monthNumber + "-01";
-					} else { // two digit months are good to go
-						StrDate = tmp.substring(tmp.indexOf(" ")+1) + "-" + monthNumber + "-01";
+					String tmp = Date.substring(Date.indexOf("g")+2);
+					if (tmp.contains(",")) // tmp in format: MONTH DD, YYYY
+					{
+						int monthNumber = month.indexOf(tmp.substring(0, tmp.indexOf(" "))) + 1;
+						String day = tmp.substring(tmp.indexOf(" ")+1, tmp.indexOf(" ")+3);
+						if (monthNumber < 10) { // single digit months need that 0
+							StrDate = tmp.substring(tmp.length()-4) + "-0" + monthNumber + "-" + day;
+						} else { // two digit months are good to go
+							StrDate = tmp.substring(tmp.length()-4) + "-" + monthNumber + "-" + day;
+						}
+					} else {	// tmp format: MONTH YYYY
+						int monthNumber = month.indexOf(tmp.substring(0, tmp.indexOf(" "))) + 1;
+						if (monthNumber < 10) { // single digit months need that 0
+							StrDate = tmp.substring(tmp.indexOf(" ")+1) + "-0" + monthNumber + "-01";
+						} else { // two digit months are good to go
+							StrDate = tmp.substring(tmp.indexOf(" ")+1) + "-" + monthNumber + "-01";
+						}
 					}
 					//System.out.println("Date3: " +StrDate);
 				} else if (Date.contains("Registration closed")) {
