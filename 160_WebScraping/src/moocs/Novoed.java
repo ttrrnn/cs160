@@ -8,7 +8,9 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+//import java.sql.DriverManager;
 import java.sql.SQLException;
+//import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -44,6 +46,7 @@ public class Novoed {
 		File file = new File("dump.txt");
 		FileWriter fw = new FileWriter(file.getAbsoluteFile());
 		BufferedWriter bw = new BufferedWriter(fw);
+		
 		
 		ArrayList<String> month = new ArrayList<String>();
 		month.add("January"); month.add("February"); month.add("March"); month.add("April"); month.add("May"); month.add("June"); 
@@ -130,9 +133,10 @@ public class Novoed {
 					StrDate = StrDate + "-02-01";	// February 1 for courses starting in the Spring
 					//System.out.println("Date2: " +StrDate);
 				} else if (Date.contains("Starting")){
+					// TODO: See comment below this one
 					// did not consider case with Starting MONTH DD YYYY  only considered "Starting MONTH YYYY"  :(
 					
-					String tmp = Date.substring(Date.indexOf(" ")+1);	// tmp should be in format: MONTH YYYY
+					String tmp = Date.substring(Date.indexOf("g")+2);	// tmp should be in format: MONTH YYYY
 					int monthNumber = month.indexOf(tmp.substring(0, tmp.indexOf(" "))) + 1;
 					if (monthNumber < 10) { // single digit months need that 0
 						StrDate = tmp.substring(tmp.indexOf(" ")+1) + "-0" + monthNumber + "-01";
@@ -244,7 +248,7 @@ public class Novoed {
 				//System.out.println("Date scraped: " +dscrap);
 				
 				//The following is used to insert scraped data into your database table. Need to uncomment all database related code to run this.
-				String query = "insert into course_data values(null,'"+CourseName+"','"+SCrsDesrpTemp+"','"+CrsDes+"','"+crsurl+"','"+youtube+"',"+StrDate+","+crsduration+",'"+CrsImg+"','','NovoEd','"+crsfee+"','"+lang+"','"+cert+"','"+univ+"','"+dscrap+"')";
+				String query = "insert into course_data values(null,'"+CourseName+"','"+SCrsDesrpTemp+"','"+CrsDes+"','"+crsurl+"','"+youtube+"','"+StrDate+"','"+crsduration+"','"+CrsImg+"','','NovoEd','"+crsfee+"','"+lang+"','"+cert+"','"+univ+"','"+dscrap+"')";
 				
 				System.out.println(query);   
 				
