@@ -10,6 +10,7 @@ import java.io.FileWriter;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -133,9 +134,41 @@ public class Novoed {
 					}
 					//System.out.println("Date3: " +StrDate);
 				} else if (Date.contains("Registration closed")) {
-					String tmp = " Registration closed";	// Date in format: MONTH DD, YYYY MONTH DD, YYYY
-					StrDate = Date.substring(0, (Date.length()-tmp.length()));
-					System.out.println("Date4: " +StrDate);
+					String tmp = Date.substring(0, Date.length()-20);	// Date in format: MONTH DD, YYYY MONTH DD, YYYY
+					String Date2 = tmp.substring(Date.indexOf(",")+7);
+					int month1 = month.indexOf(tmp.substring(0, Date.indexOf(" "))) + 1; //System.out.println("month1: " + month1);
+					int month2 =  month.indexOf(Date2.substring(0, Date2.indexOf(" "))) + 1; //System.out.println("month2: " + month2);
+					String date1 = Date.substring(tmp.indexOf(" ")+1, tmp.indexOf(",")); //System.out.println("date1: " + date1);
+					String date2 = Date2.substring(Date2.indexOf(" ")+1, Date2.indexOf(",")); //System.out.println("date2: " + date2);
+					String year1 = Date.substring(tmp.indexOf(",")+2, tmp.indexOf(",")+6);
+					String year2 = Date2.substring(Date2.indexOf(",")+2);
+					
+					if (month1 < 10) {	// StrDate only cares about the STaRt Date?
+						StrDate = year1 + "-0" + month1 + "-" + date1;
+					} else {
+						StrDate = year1 + "-" + month1 + "-" + date1;
+					}
+					
+					int y1 = Integer.parseInt(year1);
+					int y2 = Integer.parseInt(year2);
+					int d1 = Integer.parseInt(date1);
+					int d2 = Integer.parseInt(date2);
+					/* Stacked Overflowed how to calculate range
+					 * http://stackoverflow.com/questions/3796841/getting-the-difference-between-date-in-days-in-java
+					 */
+					Calendar startDate = Calendar.getInstance();
+					Calendar endDate = Calendar.getInstance();
+					startDate.set(y1, month1, d1);
+					endDate.set(y2, month2, d2);
+					Date start = startDate.getTime();
+					Date end = endDate.getTime();
+					long stime = start.getTime();
+					long etime = end.getTime();
+					long timediff = etime - stime;
+					long days = timediff / (1000 * 60 * 60 * 24);
+					
+					crsduration = "" + days;
+					//System.out.println("Date4: " +StrDate);
 				} else if (Date.contains("Started")) {
 					// format: Started MONTH DD, YYYY
 					String tmp = Date.substring(Date.indexOf(" ")+1);	// MONTH DD, YYYY
@@ -156,9 +189,9 @@ public class Novoed {
 					String year2 = Date2.substring(Date2.indexOf(",")+2);
 					
 					if (month1 < 10) {	// StrDate only cares about the STaRt Date?
-						StrDate = year1 + "-" + "-0" + month1 + "-" + date1;
+						StrDate = year1 + "-0" + month1 + "-" + date1;
 					} else {
-						StrDate = year1 + "-" + "-" + month1 + "-" + date1;
+						StrDate = year1 + "-" + month1 + "-" + date1;
 					}
 					
 					int y1 = Integer.parseInt(year1);
@@ -183,18 +216,29 @@ public class Novoed {
 					//System.out.println("Duration: " +crsduration);
 					//System.out.println("Date6: " +Date);
 				}
-
-				//The following is used to insert scraped data into your database table. Need to uncomment all database related code to run this.
-				String query = "insert into course_data values(null,'"+CourseName+"','"+SCrsDesrpTemp+"','"+CrsDes+"','"+crsurl+"','"+youtube+"','"+StrDate+"',"+crsduration+",'"+CrsImg+"','','NovoEd')";
 				
-				/* this isn't the actual query string (the one below in this comment). 
-				 * I hardcoded some values to test to see if it would work
-				 * 
-				 * TODO: STILL NEED TO SCRAPE THE FOLLOWING CONTENT BELOW
-				 * course_fee (int), language (text), certificate (yes/no), university (text), and time_scraped (date time)
-				 * 
-				 * String query = "insert into course_data values(null,'"+CourseName+"','"+SCrsDesrpTemp+"','"+CrsDes+"','"+crsurl+"','"+youtube+"','2014-01-01',"+crsduration+",'"+CrsImg+"','','NovoEd', 0, '', 'yes', 'university', '2014-03-24')";
-				 */
+				String crsfee = ele.select("figure[class=pricetag]").get(j).text();
+				if (crsfee.equals("Free")) { crsfee = "0"; }
+				else { crsfee = crsfee.substring(1); }
+				//System.out.println("Course fee: " +crsfee);
+
+				String lang = "English"; // default language is English
+				String cert = "No"; 	// default certification is NO.
+				boolean stateofA = crsdoc.select("div[class=more-info-expandable]").text().contains("Statement of Accomplishment");
+				if (stateofA) { cert = "Yes"; }
+				String univ = crsdoc.select("header[class=row-fluid coursepage]").select("div[class=row-fluid university-branding] > img").attr("alt");
+				//System.out.println("Univeristy: " +univ);
+				
+				// For Date parsed
+				Calendar cal = Calendar.getInstance();
+				cal.add(Calendar.DATE, 1);
+				SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+				String dscrap = format1.format(cal.getTime());
+				//System.out.println("Date scraped: " +dscrap);
+				
+				//The following is used to insert scraped data into your database table. Need to uncomment all database related code to run this.
+				String query = "insert into course_data values(null,'"+CourseName+"','"+SCrsDesrpTemp+"','"+CrsDes+"','"+crsurl+"','"+youtube+"',"+StrDate+","+crsduration+",'"+CrsImg+"','','NovoEd','"+crsfee+"','"+lang+"','"+cert+"','"+univ+"','"+dscrap+"')";
+				
 				System.out.println(query);   
 				
 				//statement.executeUpdate(query); // skip writing to database; focus on data printout to a text file instead.
