@@ -6,17 +6,32 @@ import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.StringTokenizer;
 
-//TODO: I have only parsed out the title and description for now. I found out there is no date for Udacity. There seem to be
-//TODO: very few related fields. Feel free to add stuff.
+/*
+
+Cloud MySQL Login Information
+
+mysql://bd887ba87d4a49:93a9097d@us-cdbr-east-05.cleardb.net/heroku_229e6c24d3396ae
+
+Host: us-cdbr-east-05.cleardb.net
+Username: bd887ba87d4a49
+Password: 93a9097d
+Database Name: heroku_229e6c24d3396ae
+
+ */
+
+//TODO: Need to add cost and category probably. Udacity doesn't have many categories. They refer to it as track.
+//TODO: I'm not sure if subtitle is needed since NovoEd doesn't have one.
 
 public class Udacity {
     //TODO: JSON_DATA should be removed from this class and placed in an outside class that combines both MOOCs.
@@ -90,34 +105,21 @@ public class Udacity {
             Document doc = Jsoup.connect(courseUrl).get();
             instructors = new ArrayList<UdacityCourseInstructor>();
             Elements instructorElements = doc.select(".instructor-information-entry");
-            List<String> instructorNames = new ArrayList<String>();
-            List<String> instructorTitles = new ArrayList<String>();
-            List<String> instructorBiographies = new ArrayList<String>();
-            List<String> instructorImageUrls = new ArrayList<String>();
-
-            for (Element instructorName : instructorElements.select("h3")) {
-                instructorNames.add(instructorName.html());
-            }
-
-            for (Element instructorTitle : instructorElements.select("h4")) {
-                instructorTitles.add(instructorTitle.html());
-            }
-
-            for (Element instructorBiography : instructorElements.select(".pretty-format p")) {
-                instructorBiographies.add(instructorBiography.html());
-            }
-
-            for (Element instructorImageUrl : instructorElements.select("img")) {
-                instructorImageUrls.add(imageUrlExtractor(instructorImageUrl.attr("data-ng-src")));
-            }
+            Elements instructorNames = instructorElements.select("h3");
+            Elements instructorTitles = instructorElements.select("h4");
+            Elements instructorBiographies = instructorElements.select(".pretty-format p");
+            Elements instructorImageUrls = instructorElements.select("img");
 
             for (int i = 0; i < instructorNames.size(); i++) {
-                instructors.add(new UdacityCourseInstructor(instructorNames.get(i),
-                                                            instructorTitles.get(i),
-                                                            instructorBiographies.get(i),
-                                                            instructorImageUrls.get(i)));
+                instructors.add(new UdacityCourseInstructor (
+                    instructorNames.get(i).html(),
+                    instructorTitles.get(i).html(),
+                    instructorBiographies.get(i).html(),
+                    imageUrlExtractor(instructorImageUrls.get(i).attr("data-ng-src")))
+                );
             }
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
 
