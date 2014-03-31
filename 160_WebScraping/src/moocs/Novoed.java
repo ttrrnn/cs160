@@ -246,6 +246,8 @@ public class Novoed {
 				boolean stateofA = crsdoc.select("div[class=more-info-expandable]").text().contains("Statement of Accomplishment");
 				if (stateofA) { cert = "Yes"; }
 				String univ = crsdoc.select("header[class=row-fluid coursepage]").select("div[class=row-fluid university-branding] > img").attr("alt");
+				univ = univ.replace("'", "''");
+				univ = univ.replace(",", "");
 				//System.out.println("Univeristy: " +univ);
 				
 				// For Date parsed
