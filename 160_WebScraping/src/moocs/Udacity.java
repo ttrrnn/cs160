@@ -128,10 +128,10 @@ public class Udacity {
             // Store instructor information
             for (int i = 0; i < instructorTitles.size(); i++) {
                 course.addInstructor(new UdacityCourseInstructor(
-                        instructorNames.get(i).html(),
-                        instructorTitles.get(i).html(),
-                        instructorBiographies.get(i).html(),
-                        imageUrlExtractor(instructorImageUrls.get(i).attr("data-ng-src")))
+                    instructorNames.get(i).html(),
+                    instructorTitles.get(i).html(),
+                    instructorBiographies.get(i).html(),
+                    imageUrlExtractor(instructorImageUrls.get(i).attr("data-ng-src")))
                 );
             }
         }
