@@ -39,6 +39,7 @@ public class Udacity {
     public static String JSON_DATA = "https://www.udacity.com/api/nodes?depth=2&fresh=false&keys%5B%5D=course_catalog&projection=catalog&required_behavior=find";
     public static String BASE_COURSE_URL = "https://www.udacity.com/course/";
 
+    // These are only use in the JSON file
     public static String TITLE_KEY = "title";
     public static String CATALOG_KEY = "catalog_entry";
     public static String DESCRIPTION_KEY = "short_summary";
