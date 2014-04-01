@@ -108,6 +108,7 @@ public class Udacity {
             Elements instructorBiographies = instructorElements.select(".pretty-format p");
             Elements instructorImageUrls = instructorElements.select("img");
             Elements coursePrice = doc.select(".actual-price");
+            Elements courseCategory = doc.select(".text-large a");
 
             // Get price and price interval
             if (!coursePrice.isEmpty()) {
@@ -115,6 +116,9 @@ public class Udacity {
                 course.setPrice(Double.parseDouble(coursePrice.html().substring(1)));
                 course.setPriceInterval(coursePriceInterval.html().substring(1));
             }
+
+            // Store category
+            course.setCategory(courseCategory.html());
 
             // Get long course description
             Elements h2Elements = doc.select("h2");
@@ -133,6 +137,11 @@ public class Udacity {
                     instructorBiographies.get(i).html(),
                     imageUrlExtractor(instructorImageUrls.get(i).attr("data-ng-src")))
                 );
+            }
+
+            // Store university if there is one
+            if (instructorNames.size() > instructorTitles.size()) { // The extra name is the University
+                course.setOrganization(instructorNames.get(instructorNames.size() - 1).html());
             }
         }
         catch (IOException e) {

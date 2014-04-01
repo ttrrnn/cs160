@@ -17,6 +17,7 @@ public class UdacityCourse {
     private String courseUrl;
     private double price;
     private String priceInterval;
+    private String organization;
     private List<UdacityCourseInstructor> instructors;
 
     public UdacityCourse() {
@@ -103,6 +104,14 @@ public class UdacityCourse {
         this.priceInterval = priceInterval;
     }
 
+    public String getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(String organization) {
+        this.organization = organization;
+    }
+
     public List<UdacityCourseInstructor> getInstructors() {
         return instructors;
     }
@@ -117,6 +126,8 @@ public class UdacityCourse {
         builder.append("Course ID: ").append(id).append("\n")
                .append("Course Title: ").append(title).append("\n")
                .append("Course Subtitle: ").append(subtitle).append("\n")
+               .append("Organization: ").append(organization).append("\n")
+               .append("Category: ").append(category).append("\n")
                .append("Short Description: ").append(shortDescription).append("\n")
                .append("Long Description: ").append(longDescription).append("\n")
                .append("Image URL: ").append(imageUrl).append("\n")
