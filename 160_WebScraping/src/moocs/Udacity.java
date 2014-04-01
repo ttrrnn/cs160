@@ -31,9 +31,6 @@ Database Name: heroku_229e6c24d3396ae
 
  */
 
-//TODO: Need to add cost and category probably. Udacity doesn't have many categories. They refer to it as track.
-//TODO: I'm not sure if subtitle is needed since NovoEd doesn't have one.
-
 public class Udacity {
     //TODO: JSON_DATA should be removed from this class and placed in an outside class that combines both MOOCs.
     public static String JSON_DATA = "https://www.udacity.com/api/nodes?depth=2&fresh=false&keys%5B%5D=course_catalog&projection=catalog&required_behavior=find";
@@ -41,6 +38,7 @@ public class Udacity {
 
     // These are only use in the JSON file
     public static String TITLE_KEY = "title";
+    public static String SUBTITLE_KEY = "subtitle";
     public static String CATALOG_KEY = "catalog_entry";
     public static String DESCRIPTION_KEY = "short_summary";
     public static String IMAGE_KEY = "_image";
@@ -75,11 +73,13 @@ public class Udacity {
 
                 if (courseCatalog != null && courseCatalog.isJsonObject()) {
                     UdacityCourse course = new UdacityCourse();
+                    JsonElement courseSubtitle = courseCatalog.getAsJsonObject().get(SUBTITLE_KEY);
                     JsonElement shortCourseDescription = courseCatalog.getAsJsonObject().get(DESCRIPTION_KEY);
                     JsonElement courseImage = courseCatalog.getAsJsonObject().get(IMAGE_KEY)
                                                            .getAsJsonObject().get(IMAGE_URL_KEY);
                     course.setId(courseId);
                     course.setTitle(courseTitle.getAsString());
+                    course.setSubtitle(courseSubtitle.getAsString());
                     course.setShortDescription(shortCourseDescription.getAsString());
                     course.setImageUrl(courseImage.getAsString().substring(2));
                     course.setCourseUrl(BASE_COURSE_URL + courseId);

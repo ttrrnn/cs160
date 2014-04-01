@@ -9,6 +9,8 @@ import java.util.List;
 public class UdacityCourse {
     private String id;
     private String title;
+    private String subtitle;
+    private String category;
     private String shortDescription;
     private String longDescription;
     private String imageUrl;
@@ -35,6 +37,22 @@ public class UdacityCourse {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getSubtitle() {
+        return subtitle;
+    }
+
+    public void setSubtitle(String subtitle) {
+        this.subtitle = subtitle;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public String getShortDescription() {
@@ -98,6 +116,7 @@ public class UdacityCourse {
 
         builder.append("Course ID: ").append(id).append("\n")
                .append("Course Title: ").append(title).append("\n")
+               .append("Course Subtitle: ").append(subtitle).append("\n")
                .append("Short Description: ").append(shortDescription).append("\n")
                .append("Long Description: ").append(longDescription).append("\n")
                .append("Image URL: ").append(imageUrl).append("\n")
