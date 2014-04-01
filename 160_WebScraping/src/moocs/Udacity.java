@@ -6,6 +6,7 @@ import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
@@ -52,6 +53,7 @@ public class Udacity {
 
     public void parse() {
         try {
+            List<UdacityCourse> courses = new ArrayList<UdacityCourse>();
             InputStream stream = new URL(url).openStream();
             stream.skip(4); // Udacity has garbage in first line of JSON
 
@@ -71,23 +73,21 @@ public class Udacity {
                 JsonElement courseCatalog = courseObject.get(CATALOG_KEY);
 
                 if (courseCatalog != null && courseCatalog.isJsonObject()) {
-                    JsonElement courseDescription = courseCatalog.getAsJsonObject().get(DESCRIPTION_KEY);
+                    UdacityCourse course = new UdacityCourse();
+                    JsonElement shortCourseDescription = courseCatalog.getAsJsonObject().get(DESCRIPTION_KEY);
                     JsonElement courseImage = courseCatalog.getAsJsonObject().get(IMAGE_KEY)
                                                            .getAsJsonObject().get(IMAGE_URL_KEY);
+                    course.setId(courseId);
+                    course.setTitle(courseTitle.getAsString());
+                    course.setShortDescription(shortCourseDescription.getAsString());
+                    course.setImageUrl(courseImage.getAsString().substring(2));
+                    course.setCourseUrl(BASE_COURSE_URL + courseId);
 
-                    String courseUrl = BASE_COURSE_URL + courseId;
-                    List<UdacityCourseInstructor> instructors = getInstructors(courseUrl);
+                    getAdditionalCourseData(course);
+                    courses.add(course);
 
-                    // Print out for debugging
-                    System.out.println("Course ID: " + courseId);
-                    System.out.println("Title: " + courseTitle.getAsString());
-                    System.out.println("Description: " + courseDescription.getAsString());
-                    System.out.println("Image URL: " + courseImage.getAsString().substring(2));
-                    System.out.println("Course URL: " + courseUrl + "\n");
-
-                    for (UdacityCourseInstructor instructor : instructors) {
-                        System.out.println(instructor);
-                    }
+                    //Print out for debugging
+                    System.out.println(course);
                 }
             }
 
@@ -98,32 +98,45 @@ public class Udacity {
         }
     }
 
-    private List<UdacityCourseInstructor> getInstructors(String courseUrl) {
-        List<UdacityCourseInstructor> instructors = null;
-
+    private void getAdditionalCourseData(UdacityCourse course) {
         try {
-            Document doc = Jsoup.connect(courseUrl).get();
-            instructors = new ArrayList<UdacityCourseInstructor>();
+            Document doc = Jsoup.connect(course.getCourseUrl()).get();
             Elements instructorElements = doc.select(".instructor-information-entry");
             Elements instructorNames = instructorElements.select("h3");
             Elements instructorTitles = instructorElements.select("h4");
             Elements instructorBiographies = instructorElements.select(".pretty-format p");
             Elements instructorImageUrls = instructorElements.select("img");
+            Elements coursePrice = doc.select(".actual-price");
 
-            for (int i = 0; i < instructorNames.size(); i++) {
-                instructors.add(new UdacityCourseInstructor (
-                    instructorNames.get(i).html(),
-                    instructorTitles.get(i).html(),
-                    instructorBiographies.get(i).html(),
-                    imageUrlExtractor(instructorImageUrls.get(i).attr("data-ng-src")))
+            // Get price and price interval
+            if (!coursePrice.isEmpty()) {
+                Elements coursePriceInterval = doc.select(".subscription-interval");
+                course.setPrice(Double.parseDouble(coursePrice.html().substring(1)));
+                course.setPriceInterval(coursePriceInterval.html().substring(1));
+            }
+
+            // Get long course description
+            Elements h2Elements = doc.select("h2");
+
+            for (Element element : h2Elements) {
+                if ("Course Summary".equals(element.html())) {
+                    course.setLongDescription(Jsoup.parse(element.nextElementSibling().select("p").html()).text());
+                }
+            }
+
+            // Store instructor information
+            for (int i = 0; i < instructorTitles.size(); i++) {
+                course.addInstructor(new UdacityCourseInstructor(
+                        instructorNames.get(i).html(),
+                        instructorTitles.get(i).html(),
+                        instructorBiographies.get(i).html(),
+                        imageUrlExtractor(instructorImageUrls.get(i).attr("data-ng-src")))
                 );
             }
         }
         catch (IOException e) {
             e.printStackTrace();
         }
-
-        return instructors;
     }
 
     private String imageUrlExtractor(String attributeValue) {
