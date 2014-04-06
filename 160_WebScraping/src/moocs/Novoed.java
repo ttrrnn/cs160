@@ -48,7 +48,6 @@ public class Novoed {
 		FileWriter fw = new FileWriter(file.getAbsoluteFile());
 		BufferedWriter bw = new BufferedWriter(fw);
 		
-		
 		ArrayList<String> month = new ArrayList<String>();
 		month.add("January"); month.add("February"); month.add("March"); month.add("April"); month.add("May"); month.add("June"); 
 		month.add("July"); month.add("August"); month.add("September"); month.add("October"); month.add("November"); month.add("December"); 
@@ -119,6 +118,27 @@ public class Novoed {
 				}
 				
 				//System.out.println("Course Description: " +CrsDes);
+
+				/* get instructor names and images */
+				String instructor = crsdoc.select("span[class=instructor_name]").text();
+				String[] instructors = instructor.split(",");
+				String selector;
+				String[] instrimgs = new String[instructors.length];
+				String[] instrqueries = new String[instructors.length];
+				for (int k = 0; k < instructors.length; k++)
+				{
+				   instructors[k] = instructors[k].trim();
+				   if (!instructors[k].startsWith("Ph.D."))
+				   {
+				      selector = "img[alt^=" + instructors[k] + "]";
+			         instrimgs[k] = crsdoc.select(selector).attr("src");
+			         instrqueries[k] = "insert into course_details values(null,'" + instructors[k] + "','" + instrimgs[k] + "', null)";
+			         System.out.println(instrqueries[k]);
+//			         System.out.println("Image: " + instrimgs[k]);
+				   }
+//				   System.out.println("Instructor: " + instructors[k]);
+				}
+
 				String Date = crsdoc.select("div[class=timeline inline-block]").text();
 				//System.out.println("Date: " +Date);
 				
@@ -272,6 +292,14 @@ public class Novoed {
 						file.createNewFile();
 					}
 					
+					for (int l = 0; l < instructors.length; l++)
+					{
+					   if (!instructors[l].startsWith("Ph.D."))
+					   {
+					      bw.write(instrqueries[l]);
+					      bw.newLine(); bw.newLine();
+					   }
+					}
 					bw.write(query);
 					bw.newLine(); bw.newLine();
 				} catch (IOException e) {
