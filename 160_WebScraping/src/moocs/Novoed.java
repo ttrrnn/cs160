@@ -133,6 +133,7 @@ public class Novoed {
 				      selector = "img[alt^=" + instructors[k] + "]";
 			         instrimgs[k] = crsdoc.select(selector).attr("src");
 			         instrqueries[k] = "insert into coursedetails values(" + id + ",'" + instructors[k] + "','" + instrimgs[k] + "', null)";
+                                 id++;
 			         System.out.println(instrqueries[k]);
 //			         System.out.println("Image: " + instrimgs[k]);
 				   }
