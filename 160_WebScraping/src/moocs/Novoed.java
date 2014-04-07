@@ -52,7 +52,7 @@ public class Novoed {
 		month.add("January"); month.add("February"); month.add("March"); month.add("April"); month.add("May"); month.add("June"); 
 		month.add("July"); month.add("August"); month.add("September"); month.add("October"); month.add("November"); month.add("December"); 
 		
-
+                int id = 1;
 		String url1 = "https://novoed.com/courses";
 		 
 		ArrayList<String> pgcrs = new ArrayList<String>(); //Array which will store each course URLs 
@@ -132,7 +132,7 @@ public class Novoed {
 				   {
 				      selector = "img[alt^=" + instructors[k] + "]";
 			         instrimgs[k] = crsdoc.select(selector).attr("src");
-			         instrqueries[k] = "insert into course_details values(null,'" + instructors[k] + "','" + instrimgs[k] + "', null)";
+			         instrqueries[k] = "insert into coursedetails values(" + id + ",'" + instructors[k] + "','" + instrimgs[k] + "', null)";
 			         System.out.println(instrqueries[k]);
 //			         System.out.println("Image: " + instrimgs[k]);
 				   }
