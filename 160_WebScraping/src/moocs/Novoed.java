@@ -14,8 +14,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-//import java.sql.DriverManager;
-//import java.sql.Statement;
+import java.sql.DriverManager;
+import java.sql.Statement;
 
 /*
 
@@ -51,16 +51,17 @@ public class Novoed {
 		ArrayList<String> month = new ArrayList<String>();
 		month.add("January"); month.add("February"); month.add("March"); month.add("April"); month.add("May"); month.add("June"); 
 		month.add("July"); month.add("August"); month.add("September"); month.add("October"); month.add("November"); month.add("December"); 
-		
-                int id = 1;
+		int id = 1;
+		int course_id = 1;
+
 		String url1 = "https://novoed.com/courses";
 		 
 		ArrayList<String> pgcrs = new ArrayList<String>(); //Array which will store each course URLs 
 		pgcrs.add(url1);
 
 		//The following few lines of code are used to connect to a database so the scraped course content can be stored.
-		//Class.forName("com.mysql.jdbc.Driver").newInstance();
-		//java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/scrapedcourse","root","");
+		Class.forName("com.mysql.jdbc.Driver").newInstance();
+		java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/moocs160","root","novacity");
 		//make sure you create a database named scrapedcourse in your local mysql database before running this code
 		//default mysql database in your local machine is ID:root with no password
 		//you can download scrapecourse database template from your Canvas account->modules->Team Project area
@@ -78,7 +79,7 @@ public class Novoed {
 			for (int j=0; j<link.size();j++)
 			{
                 //TODO: Use cloud database in future
-				//Statement statement = connection.createStatement();
+				Statement statement = connection.createStatement();
 				
 				String crsurl = link.get(j).attr("href"); // Get Course URL
 				System.out.println(crsurl);
@@ -132,14 +133,15 @@ public class Novoed {
 				   {
 				      selector = "img[alt^=" + instructors[k] + "]";
 			         instrimgs[k] = crsdoc.select(selector).attr("src");
-			         instrqueries[k] = "insert into coursedetails values(" + id + ",'" + instructors[k] + "','" + instrimgs[k] + "', null)";
-                                 id++;
+			         instrqueries[k] = "insert into coursedetails values(" + id + ",'" + instructors[k] + "','" + instrimgs[k] + "', " + course_id + ")";
+			         id++;
 			         System.out.println(instrqueries[k]);
 //			         System.out.println("Image: " + instrimgs[k]);
 				   }
 //				   System.out.println("Instructor: " + instructors[k]);
 				}
-
+				course_id++;
+				
 				String Date = crsdoc.select("div[class=timeline inline-block]").text();
 				//System.out.println("Date: " +Date);
 				
@@ -284,8 +286,16 @@ public class Novoed {
 				
 				System.out.println(query);   
 				
-				//statement.executeUpdate(query); // skip writing to database; focus on data printout to a text file instead.
-				//statement.close();
+				statement.executeUpdate(query); // skip writing to database; focus on data printout to a text file instead.
+            for (int m = 0; m < instructors.length; m++)
+            {
+               if (!instructors[m].startsWith("Ph.D."))
+               {
+                  statement.executeUpdate(instrqueries[m]);
+               }
+            }
+
+				statement.close();
 				
 				try {								
 					// if file doesn't exists, then create it

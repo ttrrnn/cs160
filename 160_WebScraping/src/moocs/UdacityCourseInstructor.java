@@ -48,6 +48,10 @@ public class UdacityCourseInstructor {
         this.imageUrl = imageUrl;
     }
 
+    public String getInsertionQuery(int id, int course_id) {
+       return "insert into coursedetails values(" + id + ",'" + name + "','" + imageUrl + "', " + course_id + ")";
+    }
+    
     public String toString() {
         StringBuilder builder = new StringBuilder();
 
