@@ -23,7 +23,7 @@ else {
         if (false === strpos($course_image, '://')) {
             $course_image = 'https://' . $course_image;
         }
-        $course_data .= "<td><img src= '" . $course_image . "'></td>";
+        $course_data .= "<td><img src= '" . $course_image . " height = "42" width = "42"'></td>";
         $course_data .= "</tr>";
     }
 
