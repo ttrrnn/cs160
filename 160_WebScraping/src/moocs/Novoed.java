@@ -55,9 +55,11 @@ public class Novoed {
 		int course_id = 1;
 
 		String url1 = "https://novoed.com/courses";
-		 
-		ArrayList<String> pgcrs = new ArrayList<String>(); //Array which will store each course URLs 
+        String url2 = "https://novoed.com/courses?page=2";
+
+        ArrayList<String> pgcrs = new ArrayList<String>(); //Array which will store each course URLs
 		pgcrs.add(url1);
+        pgcrs.add(url2);
 
 		//The following few lines of code are used to connect to a database so the scraped course content can be stored.
 		Class.forName("com.mysql.jdbc.Driver").newInstance();
