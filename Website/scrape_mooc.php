@@ -18,7 +18,10 @@ else {
         $course_data .= "<td>" . $start_date . "</td>";
         $course_data .= "<td>" . $course_length . "</td>";
         $course_data .= "<td>" . $profname . "</td>";
-        $course_data .= "<td>" . $profimage . "</td>";
+        if (false === strpos($profimage, '://')) {
+            $profimage = 'https://' . $profimage;
+        }
+        $course_data .= "<td><img src= '" . $profimage . "'></td>";
         $course_data .= "<td>" . $site . "</td>";
         if (false === strpos($course_image, '://')) {
             $course_image = 'https://' . $course_image;
