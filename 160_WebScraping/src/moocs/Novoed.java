@@ -93,7 +93,7 @@ public class Novoed {
 				SCrsDesrpTemp = SCrsDesrpTemp.replace("'", "''");
 				SCrsDesrpTemp = SCrsDesrpTemp.replace(",", "");
 				
-				String CrsImg = ele.select("img[alt= ]").get(a).attr("src"); //To get the course image
+				String CrsImg = ele.select("img[alt= ]").get(j).attr("src"); //To get the course image
 				Document crsdoc = Jsoup.connect(crsurl).get();
 				//System.out.println("Course Document: " +crsdoc);
 				Elements crsheadele = crsdoc.select("header[class=row-fluid coursepage]");
