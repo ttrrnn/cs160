@@ -16,7 +16,7 @@ else {
         if (false === strpos($course_image, '://')) {
             $course_image = 'https://' . $course_image;
         }
-        $course_data .= "<td><img src= '" . $course_image . "'></td>";
+        $course_data .= "<td><a href= '" . $course_link . "'><img src= '" . $course_image . "'></a></td>";
         $course_data .= "<td>" . $title . "</td>";
         $course_data .= "<td>" . $category . "</td>";
         $course_data .= "<td>" . $start_date . "</td>";
