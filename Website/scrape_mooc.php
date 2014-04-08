@@ -20,7 +20,7 @@ else {
         $course_data .= "<td>" . "TODO" . "</td>";
         $course_data .= "<td>" . "TODO" . "</td>";
         $course_data .= "<td>" . $course_link . "</td>";
-        $course_data .= "<td>" . $course_image . "</td>";
+        $course_data .= "<td><img src= '" . $course_image . "'></td>";
         $course_data .= "</tr>";
     }
 
