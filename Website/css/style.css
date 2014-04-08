@@ -25,3 +25,7 @@ thead th {
   font: bold 1.2em/2em;
   color: #66a3d3;
 }
+
+tr:hover {
+  background-color: #00FFCC;
+}
