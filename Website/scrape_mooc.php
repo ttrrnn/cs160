@@ -18,7 +18,7 @@ else {
         if (false === strpos($course_image, '://')) {
             $course_image = 'https://' . $course_image;
         }
-        $course_data .= "<td><a href= '" . $course_link . "'><img src= '" . $course_image . "'></a></td>";
+        $course_data .= "<td><a href= '" . $course_link . "'><img width=200 height=150 src= '" . $course_image . "'></a></td>";
         $course_data .= "<td>" . $title . "</td>";
         $course_data .= "<td>" . $category . "</td>";
         $course_data .= "<td>" . $start_date . "</td>";
@@ -27,7 +27,7 @@ else {
         if (false === strpos($profimage, '://')) {
             $profimage = 'https://' . $profimage;
         }
-        $course_data .= "<td><img src= '" . $profimage . "'></td>";
+        $course_data .= "<td><img width=100 height=100 src= '" . $profimage . "'></td>";
         $course_data .= "<td>" . $site . "</td>";
         $course_data .= "</tr>";
     }
