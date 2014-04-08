@@ -1,6 +1,8 @@
 package moocs;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -120,6 +122,34 @@ public class UdacityCourse {
         instructors.add(instructor);
     }
 
+    public String getInsertionQuery() {
+
+       // For Date parsed
+       Calendar cal = Calendar.getInstance();
+       cal.add(Calendar.DATE, 1);
+       SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+       String dscrap = format1.format(cal.getTime());
+       if (!(category == null))
+          category = category.replace('\n', ' ');
+       shortDescription = shortDescription.replace("'", "''");
+       shortDescription = shortDescription.replace(",", "");
+       longDescription = shortDescription.replace("'", "''");
+       longDescription = shortDescription.replace(",", "");
+
+       return "insert into course_data values(null,'"+title+"','"+shortDescription+"','"+longDescription+"','"+courseUrl+"','','"+dscrap+"', 0,'"+imageUrl+"','"+category+"','Udacity','"+(int) price+"','', 'No','"+organization+"','"+dscrap+"')";
+    }
+    
+    public ArrayList<String> getInstructorQueries(int id, int course_id) {
+       ArrayList<String> instrqueries = new ArrayList<String>();
+       
+       for (UdacityCourseInstructor instructor : instructors)
+       {
+          instrqueries.add(instructor.getInsertionQuery(id, course_id));
+          id++;
+       }
+       return instrqueries;
+    }
+    
     public String toString() {
         StringBuilder builder = new StringBuilder();
 
