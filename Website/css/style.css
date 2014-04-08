@@ -2,3 +2,9 @@ img {
   width: 200px;
   height: 150px;
 }
+
+tbody {
+  max-height: 100px;
+  overflow-y: auto;
+  display: block
+}
