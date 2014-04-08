@@ -13,6 +13,10 @@ else {
                             
     while ($stmt->fetch()) {
         $course_data .= "<tr>";
+        if (false === strpos($course_image, '://')) {
+            $course_image = 'https://' . $course_image;
+        }
+        $course_data .= "<td><img src= '" . $course_image . "'></td>";
         $course_data .= "<td>" . $title . "</td>";
         $course_data .= "<td>" . $category . "</td>";
         $course_data .= "<td>" . $start_date . "</td>";
@@ -23,10 +27,6 @@ else {
         }
         $course_data .= "<td><img src= '" . $profimage . "'></td>";
         $course_data .= "<td>" . $site . "</td>";
-        if (false === strpos($course_image, '://')) {
-            $course_image = 'https://' . $course_image;
-        }
-        $course_data .= "<td><img src= '" . $course_image . "'></td>";
         $course_data .= "</tr>";
     }
 
