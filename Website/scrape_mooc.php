@@ -6,7 +6,7 @@ if ($db->connect_errno) {
     echo "Failed to connect to MySQL: " . $db->connect_error;
 }
 else {
-    $stmt = $db->prepare("SELECT course_image, title, category, start_date, course_length, course_link, site FROM course_data");
+    $stmt = $db->prepare("SELECT course_image, title, category, start_date, course_length, site FROM course_data");
     $result = $stmt->execute();
     $stmt->bind_result($course_image, $title, $category, $start_date, $course_length, $course_link);
     $course_data = "<tbody>";
