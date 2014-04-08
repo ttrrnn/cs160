@@ -6,9 +6,9 @@ if ($db->connect_errno) {
     echo "Failed to connect to MySQL: " . $db->connect_error;
 }
 else {
-    $stmt = $db->prepare("SELECT course_image, title, category, start_date, course_length, course_link, site FROM course_data");
+    $stmt = $db->prepare("SELECT course_image, title, category, start_date, course_length, course_link, site, profname, profimage FROM course_data, coursedetails WHERE course_data.id = coursedetails.course_id");
     $result = $stmt->execute();
-    $stmt->bind_result($course_image, $title, $category, $start_date, $course_length, $course_link, $site);
+    $stmt->bind_result($course_image, $title, $category, $start_date, $course_length, $course_link, $site, $profname, $profimage);
     $course_data = "<tbody>";
                             
     while ($stmt->fetch()) {
@@ -17,8 +17,8 @@ else {
         $course_data .= "<td>" . $category . "</td>";
         $course_data .= "<td>" . $start_date . "</td>";
         $course_data .= "<td>" . $course_length . "</td>";
-        $course_data .= "<td>" . "TODO" . "</td>";
-        $course_data .= "<td>" . "TODO" . "</td>";
+        $course_data .= "<td>" . $profname . "</td>";
+        $course_data .= "<td>" . $profimage . "</td>";
         $course_data .= "<td>" . $site . "</td>";
         if (false === strpos($course_image, '://')) {
             $course_image = 'https://' . $course_image;
