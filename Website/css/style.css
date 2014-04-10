@@ -19,6 +19,7 @@ thead th {
   text-align: center;
   font: bold 1.2em/2em;
   color: #66a3d3;
+  vertical-align: center;
 }
 
 tr:hover {
