@@ -14,8 +14,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-import java.sql.DriverManager;
-import java.sql.Statement;
+//import java.sql.DriverManager;
+//import java.sql.Statement;
 
 /*
 
@@ -55,15 +55,15 @@ public class Novoed {
 		int course_id = 1;
 
 		String url1 = "https://novoed.com/courses";
-        String url2 = "https://novoed.com/courses?page=2";
-
-        ArrayList<String> pgcrs = new ArrayList<String>(); //Array which will store each course URLs
+		String url2 = "https://novoed.com/courses?page=2";
+		 
+		ArrayList<String> pgcrs = new ArrayList<String>(); //Array which will store each course URLs 
 		pgcrs.add(url1);
-        pgcrs.add(url2);
+		pgcrs.add(url2);
 
 		//The following few lines of code are used to connect to a database so the scraped course content can be stored.
-		Class.forName("com.mysql.jdbc.Driver").newInstance();
-		java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/moocs160","root","novacity");
+//		Class.forName("com.mysql.jdbc.Driver").newInstance();
+//		java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/moocs160","root","novacity");
 		//make sure you create a database named scrapedcourse in your local mysql database before running this code
 		//default mysql database in your local machine is ID:root with no password
 		//you can download scrapecourse database template from your Canvas account->modules->Team Project area
@@ -81,7 +81,7 @@ public class Novoed {
 			for (int j=0; j<link.size();j++)
 			{
                 //TODO: Use cloud database in future
-				Statement statement = connection.createStatement();
+//				Statement statement = connection.createStatement();
 				
 				String crsurl = link.get(j).attr("href"); // Get Course URL
 				System.out.println(crsurl);
@@ -95,7 +95,16 @@ public class Novoed {
 				SCrsDesrpTemp = SCrsDesrpTemp.replace("'", "''");
 				SCrsDesrpTemp = SCrsDesrpTemp.replace(",", "");
 				
-				String CrsImg = ele.select("img[alt= ]").get(j).attr("src"); //To get the course image
+				String CrsImg = crspg.select("img[alt= ]").get(j).attr("src"); //To get the course image
+            System.out.println(CrsImg);
+				/*				if(a==0||a==1)
+				{
+					CrsImg  = ele.select("img[alt= ]").get(j).attr("src"); //To get the course image
+				}
+				else
+				{
+					CrsImg = ele.select("img[alt= ]").get(a).attr("src"); //To get the course image - FOR URL4
+				} */
 				Document crsdoc = Jsoup.connect(crsurl).get();
 				//System.out.println("Course Document: " +crsdoc);
 				Elements crsheadele = crsdoc.select("header[class=row-fluid coursepage]");
@@ -147,7 +156,7 @@ public class Novoed {
 					StrDate = StrDate + "-09-01";	// September 1 for courses starting in the Fall
 					//System.out.println("Date: " +StrDate);
 				} else if (Date.contains("Starting Spring")) {
-					StrDate = Date.substring(Date.indexOf("l ")+2, Date.length());
+					StrDate = Date.substring(Date.indexOf("g 2")+2, Date.length());
 					StrDate = StrDate + "-02-01";	// February 1 for courses starting in the Spring
 					//System.out.println("Date2: " +StrDate);
 				} else if (Date.contains("Starting")){
@@ -280,16 +289,16 @@ public class Novoed {
 				
 				System.out.println(query);   
 				
-				statement.executeUpdate(query); // skip writing to database; focus on data printout to a text file instead.
+//				statement.executeUpdate(query); // skip writing to database; focus on data printout to a text file instead.
             for (int m = 0; m < instructors.length; m++)
             {
                if (!instructors[m].startsWith("Ph.D."))
                {
-                  statement.executeUpdate(instrqueries[m]);
+//                  statement.executeUpdate(instrqueries[m]);
                }
             }
 
-				statement.close();
+//				statement.close();
 				
 				try {								
 					// if file doesn't exists, then create it
@@ -312,7 +321,7 @@ public class Novoed {
 				}
 			 }
 		}
-		//connection.close();
+//		connection.close();
 		bw.close();
 	}
 }

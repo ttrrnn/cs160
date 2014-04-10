@@ -136,7 +136,7 @@ public class UdacityCourse {
        longDescription = shortDescription.replace("'", "''");
        longDescription = shortDescription.replace(",", "");
 
-       return "insert into course_data values(null,'"+title+"','"+shortDescription+"','"+longDescription+"','"+courseUrl+"','','"+dscrap+"', 0,'"+imageUrl+"','"+category+"','Udacity','"+(int) price+"','', 'No','"+organization+"','"+dscrap+"')";
+       return "insert into course_data values(null,'"+title+"','"+shortDescription+"','"+longDescription+"','"+courseUrl+"','','"+dscrap+"', 0,'"+imageUrl+"','"+category+"','Udacity','"+(int) price+"','English', 'No','"+organization+"','"+dscrap+"')";
     }
     
     public ArrayList<String> getInstructorQueries(int id, int course_id) {
