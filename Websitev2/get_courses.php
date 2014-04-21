@@ -6,7 +6,7 @@ if ($db->connect_errno) {
     echo "Failed to connect to MySQL: " . $db->connect_error;
 }
 else {
-    $stmt = $db->prepare("SELECT course_image, title, category, start_date, course_length, course_link, site, profname, profimage FROM course_data, coursedetails WHERE course_data.id = coursedetails.course_id");
+    $stmt = $db->prepare("SELECT course_image, title, category, start_date, course_length, course_link, site, profname, profimage FROM course_data, coursedetails WHERE course_data.id = coursedetails.course_id GROUP BY course_data.id");
     $result = $stmt->execute();
     $stmt->bind_result($course_image, $title, $category, $start_date, $course_length, $course_link, $site, $professor_name, $professor_image);
     $course_data = array();
