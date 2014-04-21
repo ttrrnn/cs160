@@ -11,11 +11,10 @@ $(document).ready(function() {
   };
 
   $.get("get_courses.php", function(result) {
-    console.log(result);
     var callbacks = {
-        pagination: function(summary) {
-          $summary.text( summary.from + ' to '+ summary.to +' of '+ summary.total +' entries');
-        }
+      pagination: function(summary) {
+        $summary.text( summary.from + ' to '+ summary.to +' of '+ summary.total +' entries');
+      }
     };
 
     st = StreamTable('#stream_table',
