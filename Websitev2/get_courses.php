@@ -13,11 +13,11 @@ else {
                             
     while ($stmt->fetch()) {
         if (false === strpos($course_image, '://')) {
-            $course_image = 'https://' . $course_image;
+            $course_image = 'http://' . $course_image;
         }
 
         if (false === strpos($professor_image, '://')) {
-            $professor_image = 'https://' . $profimage;
+            $professor_image = 'http://' . $professor_image;
         }
 
         $course = array (
