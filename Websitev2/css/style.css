@@ -1,0 +1,103 @@
+body{
+  margin-top: 10px;
+  background-color: #eeeeee;
+}
+
+.title{
+  margin-bottom: 20px;
+  color: #b94a48;
+  border-bottom: 5px solid #b94a48;
+}
+
+.title .glyphicon{
+  font-size: 30px;
+  color: #000;
+}
+
+.title h1{
+  font-weight: bold;
+}
+
+.title .lead{
+  margin-bottom: 20px;
+  font-size: 21px;
+  font-weight: 200;
+  line-height: 1.4;
+}
+
+.st_search{
+  max-width: 200px;
+  float: right;
+  margin-bottom: 10px;
+}
+
+.pagination{
+  float: right;
+  margin-top: 0px;
+}
+
+.pagination li.active a{
+  background-color: #DCDCDC;
+}
+
+.st_per_page{
+  width: 50px;
+  height: 34px !important;
+  float: right;
+  margin-right: 20px;
+}
+
+.record_count {
+  margin-left: 20px;
+}
+
+#spinner {
+  font-size: 18px;
+  margin-left: 10px;
+  display: none;
+}
+
+#found{
+  margin-left: 10px;
+  font-size: 16px;
+  line-height: 33px;
+}
+
+#logo {
+  width: 50px;
+  height: 50px;
+}
+
+/* Everythin below is related to the login modal */
+#header-login {
+  display: inline-block;
+  height: 50px;
+  width: 100%;
+  background-color: #b94a48;
+}
+
+#header-login ul li {
+  display: inline-block;
+  margin-top: 10px;
+}
+
+#login-button, #register-toggle {
+  color: #333333; 
+  background-color: #b94a48;;
+  border: none;
+}
+
+#login-button:hover, #register-toggle:hover {
+  color: #ffebcd; 
+}
+
+#content-page {
+  float: left;
+  color: #dddddd;
+  background-color: #442222;
+  margin: 25px 0px;
+  padding: 25px;
+  height: 550px;
+  width: 1150px;
+  border-radius: 5px;
+}
