@@ -89,16 +89,17 @@
       <div id="summary"><div>
     </div>
 
+    <!-- Some {{record.course_link}} should be changed later to link to our own generated page for each course -->
     <script id="template" type="text/html">
       <tr>
-        <td><img src="{{record.course_image}}" width="200px" height="150px" /></td>
-        <td><a>{{record.title}}</a></td>
+        <td><a href="{{record.course_link}}"><img src="{{record.course_image}}" width="200px" height="150px" /></a></td>
+        <td><a href="{{record.course_link}}">{{record.title}}</a></td>
         <td>{{record.category}}</td>
         <td>{{record.start_date}}</td>
-        <td>{{record.course_length}} weeks</td>
+        <td>{{record.course_length}}</td>
         <td>{{record.professor_name}}</td>
         <td><img src="{{record.professor_image}}" width="150px" height="150px" /></td>
-        <td><a>{{record.site}}<a></td>
+        <td><a href="http://{{record.site}}.com">{{record.site}}<a></td>
       </tr>
     </script>
 
