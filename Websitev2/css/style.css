@@ -1,9 +1,9 @@
-body{
+body {
   margin-top: 10px;
   background-color: #eeeeee;
 }
 
-.title{
+.title {
   margin-bottom: 20px;
   color: #b94a48;
   border-bottom: 5px solid #b94a48;
@@ -14,33 +14,33 @@ body{
   color: #000;
 }
 
-.title h1{
+.title h1 {
   font-weight: bold;
 }
 
-.title .lead{
+.title .lead {
   margin-bottom: 20px;
   font-size: 21px;
   font-weight: 200;
   line-height: 1.4;
 }
 
-.st_search{
+.st_search {
   max-width: 200px;
   float: right;
   margin-bottom: 10px;
 }
 
-.pagination{
+.pagination {
   float: right;
   margin-top: 0px;
 }
 
-.pagination li.active a{
+.pagination li.active a {
   background-color: #DCDCDC;
 }
 
-.st_per_page{
+.st_per_page {
   width: 50px;
   height: 34px !important;
   float: right;
@@ -57,7 +57,7 @@ body{
   display: none;
 }
 
-#found{
+#found {
   margin-left: 10px;
   font-size: 16px;
   line-height: 33px;
@@ -68,7 +68,7 @@ body{
   height: 50px;
 }
 
-/* Everythin below is related to the login modal */
+/* Everything below is related to the login modal */
 #header-login {
   display: inline-block;
   height: 50px;
