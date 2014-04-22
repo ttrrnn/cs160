@@ -68,6 +68,10 @@ body {
   height: 50px;
 }
 
+.modal-dialog-center {
+  margin-top: 10%;
+}
+
 /* Everything below is related to the login modal */
 #header-login {
   display: inline-block;
@@ -89,15 +93,4 @@ body {
 
 #login-button:hover, #register-toggle:hover {
   color: #ffebcd; 
-}
-
-#content-page {
-  float: left;
-  color: #dddddd;
-  background-color: #442222;
-  margin: 25px 0px;
-  padding: 25px;
-  height: 550px;
-  width: 1150px;
-  border-radius: 5px;
 }
