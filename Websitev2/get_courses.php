@@ -7,7 +7,7 @@ if ($db->connect_errno) {
 }
 else {
     $stmt = $db->prepare("SELECT course_image, title, category, start_date, course_length, course_link, site, profname, profimage FROM course_data, coursedetails WHERE course_data.id = coursedetails.course_id GROUP BY course_data.id");
-    $result = $stmt->execute();
+    $stmt->execute();
     $stmt->bind_result($course_image, $title, $category, $start_date, $course_length, $course_link, $site, $professor_name, $professor_image);
     $course_data = array();
                             
@@ -21,15 +21,14 @@ else {
         }
 
         $course = array (
-            "course_link" => $course_link,
-            "course_image" => $course_image,
-            "title" => $title,
-            "category" => $category,
-            "start_date" => $start_date,
-            "course_length" => $course_length,
-            "professor_name" => $professor_name,
-            "professor_image" => $professor_image,
-            "site" => $site
+            '<a href="' . $course_link . '"><img src="' . $course_image . '" width="200px" height="150px" /></a>',  
+            $title,
+            $category,
+            $start_date,
+            $course_length,
+            $professor_name,
+            '<img src="' . $professor_image . '" width="150px" height="150px" />',
+            $site
         );
 
         $course_data[] = $course;

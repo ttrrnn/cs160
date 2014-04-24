@@ -19,12 +19,11 @@ else if (isset($_POST['create-account'])) {
   <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="DataTables-1.9.4/media/css/jquery.dataTables.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <script src="js/jquery-2.1.0.min.js" type="text/javascript"></script>
     <script src="js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="js/mustache.js" type="text/javascript"></script>
-    <script src="js/stream_table.js" type="text/javascript"></script>
-    <script src="js/jquery.tablesorter.min.js" type="text/javascript"></script>
+    <script src="DataTables-1.9.4/media/js/jquery.dataTables.min.js"></script>
     <script src="js/application.js" type="text/javascript"></script>   
   </head>
 
@@ -119,38 +118,23 @@ else if (isset($_POST['create-account'])) {
         <h1>Educademy</h1>
       </div>
       <span id="found" class="label label-info"></span>
-      <table id="stream_table" class='table tablesorter table-striped table-bordered'>
+      <table id="table" class='table table-striped table-bordered'>
         <thead>
           <tr>
-            <th><a href="#"></th>
-            <th style="width: 200px;"><a href="#">Course</a></th>
-            <th><a href="#">Category</a></th>
-            <th style="width: 100px;"><a href="#">Start Date</a></th>
-            <th><a href="#">Duration (weeks)</a></th>
-            <th><a href="#">Professor</a></th>
-            <th></th>
-            <th><a href="#">Site</a></th>
+            <th>Image</th>
+            <th>Course</th>
+            <th>Category</a></th>
+            <th>Start Date</th>
+            <th>Duration (weeks)</th>
+            <th>Professor</th>
+            <th>Professor Image</th>
+            <th>Site</th>
           </tr>
         </thead>
         <tbody>
         </tbody>
       </table>
-      <div id="summary"><div>
     </div>
-
-    <!-- Some {{record.course_link}} should be changed later to link to our own generated page for each course -->
-    <script id="template" type="text/html">
-      <tr>
-        <td><a href="{{record.course_link}}"><img src="{{record.course_image}}" width="200px" height="150px" /></a></td>
-        <td><a href="{{record.course_link}}">{{record.title}}</a></td>
-        <td>{{record.category}}</td>
-        <td>{{record.start_date}}</td>
-        <td>{{record.course_length}}</td>
-        <td>{{record.professor_name}}</td>
-        <td><img src="{{record.professor_image}}" width="150px" height="150px" /></td>
-        <td><a href="http://{{record.site}}.com">{{record.site}}<a></td>
-      </tr>
-    </script>
 
   </body>
 </html>
