@@ -30,6 +30,8 @@ $(document).ready(function() {
 
     $("#stream_table").tablesorter();
   });
+
+
 });
 
 // Empty account creation method. It will use an AJAX call to register.php which is
@@ -43,7 +45,9 @@ function create() {
 // Empty login method. It will use an AJAX call to register.php which is
 // not yet implemented.
 function login() {
-  $.post("login.php", $("#login-form").serialize(), function(result) {
-        
-  });
+  $("#login-form").submit();
+}
+
+function logout() {
+  $("#logout-form").submit();
 }

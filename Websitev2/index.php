@@ -1,3 +1,17 @@
+<?php
+
+session_start();
+
+if (isset($_GET['logout'])) {
+  unset($_SESSION['username']);
+  header("Location: index.php");
+}
+else if (isset($_POST['create-account'])) {
+
+}
+
+?>
+
 <!DOCTYPE html>
 
 <html lang="en-us">
@@ -16,9 +30,23 @@
 
   <body>
     <div id="header-login">
+      <ul class="nav navbar-left">
+        <li id="error"></li>
+      </ul>
       <ul class="nav navbar-right">
+
+        <?php
+
+        if (isset($_POST['login-username'])) {
+          $_SESSION['username'] = $_POST['login-username'];
+        }
+
+        if (!isset($_POST['login-username'])):
+
+        ?>
+
         <li>
-          <form id="login-form" role="form">
+          <form id="login-form" role="form" action="index.php" method="post">
             <input type="text" name="login-username" id="login-username" class="input-sm" placeholder="Username" />
             <input type="password" name="login-password" id="login-password" class="input-sm" placeholder="Password" />
           </form>
@@ -31,7 +59,25 @@
             Register <span class="caret"></span>
           </button>
         </li>
-      </ul>
+
+        <?php else: ?>
+
+        <form id="logout-form" role="form" action="index.php" method="get">
+          <input type="hidden" name="logout" id="logout" class="input-sm" />
+        </form>
+
+        <li>
+          <?php echo "Logged in as " . $_POST['login-username']; ?>
+        </li>
+        <li>
+          <button id="logout-button" type="button" class="btn btn-primary" onclick="logout()">Logout</button>
+        </li>
+        <li>
+          <button id="account-button" type="button" class="btn btn-primary">Account <span class="caret"></span></button>
+        </li>
+
+        <?php endif; ?>
+      </ul>    
     </div>
 
     <div class="modal fade" id="registration-form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -42,7 +88,8 @@
             <h4 class="modal-title">Register for an account. It's free!</h4>
           </div>
           <div class="modal-body">
-            <form id="registration-form-data" role="form">
+            <form id="registration-form-data" action="index.php" role="form" method="post">
+              <inpur type="hidden" name="create-account" />
               <div class="form-group">
                 <input type="text" name="username" id="username" class="form-control" placeholder="Username">
               </div>
@@ -67,7 +114,7 @@
 
     <div class="container">
       <div class="title">
-        <h1></span>Educademy</h1>
+        <h1>Educademy</h1>
       </div>
       <span id="found" class="label label-info"></span>
       <table id="stream_table" class='table tablesorter table-striped table-bordered'>
