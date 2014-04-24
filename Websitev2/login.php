@@ -8,7 +8,8 @@ if ($db->connect_errno) {
 else {
     $username = $_POST['username'];
     $password = $_POST['password'];
-    $stmt = $db->prepare("SELECT password FROM user WHERE account.username = ?" % $username);
+    $stmt = $db->prepare("SELECT password FROM user WHERE user.username = ?");
+    $stmt->bind_param('s', $username);
     $result = $stmt->execute();
     $stmt->bind_result($retrieved_password);
                             

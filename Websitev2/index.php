@@ -46,14 +46,14 @@ else if (isset($_POST['create-account'])) {
         ?>
 
         <li>
-          <form id="login-form" role="form" action="<?= htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+          <form id="login-form" role="form" method="post">
             <input type="text" name="login-username" id="login-username" class="input-sm" placeholder="Username" required />
             <input type="password" name="login-password" id="login-password" class="input-sm" placeholder="Password" required />
             <input type="hidden" name="login" id="login" class="input-sm" />
           </form>
         </li>
         <li>
-          <button form="login-form" id="login-button" type="submit" class="btn btn-primary">Login</button>
+          <button action="<?= htmlspecialchars($_SERVER["PHP_SELF"]); ?>" form="login-form" id="login-button" type="submit" class="btn btn-primary">Login</button>
         </li>
         <li>
           <button id="register-toggle" type="button" class="btn btn-primary" data-toggle="modal" data-target="#registration-form">
@@ -89,7 +89,7 @@ else if (isset($_POST['create-account'])) {
             <h4 class="modal-title">Register for an account. It's free!</h4>
           </div>
           <div class="modal-body">
-            <form id="registration-form-data" action="<?= htmlspecialchars($_SERVER["PHP_SELF"]); ?>" role="form" method="post">
+            <form id="registration-form-data" role="form" method="post">
               <inpur type="hidden" name="create-account" />
               <div class="form-group">
                 <input type="text" name="username" id="username" class="form-control" placeholder="Username" required />
@@ -101,14 +101,14 @@ else if (isset($_POST['create-account'])) {
                 <input type="password" name="password" id="password" class="form-control" placeholder="Password" required />
               </div>
               <div class="form-group">
-                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="Confirm Password" required />
+                <input type="password" name="password-confirmation" id="password-confirmation" class="form-control" placeholder="Confirm Password" required />
               </div>
               <div class="form-group" id="registration-error"></div>
             </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-            <button form="registration-form-data" type="submit" class="btn btn-primary">Create</button>
+            <button form="registration-form-data" type="button" class="btn btn-primary" data-dismiss="modal" onclick="register()">Create</button>
           </div>
         </div>
       </div>

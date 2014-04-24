@@ -70,16 +70,21 @@ body {
 }
 
 #header-login ul li {
+  color: #ffffff; 
   display: inline-block;
   margin-top: 10px;
 }
 
 #login-button, #register-toggle, #account-button, #logout-button {
-  color: #333333; 
+  color: #ffffff; 
   background-color: #b94a48;;
   border: none;
 }
 
 #login-button:hover, #register-toggle:hover, #account-button:hover, #logout-button:hover {
   color: #ffebcd; 
+}
+
+#login-error {
+  color: #ffffff; 
 }
