@@ -31,7 +31,7 @@ else if (isset($_POST['create-account'])) {
   <body>
     <div id="header-login">
       <ul class="nav navbar-left">
-        <li id="error"></li>
+        <li id="login-error"></li>
       </ul>
       <ul class="nav navbar-right">
 
@@ -47,13 +47,13 @@ else if (isset($_POST['create-account'])) {
 
         <li>
           <form id="login-form" role="form" action="<?= htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <input type="text" name="login-username" id="login-username" class="input-sm" placeholder="Username" />
-            <input type="password" name="login-password" id="login-password" class="input-sm" placeholder="Password" />
+            <input type="text" name="login-username" id="login-username" class="input-sm" placeholder="Username" required />
+            <input type="password" name="login-password" id="login-password" class="input-sm" placeholder="Password" required />
             <input type="hidden" name="login" id="login" class="input-sm" />
           </form>
         </li>
         <li>
-          <button id="login-button" type="button" class="btn btn-primary" onclick="login()">Login</button>
+          <button form="login-form" id="login-button" type="submit" class="btn btn-primary">Login</button>
         </li>
         <li>
           <button id="register-toggle" type="button" class="btn btn-primary" data-toggle="modal" data-target="#registration-form">
@@ -71,7 +71,7 @@ else if (isset($_POST['create-account'])) {
           <?php echo "Logged in as " . $_POST['login-username']; ?>
         </li>
         <li>
-          <button id="logout-button" type="button" class="btn btn-primary" onclick="logout()">Logout</button>
+          <button form="logout-form" id="logout-button" type="submit" class="btn btn-primary">Logout</button>
         </li>
         <li>
           <button id="account-button" type="button" class="btn btn-primary">Account <span class="caret"></span></button>
@@ -92,22 +92,23 @@ else if (isset($_POST['create-account'])) {
             <form id="registration-form-data" action="<?= htmlspecialchars($_SERVER["PHP_SELF"]); ?>" role="form" method="post">
               <inpur type="hidden" name="create-account" />
               <div class="form-group">
-                <input type="text" name="username" id="username" class="form-control" placeholder="Username">
+                <input type="text" name="username" id="username" class="form-control" placeholder="Username" required />
               </div>
               <div class="form-group">
-                <input type="email" name="email" id="email" class="form-control" placeholder="Email Address">
+                <input type="email" name="email" id="email" class="form-control" placeholder="Email Address" required />
               </div>
               <div class="form-group">
-                <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+                <input type="password" name="password" id="password" class="form-control" placeholder="Password" required />
               </div>
               <div class="form-group">
-                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="Confirm Password">
+                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="Confirm Password" required />
               </div>
+              <div class="form-group" id="registration-error"></div>
             </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-            <button type="button" class="btn btn-primary" onclick="create()">Create</button>
+            <button form="registration-form-data" type="submit" class="btn btn-primary">Create</button>
           </div>
         </div>
       </div>

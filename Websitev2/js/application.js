@@ -33,17 +33,3 @@ $(document).ready(function() {
 
 
 });
-
-function create() {
-	$("#registration-form-data").submit();
-}
-
-function login() {
-  if ($("#login-username").val() !== "" && $("#login-password").val() !== "") {
-    $("#login-form").submit();
-  }
-}
-
-function logout() {
-  $("#logout-form").submit();
-}
