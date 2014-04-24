@@ -37,18 +37,19 @@ else if (isset($_POST['create-account'])) {
 
         <?php
 
-        if (isset($_POST['login-username'])) {
+        if (isset($_POST['login']) && $_POST['login-username'] != "") {
           $_SESSION['username'] = $_POST['login-username'];
         }
 
-        if (!isset($_POST['login-username'])):
+        if ($_POST['login-username'] == ""):
 
         ?>
 
         <li>
-          <form id="login-form" role="form" action="index.php" method="post">
+          <form id="login-form" role="form" action="<?= htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <input type="text" name="login-username" id="login-username" class="input-sm" placeholder="Username" />
             <input type="password" name="login-password" id="login-password" class="input-sm" placeholder="Password" />
+            <input type="hidden" name="login" id="login" class="input-sm" />
           </form>
         </li>
         <li>
@@ -62,7 +63,7 @@ else if (isset($_POST['create-account'])) {
 
         <?php else: ?>
 
-        <form id="logout-form" role="form" action="index.php" method="get">
+        <form id="logout-form" role="form" action="<?= htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="get">
           <input type="hidden" name="logout" id="logout" class="input-sm" />
         </form>
 
@@ -88,7 +89,7 @@ else if (isset($_POST['create-account'])) {
             <h4 class="modal-title">Register for an account. It's free!</h4>
           </div>
           <div class="modal-body">
-            <form id="registration-form-data" action="index.php" role="form" method="post">
+            <form id="registration-form-data" action="<?= htmlspecialchars($_SERVER["PHP_SELF"]); ?>" role="form" method="post">
               <inpur type="hidden" name="create-account" />
               <div class="form-group">
                 <input type="text" name="username" id="username" class="form-control" placeholder="Username">

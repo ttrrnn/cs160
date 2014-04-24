@@ -39,7 +39,9 @@ function create() {
 }
 
 function login() {
-  $("#login-form").submit();
+  if ($("#login-username").val() !== "" && $("#login-password").val() !== "") {
+    $("#login-form").submit();
+  }
 }
 
 function logout() {
