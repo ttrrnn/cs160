@@ -34,16 +34,10 @@ $(document).ready(function() {
 
 });
 
-// Empty account creation method. It will use an AJAX call to register.php which is
-// not yet implemented.
 function create() {
-	$.post("register.php", $("#registration-form-data").serialize(), function(result) {
-        
-  });
+	$("#registration-form-data").submit();
 }
 
-// Empty login method. It will use an AJAX call to register.php which is
-// not yet implemented.
 function login() {
   $("#login-form").submit();
 }
