@@ -24,10 +24,14 @@ else if (isset($_POST['create-account'])) {
     <script src="js/jquery-2.1.0.min.js" type="text/javascript"></script>
     <script src="js/bootstrap.min.js" type="text/javascript"></script>
     <script src="DataTables-1.9.4/media/js/jquery.dataTables.min.js"></script>
-    <script src="js/application.js" type="text/javascript"></script>   
+    <script src="js/application.js" type="text/javascript"></script> 
+    <title>Educademy Courses</title>
   </head>
 
   <body>
+    <div id="wrapper">
+    <?php include('includes/header.php'); ?>
+    <?php include('includes/nav.php'); ?>
     <div id="header-login">
       <ul class="nav navbar-left">
         <li id="login-error"></li>
@@ -113,9 +117,9 @@ else if (isset($_POST['create-account'])) {
       </div>
     </div>
 
-    <div class="container">
+    <div class="content">
       <div class="title">
-        <h1>Educademy</h1>
+        <h1>Courses</h1>
       </div>
       <span id="found" class="label label-info"></span>
       <table id="table" class='table table-striped table-bordered'>
@@ -135,6 +139,7 @@ else if (isset($_POST['create-account'])) {
         </tbody>
       </table>
     </div>
-
+    <?php include('includes/footer.php'); ?>
+    </div> <!-- End #wrapper -->
   </body>
 </html>
