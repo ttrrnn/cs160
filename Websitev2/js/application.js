@@ -5,13 +5,13 @@ $(document).ready(function() {
     "sPaginationType": "full_numbers",
     "aoColumns": [
           { "bSortable": false, "bSearchable": false },
-          { "sWidth": "100px"},
-          { "sWidth": "135px"},
-          { "sWidth": "100px"},
-          { "sWidth": "25px"},
-          { "sWidth": "100px"},
+          null,
+          null,
+          null,
+          null,
+          null,
           { "bSortable": false, "bSearchable": false },
-          { "sWidth": "100px"}
+          null
       ]
   });
 
