@@ -1,7 +1,9 @@
 var st; // For debugging only
 
 $(document).ready(function() {
-  $("#table").dataTable();
+  $("#table").dataTable( {
+    "sPaginationType": "full_numbers"
+  });
 
   $.get("get_courses.php", function(result) {
     $("#table").dataTable().fnAddData(JSON.parse(result));
