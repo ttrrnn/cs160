@@ -2,7 +2,17 @@ var st; // For debugging only
 
 $(document).ready(function() {
   $("#table").dataTable( {
-    "sPaginationType": "full_numbers"
+    "sPaginationType": "full_numbers",
+    "aoColumns": [
+          { "bSortable": false, "bSearchable": false },
+          { "sWidth": "100px"},
+          { "sWidth": "135px"},
+          { "sWidth": "100px"},
+          { "sWidth": "25px"},
+          { "sWidth": "100px"},
+          { "bSortable": false, "bSearchable": false },
+          { "sWidth": "100px"}
+      ]
   });
 
   $.get("get_courses.php", function(result) {
