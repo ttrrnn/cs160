@@ -117,7 +117,7 @@ else if (isset($_POST['create-account'])) {
       </div>
     </div>
 
-    <div class="content">
+    <div>
       <div class="title">
         <h1>Courses</h1>
       </div>
