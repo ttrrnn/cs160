@@ -125,13 +125,12 @@ else if (isset($_POST['create-account'])) {
       <table id="table" class='table table-striped table-bordered'>
         <thead>
           <tr>
-            <th>Image</th>
+            <th></th>
             <th>Course</th>
             <th>Category</a></th>
             <th>Start Date</th>
             <th>Duration (weeks)</th>
             <th>Professor</th>
-            <th>Professor Image</th>
             <th>Site</th>
           </tr>
         </thead>
