@@ -6,18 +6,14 @@ if ($db->connect_errno) {
     echo "Failed to connect to MySQL: " . $db->connect_error;
 }
 else {
-    $stmt = $db->prepare("SELECT course_image, title, category, start_date, course_length, course_link, site, profname, profimage FROM course_data, coursedetails WHERE course_data.id = coursedetails.course_id GROUP BY course_data.id");
+    $stmt = $db->prepare("SELECT course_image, title, category, start_date, course_length, course_link, site, profname FROM course_data, coursedetails WHERE course_data.id = coursedetails.course_id GROUP BY course_data.id");
     $stmt->execute();
-    $stmt->bind_result($course_image, $title, $category, $start_date, $course_length, $course_link, $site, $professor_name, $professor_image);
+    $stmt->bind_result($course_image, $title, $category, $start_date, $course_length, $course_link, $site, $professor_name);
     $course_data = array();
                             
     while ($stmt->fetch()) {
         if (false === strpos($course_image, '://')) {
             $course_image = 'http://' . $course_image;
-        }
-
-        if (false === strpos($professor_image, '://')) {
-            $professor_image = 'http://' . $professor_image;
         }
 
         $course = array (
@@ -27,7 +23,6 @@ else {
             $start_date,
             $course_length,
             $professor_name,
-            '<img src="' . $professor_image . '" width="150px" height="150px" />',
             $site
         );
 
