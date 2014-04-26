@@ -21,6 +21,7 @@
     <div id="wrapper">
         <?php include('includes/header.php'); ?>
         <?php include('includes/nav.php'); ?>
+        <?php include('includes/header-login.php'); ?>
         <div id="content">
             <h3>About Us</h3>
             <p>We are the Course Cookers, and we are ready to serve up some excellent courses.</p>
