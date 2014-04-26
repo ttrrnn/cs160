@@ -10,7 +10,6 @@ $(document).ready(function() {
           null,
           null,
           null,
-          { "bSortable": false, "bSearchable": false },
           null
       ]
   });
