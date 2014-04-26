@@ -20,6 +20,7 @@
     <div id="wrapper">
         <?php include('includes/header.php'); ?>
         <?php include('includes/nav.php'); ?>
+        <?php include('includes/header-login.php'); ?>
         <div id="content">
             <h1>Welcome!</h1>
             <p>Some comforting words here.</p>
