@@ -16,6 +16,14 @@ else {
             $course_image = 'http://' . $course_image;
         }
 
+        if ($start_date == "0000-00-00") {
+            $start_date = "Self Paced";
+        }
+        
+        if ($course_length <= 0) {
+            $course_length = "Self Paced";
+        }
+        
         $course = array (
             '<a href="' . $course_link . '"><img src="' . $course_image . '" width="200px" height="150px" /></a>',  
             $title,
