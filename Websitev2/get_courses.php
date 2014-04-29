@@ -1,11 +1,5 @@
-<?php
+<?php require_once("db_connect.php");
 
-$db = new mysqli("127.0.0.1", "sjsucsor_s5g414s", "N0VACITY", "sjsucsor_160s5g42014s");
-    
-if ($db->connect_errno) {
-    echo "Failed to connect to MySQL: " . $db->connect_error;
-}
-else {
     $stmt = $db->prepare("SELECT course_image, title, category, start_date, course_length, course_link, site, profname FROM course_data, coursedetails WHERE course_data.id = coursedetails.course_id GROUP BY course_data.id");
     $stmt->execute();
     $stmt->bind_result($course_image, $title, $category, $start_date, $course_length, $course_link, $site, $professor_name);
@@ -39,6 +33,5 @@ else {
 
     $db->close();
     echo json_encode($course_data);
-}  
    
 ?>
