@@ -66,6 +66,42 @@ padding:10px;
 }
 /* End of General Styling */
 
+/* Image hover effects */
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+      -ms-box-sizing: border-box;
+          box-sizing: border-box;
+}
+ 
+.pic {
+  border: 10px solid #fff;  
+  float: left;
+  height: 150px;
+  width: 150px;
+  margin: 20px;
+  overflow: hidden;
+   
+  -webkit-box-shadow: 5px 5px 5px #111;
+          box-shadow: 5px 5px 5px #111;  
+}
+
+/*Black and White*/
+.bw img {
+  height: 150px;
+  width: 150px;
+  -webkit-transition: all 1s ease;
+     -moz-transition: all 1s ease;
+       -o-transition: all 1s ease;
+      -ms-transition: all 1s ease;
+          transition: all 1s ease;
+}
+ 
+.bw img:hover {
+  -webkit-filter: grayscale(100%);
+}
+/* End of image hover effects */
+
 .title {
   margin-bottom: 20px;
   color: #b94a48;
