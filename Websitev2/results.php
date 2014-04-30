@@ -1,17 +1,3 @@
-<?php
-
-session_start();
-
-if (isset($_GET['logout'])) {
-  unset($_SESSION['username']);
-  header("Location: index.php");
-}
-else if (isset($_POST['create-account'])) {
-
-}
-
-?>
-
 <!DOCTYPE html>
 
 <html lang="en-us">
