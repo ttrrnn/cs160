@@ -1,4 +1,4 @@
-<ul class="nav nav-tabs">
+<ul class="nav nav-pills">
     <li <?=echoActiveClass("index")?>><a href="index.php">Home</a></li>
     <li <?=echoActiveClass("results")?>><a href="results.php">Courses</a></li>
     <li <?=echoActiveClass("about")?>><a href="about.php">About</a></li>	
