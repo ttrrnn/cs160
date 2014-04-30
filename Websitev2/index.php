@@ -21,8 +21,10 @@
         <?php include('includes/header.php'); ?>
         <?php include('includes/nav.php'); ?>
         <?php include('includes/header-login.php'); ?>
-        <div id="content">
+        <div class="title">
             <h1>Providers</h1>
+        </div>
+        <div id="content">
             <p>
                 <a href="https://www.canvas.net"><img src="images/canvas.jpg"/><hr></hr></a>
                 <a href="https://www.coursera.org"><img src="images/coursera.jpg"/><hr></hr></a>
