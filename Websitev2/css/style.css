@@ -48,9 +48,27 @@ height:80px;
 }
 
 #content {
-width:675px;
-float:left;
-padding:10px;
+-webkit-column-count:3;
+-moz-column-count:3;
+column-count:3;
+-webkit-column-width: 33%;
+-moz-column-width: 33%;
+column-width: 33%;
+
+-webkit-column-gap: 2px;
+-moz-column-gap: 2px;
+column-gap: 2px;
+
+-moz-column-rule: 1px dotted #ccc;
+-webkit-column-rule: 1px dotted #ccc;
+column-rule: 1px dotted #ccc;
+
+text-align: center;
+}
+
+#content h1 {
+-webkit-column-span: all;
+column-span:all;
 }
 
 #footer {
