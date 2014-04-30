@@ -1,5 +1,5 @@
-<div id="nav">
-	<a href="index.php">Home</a>
-        <a href="results.php">Courses</a>
-	<a href="about.php">About</a>	
-</div> <!-- end #nav -->
+<ul class="nav nav-tabs">
+    <li class="active"><a href="index.php">Home</a></li>
+    <li><a href="results.php">Courses</a></li>
+    <li><a href="about.php">About</a></li>	
+</ul> <!-- end nav -->
