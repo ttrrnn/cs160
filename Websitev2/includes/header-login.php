@@ -1,3 +1,17 @@
+<?php
+
+session_start();
+
+if (isset($_GET['logout'])) {
+  unset($_SESSION['username']);
+  header("Location: index.php");
+}
+else if (isset($_POST['create-account'])) {
+
+}
+
+?>
+
 <div id="header-login">
       <ul class="nav navbar-left">
         <li id="login-error"></li>
