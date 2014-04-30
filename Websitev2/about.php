@@ -22,8 +22,10 @@
         <?php include('includes/header.php'); ?>
         <?php include('includes/nav.php'); ?>
         <?php include('includes/header-login.php'); ?>
+        <div class="title">
+            <h1>About Us</h1>
+        </div>
         <div>
-            <h3>About Us</h3>
             <p>We are the Course Cookers, and we are ready to serve up some excellent courses.</p>
         </div>
         <?php include('includes/footer.php'); ?>
