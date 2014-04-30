@@ -22,8 +22,17 @@
         <?php include('includes/nav.php'); ?>
         <?php include('includes/header-login.php'); ?>
         <div id="content">
-            <h1>Welcome!</h1>
-            <p>Some comforting words here.</p>
+            <h1>Providers</h1>
+            <p>
+                <a href="https://www.canvas.net"><img src="images/canvas.jpg"/><hr></hr></a>
+                <a href="https://www.coursera.org"><img src="images/coursera.jpg"/><hr></hr></a>
+                <a href="https://www.edx.org"><img src="images/edx.jpg"/><hr></hr></a>
+                <a href="https://www.futurelearn.com"><img src="images/futurelearn.jpg"/><hr></hr></a>
+                <a href="https://iversity.org"><img src="images/iversity.jpg"/><hr></hr></a>
+                <a href="https://novoed.com"><img src="images/novoed.jpg"/><hr></hr></a>
+                <a href="https://www.open2study.com"><img src="images/open2study.jpg"/><hr></hr></a>
+                <a href="https://www.udacity.com"><img src="images/udacity.jpg"/><hr></hr></a>
+            </p>
         </div> <!-- end #content -->
         <?php include('includes/footer.php'); ?>
     </div> <!-- End #wrapper -->
