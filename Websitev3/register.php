@@ -128,7 +128,7 @@ if (!empty($_POST)) {
                     </div>
                     <div class="form-actions">
                         <button type="submit" class="btn btn-success btn-large">Register!</button>
-                        <button type="reset" class="btn">Cancel</button>
+                        <button type="reset" class="btn">Clear</button>
                     </div>
                 </fieldset>
             </form>
