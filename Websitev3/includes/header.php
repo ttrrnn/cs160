@@ -25,9 +25,9 @@ function echoActiveClass($requestUri) {
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li <?= echoActiveClass("index") ?>><a href="index.php">Home</a></li>
-                        <li <?= echoActiveClass("courses") ?>><a href="courses.php">Courses</a></li>
-                        <li <?= echoActiveClass("about") ?>><a href="about.php">About</a></li>
+                       <li <?= echoActiveClass("index") ?>><a href="index.php"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+                        <li <?= echoActiveClass("courses") ?>><a href="courses.php"><span class="glyphicon glyphicon-book"></span>Courses</a></li>
+                        <li <?= echoActiveClass("about") ?>><a href="about.php"><span class="glyphicon glyphicon-bookmark"></span>About</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                             <?php if (!isset($_SESSION['username'])): ?>
@@ -56,7 +56,7 @@ function echoActiveClass($requestUri) {
                                 </div>
                             </li>
                             <?php else: ?>
-                            <li><a href="">User Profile</a></li>
+                            <li><a href=""><span class="glyphicon glyphicon-user"></span>User Profile</a></li>
                             <li class="divider-vertical"></li>
                             <li><a href="logout.php">Log Out</a></li>
                             <?php endif; ?>
