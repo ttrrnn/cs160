@@ -106,25 +106,19 @@ if (!empty($_POST)) {
         <?php include('includes/header.php'); ?>
         <div class="container">
             <h1>Registration</h1>
-            <form class="form-horizontal" id="register-form" action="register.php" method="post"> 
+            <form class="form" id="form" action="register.php" method="post"> 
                 <fieldset>
-                    <div class="control-group">
+                    <div class="form-group">
                         <label class="control-label" for="username">Username</label>
-                        <div class="controls">
-                            <input type="text" id="username" name="username" value="">
-                        </div>
+                        <input type="text" class="form-control" id="username" name="username" value="">
                     </div>
-                    <div class="control-group">
-                        <label class="control-label" for="email">Email</label>
-                        <div class="controls">
-                            <input type="text" id="email" name="email" value=""> 
-                        </div>
+                    <div class="form-group">
+                        <label class="control-label" for="email">Email</label>                        
+                        <input type="text" class="form-control" id="email" name="email" value=""> 
                     </div>
-                    <div class="control-group">
+                    <div class="form-group">
                         <label class="control-label" for="password">Password</label> 
-                        <div class="controls">
-                            <input type="password" id="password" name="password" value="">
-                        </div>
+                        <input type="password" class="form-control" id="password" name="password" value="">
                     </div>
                     <div class="form-actions">
                         <button type="submit" class="btn btn-success btn-large">Register!</button>
@@ -139,7 +133,7 @@ if (!empty($_POST)) {
         <script src="js/jquery.validate.min.js"></script>
         <script>
             $(document).ready(function() {
-                $('#register-form').validate(
+                $("#form"").validate(
                 {
                     rules: {
                         username: {
@@ -154,6 +148,12 @@ if (!empty($_POST)) {
                             minlength: 6,
                             required: true
                         }
+                    }
+                    highlight: function (element) {
+                        $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+                    },
+                    unhighlight: function (element) {
+                        $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
                     }
                 });
             });   
