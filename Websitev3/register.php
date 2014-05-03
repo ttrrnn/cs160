@@ -28,7 +28,13 @@ if (!empty($_POST)) {
     }
     $row = $stmt->fetch();
     if ($row) {
-        die('This username already in use.');
+        ?>
+        <script type="text/javascript"> 
+            alert("This username is already in use."); 
+            history.back(); 
+        </script>
+        <?php
+        die('This username is already in use.');
     }
     $query = " 
             SELECT 
@@ -48,7 +54,13 @@ if (!empty($_POST)) {
     }
     $row = $stmt->fetch();
     if ($row) {
-        alert('This email address already in use.');
+        ?>
+        <script type="text/javascript"> 
+            alert("This email address is already in use."); 
+            history.back(); 
+        </script>
+        <?php
+        die('This email address is already in use.');
     }
 
     // Add row to database 
@@ -84,6 +96,12 @@ if (!empty($_POST)) {
     } catch (PDOException $ex) {
         die("Failed to run query: " . $ex->getMessage());
     }
+    ?>
+    <script type="text/javascript">
+        alert("Congratulations! You registered successfully."); 
+        location.href="index.php";
+    </script>
+    <?php
     header("Location: index.php");
     die("Redirecting to index.php");
 }
