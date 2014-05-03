@@ -19,7 +19,7 @@
         }
         
         $course = array (
-            '<div class="bw pic"><a href="' . $course_link . '"><img src="' . $course_image . '"/></a></div>',  
+            '<a class="bw pic" href="' . $course_link . '"><img src="' . $course_image . '"/></a>',  
             $title,
             $category,
             $start_date,
