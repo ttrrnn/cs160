@@ -1,6 +1,6 @@
 <?php require('includes/users_connect.php'); 
     $submitted_username = ''; 
-    if(!empty($_POST)){ 
+    if(!empty($_POST)) { 
         $query = " 
             SELECT 
                 id, 
@@ -12,6 +12,7 @@
             WHERE 
                 username = :username 
         "; 
+
         $query_params = array( 
             ':username' => $_POST['username'] 
         ); 
@@ -23,26 +24,26 @@
         catch(PDOException $ex){
             die("Failed to run query: " . $ex->getMessage());
         } 
+
         $login_ok = false; 
         $row = $stmt->fetch(); 
-        if($row){ 
+
+        if ($row) { 
             $check_password = hash('sha256', $_POST['password'] . $row['salt']); 
-            for($round = 0; $round < 65536; $round++){
-                $check_password = hash('sha256', $check_password . $row['salt']);
-            } 
+            
             if($check_password === $row['password']){
                 $login_ok = true;
             } 
         } 
  
-        if($login_ok){ 
+        if ($login_ok) { 
             unset($row['salt']); 
             unset($row['password']); 
             $_SESSION['username'] = $row['username'];  
             header("Location: index.php"); 
             die("Redirecting to: index.php"); 
         } 
-        else{ 
+        else { 
             ?>
             <script type="text/javascript"> 
                 alert("Invalid username or password."); 
