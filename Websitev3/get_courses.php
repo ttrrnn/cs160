@@ -1,8 +1,24 @@
 <?php require('includes/db_connect.php');
 
-    $stmt = $db->prepare("SELECT course_image, title, category, start_date, course_length, course_link, site, profname FROM course_data, coursedetails WHERE course_data.id = coursedetails.course_id GROUP BY course_data.id");
+    $stmt = $db->prepare("SELECT course_data.id,
+                                 course_image,
+                                 title,
+                                 category,
+                                 start_date,
+                                 course_length,
+                                 course_link,
+                                 site,
+                                 profname
+
+                          FROM   course_data,
+                                 coursedetails
+
+                          WHERE  course_data.id = coursedetails.course_id
+
+                          GROUP BY course_data.id
+                        ");
     $stmt->execute();
-    $stmt->bind_result($course_image, $title, $category, $start_date, $course_length, $course_link, $site, $professor_name);
+    $stmt->bind_result($id, $course_image, $title, $category, $start_date, $course_length, $course_link, $site, $professor_name);
     $course_data = array();
                             
     while ($stmt->fetch()) {
@@ -17,11 +33,26 @@
         if ($course_length <= 0) {
             $course_length = "Self Paced";
         }
+
+        $db2 = new mysqli($db_host, $db_user, $db_password, $db_name);
+        if ($db2->connect_errno) {
+            echo "Failed to connect to MySQL: " . $db->connect_error;
+            exit();
+        }
+
+        $rating_stmt = $db2->prepare("SELECT AVG(rating) FROM course_rating WHERE course_id = ?");
+        $rating_stmt->bind_param('i', $id);
+        $rating_result = $rating_stmt->execute();
+        $rating_stmt->bind_result($rating);
+
+        if (!$rating_stmt->fetch()) {
+            $rating = 0;
+        }
         
         $course = array (
             '<a class="bw pic" href="' . $course_link . '"><img src="' . $course_image . '"/></a>',
             $title,
-            '<div class="raty" value="3"></div>', 
+            '<div class="raty" value="' . $rating . '"></div>', 
             $category,
             $start_date,
             $course_length,
