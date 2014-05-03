@@ -123,27 +123,39 @@ if (!empty($_POST)) {
     <body>
         <?php include('includes/header.php'); ?>
         <div class="container">
-            <h1>Registration</h1>
-            <form class="form" id="form" action="register.php" method="post"> 
-                <fieldset>
-                    <div class="form-group">
-                        <label class="control-label" for="username">Username</label>
-                        <input type="text" class="form-control" id="username" name="username" value="">
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label" for="email">Email</label>                        
-                        <input type="text" class="form-control" id="email" name="email" value=""> 
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label" for="password">Password</label> 
-                        <input type="password" class="form-control" id="password" name="password" value="">
-                    </div>
-                    <div class="form-actions">
-                        <button type="submit" class="btn btn-success btn-lg">Register!</button>
-                        <button type="reset" class="btn">Clear</button>
-                    </div>
-                </fieldset>
-            </form>
+            <div class="panel panel-primary">
+                <div class="panel-heading">Registration</div>
+                <div class="panel-body">
+                <form class="form-horizontal" id="form" action="register.php" method="post" role="form"> 
+                    <fieldset>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="username">Username</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="username" name="username" value="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="email">Email</label>                        
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="email" name="email" value=""> 
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="password">Password</label> 
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" id="password" name="password" value="">
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-primary btn-lg">Register!</button>
+                                <button type="reset" class="btn">Clear</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+                </div>
+            </div>
         </div>
         <?php include('includes/footer.php'); ?>
         <!-- JS placed at the end of the document so the page loads faster -->
