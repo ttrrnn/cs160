@@ -1,6 +1,5 @@
 $(document).ready(function() {
     $("#table").dataTable ( {
-        "bProcessing": true,
         "sPaginationType": "full_numbers",
         "aoColumns": [
         {
