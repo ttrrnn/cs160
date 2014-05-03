@@ -27,10 +27,27 @@
             } 
         } 
  
-        if ($login_ok) { 
+        if ($login_ok) {
+            $db2 = new mysqli($db_host, $db_user, $db_password, $db_name);
+
+            if ($db2->connect_errno) {
+                echo "Failed to connect to MySQL: " . $db->connect_error;
+                exit();
+            }
+
+            $rating_stmt = $db2->prepare("SELECT course_id FROM course_rating WHERE username = ?");
+            $rating_stmt->bind_param('s', $_POST['username']);
+            $rating_result = $rating_stmt->execute();
+            $rating_stmt->bind_result($course_id);
+
+            while ($rating_stmt->fetch()) {
+                $user_ratings[$course_id] = true; // This course was rated my user already
+            }
+            
+            $_SESSION['username'] = $_POST['username'];
+            $_SESSION['rated_courses'] = $user_ratings;
             unset($row['salt']); 
             unset($row['password']); 
-            $_SESSION['username'] = $_POST['username'];  
             header("Location: index.php"); 
             die("Redirecting to: index.php"); 
         } 
