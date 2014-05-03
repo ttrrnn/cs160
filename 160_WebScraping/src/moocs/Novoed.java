@@ -63,7 +63,7 @@ public class Novoed {
 
 		//The following few lines of code are used to connect to a database so the scraped course content can be stored.
 //		Class.forName("com.mysql.jdbc.Driver").newInstance();
-//		java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/moocs160","root","novacity");
+//		java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/novoed_udacity?useUnicode=true&amp;characterEncoding=UTF-16","root","novacity");
 		//make sure you create a database named scrapedcourse in your local mysql database before running this code
 		//default mysql database in your local machine is ID:root with no password
 		//you can download scrapecourse database template from your Canvas account->modules->Team Project area
@@ -71,6 +71,7 @@ public class Novoed {
 		{
 			String furl = (String) pgcrs.get(a);
 			Document doc = Jsoup.connect(furl).get();
+			doc.outputSettings().charset("UTF-16");
 			Elements ele = doc.select("ul[class=accessible]");
 			//System.out.println(ele); 
 			Elements crspg = ele.select("div[class=hovered row-fluid");
@@ -106,6 +107,7 @@ public class Novoed {
 					CrsImg = ele.select("img[alt= ]").get(a).attr("src"); //To get the course image - FOR URL4
 				} */
 				Document crsdoc = Jsoup.connect(crsurl).get();
+				crsdoc.outputSettings().charset("UTF-16");
 				//System.out.println("Course Document: " +crsdoc);
 				Elements crsheadele = crsdoc.select("header[class=row-fluid coursepage]");
 				//System.out.println("Head Element: " + crsheadele);
@@ -146,7 +148,7 @@ public class Novoed {
 				course_id++;
 				
 				String Date = crsdoc.select("div[class=timeline inline-block]").text();
-				//System.out.println("Date: " +Date);
+				System.out.println("Date: " +Date);
 				
 				String StrDate;	// String Date for query
 				String crsduration = "0";	// default course duration to 0 for self-paced
@@ -179,7 +181,7 @@ public class Novoed {
 						}
 					}
 					//System.out.println("Date3: " +StrDate);
-				} else if (Date.contains("Registration closed")) {
+				} else if (Date.contains("Registration closed") && !(Date.contains("Started"))) {
 					String tmp = Date.substring(0, Date.length()-20);	// Date in format: MONTH DD, YYYY MONTH DD, YYYY
 					String Date2 = tmp.substring(Date.indexOf(",")+7);
 					int month1 = month.indexOf(tmp.substring(0, Date.indexOf(" "))) + 1; //System.out.println("month1: " + month1);
@@ -217,6 +219,8 @@ public class Novoed {
 					//System.out.println("Date4: " +StrDate);
 				} else if (Date.contains("Started")) {
 					// format: Started MONTH DD, YYYY
+				   if (Date.contains("Registration closed"))
+				      Date = Date.replace(" Registration closed", "");
 					String tmp = Date.substring(Date.indexOf(" ")+1);	// MONTH DD, YYYY
 					int monthNumber = month.indexOf(tmp.substring(0, tmp.indexOf(" "))) + 1;
 					if (monthNumber < 10) {
