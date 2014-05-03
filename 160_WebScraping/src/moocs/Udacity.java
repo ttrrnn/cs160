@@ -13,9 +13,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.sql.DriverManager;
+//import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
+//import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -48,7 +48,7 @@ public class Udacity {
     public static String IMAGE_URL_KEY = "serving_url";
 
     private String url;
-    private static java.sql.Connection connection;
+//    private static java.sql.Connection connection;
     private int id = 62;
     private int course_id = 34;
     
@@ -95,17 +95,17 @@ public class Udacity {
 
                     //Print out for debugging
                     System.out.println(course);
-                    Statement statement = connection.createStatement();
+//                    Statement statement = connection.createStatement();
                     System.out.println(course.getInsertionQuery());
-                    statement.executeUpdate(course.getInsertionQuery());
+//                    statement.executeUpdate(course.getInsertionQuery());
                     ArrayList<String> instrqueries = course.getInstructorQueries(id, course_id);
                     for (String instrquery : instrqueries)
                     {
                        System.out.println(instrquery);
-                       statement.executeUpdate(instrquery);
+//                       statement.executeUpdate(instrquery);
                        id++;
                     }
-                    statement.close();
+//                    statement.close();
                     course_id++;
                 }
             }
@@ -179,7 +179,7 @@ public class Udacity {
     public static void main(String [] args) throws IOException, InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException{
         Udacity udacity = new Udacity(JSON_DATA);
         Class.forName("com.mysql.jdbc.Driver").newInstance();
-        connection = DriverManager.getConnection("jdbc:mysql://localhost/novoed_udacity?useUnicode=true&amp;characterEncoding=UTF-16","root","novacity");
+//        connection = DriverManager.getConnection("jdbc:mysql://localhost/novoed_udacity?useUnicode=true&amp;characterEncoding=UTF-16","root","novacity");
 
         udacity.parse();
     }
