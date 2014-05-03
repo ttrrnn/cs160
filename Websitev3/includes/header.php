@@ -21,7 +21,7 @@ function echoActiveClass($requestUri) {
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.php"><?php echo $heading ?></a>
+                    <a class="navbar-brand" href="index.php"><img alt="<?php echo $heading ?>" src="images/educademy-logo.png"></a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
