@@ -121,7 +121,7 @@ if (!empty($_POST)) {
                         <input type="password" class="form-control" id="password" name="password" value="">
                     </div>
                     <div class="form-actions">
-                        <button type="submit" class="btn btn-success btn-large">Register!</button>
+                        <button type="submit" class="btn btn-success btn-lg">Register!</button>
                         <button type="reset" class="btn">Clear</button>
                     </div>
                 </fieldset>
