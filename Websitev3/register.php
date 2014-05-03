@@ -48,7 +48,7 @@ if (!empty($_POST)) {
     }
     $row = $stmt->fetch();
     if ($row) {
-        echo "<script type='text/javascript'>alert('This email address already in use.');</script>";
+        alert('This email address already in use.');
     }
 
     // Add row to database 
