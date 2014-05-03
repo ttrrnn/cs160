@@ -43,6 +43,12 @@
             die("Redirecting to: index.php"); 
         } 
         else{ 
+            ?>
+            <script type="text/javascript"> 
+                alert("Invalid username or password."); 
+                history.back(); 
+            </script>
+            <?php
             die('Invalid username or password.'); 
             $submitted_username = htmlentities($_POST['username'], ENT_QUOTES, 'UTF-8'); 
         } 
