@@ -1,17 +1,8 @@
 <?php require('includes/users_connect.php'); 
     $submitted_username = ''; 
+
     if(!empty($_POST)) { 
-        $query = " 
-            SELECT 
-                id, 
-                username, 
-                password, 
-                salt, 
-                email 
-            FROM users 
-            WHERE 
-                username = :username 
-        "; 
+        $query = "SELECT password, salt FROM users WHERE username = :username"; 
 
         $query_params = array( 
             ':username' => $_POST['username'] 
@@ -39,7 +30,7 @@
         if ($login_ok) { 
             unset($row['salt']); 
             unset($row['password']); 
-            $_SESSION['username'] = $row['username'];  
+            $_SESSION['username'] = $_POST['username'];  
             header("Location: index.php"); 
             die("Redirecting to: index.php"); 
         } 
