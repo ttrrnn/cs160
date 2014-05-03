@@ -96,7 +96,6 @@
         <!-- JS placed at the end of the document so the page loads faster -->
         <script src="js/jquery-2.1.0.min.js"></script>
         <script src="js/jquery.validate.min.js"></script>
-        <script src="js/jquery.raty.js"></script>
         <script src="js/application.js"></script>
         <script src="js/bootstrap.min.js"></script>
     </body>
