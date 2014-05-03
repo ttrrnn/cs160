@@ -1,14 +1,33 @@
 <?php require('includes/users_connect.php');
 if (!empty($_POST)) {
-    // Ensure that the user fills out fields 
+    /* Ensure that the user fills out fields, needed in case user
+      does not have js enabled */
     if (empty($_POST['username'])) {
-        die("Please enter a username.");
+        ?>
+        <script type="text/javascript">
+            alert("Please enter a username."); 
+            history.back(); 
+        </script>
+        <?php
+        die('Please enter a username.');
     }
     if (empty($_POST['password'])) {
+        ?>
+        <script type="text/javascript">
+            alert("Please enter a password."); 
+            history.back(); 
+        </script>
+        <?php
         die('Please enter a password.');
     }
     if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-        die('Please enter an email.');
+        ?>
+        <script type="text/javascript">
+            alert("Please enter a valid email."); 
+            history.back(); 
+        </script>
+        <?php
+        die('Please enter a valid email.');
     }
 
     // Check if the username is already taken
