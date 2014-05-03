@@ -15,22 +15,26 @@
     <body>
         <?php include('includes/header.php'); ?>
         <div class="container">
-            <h1>Courses</h1>
-            <table id="table" class='table table-striped table-bordered'>
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Course</th>
-                        <th>Category</a></th>
-                        <th>Start Date</th>
-                        <th>Duration (weeks)</th>
-                        <th>Professor</th>
-                        <th>Site</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
+            <div class="panel panel-success">
+                <div class="panel-heading">Courses</div>
+                <div class="panel-body">
+                    <table id="table" class='table table-striped table-bordered'>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Course</th>
+                                <th>Category</a></th>
+                                <th>Start Date</th>
+                                <th>Duration (weeks)</th>
+                                <th>Professor</th>
+                                <th>Site</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
         <?php include('includes/footer.php'); ?>
         <!-- JS placed at the end of the document so the page loads faster -->
