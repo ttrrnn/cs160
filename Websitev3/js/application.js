@@ -17,5 +17,15 @@ $(document).ready(function() {
 
     $.get("get_courses.php", function(result) {
         $("#table").dataTable().fnAddData(JSON.parse(result));
+
+        $(".raty").raty({
+            score: function() {
+                return $(this).attr("value");
+            },
+
+            starHalf    : 'images/star-half.png',
+            starOff     : 'images/star-off.png',
+            starOn      : 'images/star-on.png'
+        });
     });
 });

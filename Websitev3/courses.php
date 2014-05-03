@@ -23,6 +23,7 @@
                             <tr>
                                 <th></th>
                                 <th>Course</th>
+                                <th>Rating</th>
                                 <th>Category</a></th>
                                 <th>Start Date</th>
                                 <th>Duration (weeks)</th>
