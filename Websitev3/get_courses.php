@@ -8,7 +8,8 @@
                                  course_length,
                                  course_link,
                                  site,
-                                 profname
+                                 profname,
+                                 video_link
 
                           FROM   course_data,
                                  coursedetails
@@ -18,7 +19,7 @@
                           GROUP BY course_data.id
                         ");
     $stmt->execute();
-    $stmt->bind_result($id, $course_image, $title, $category, $start_date, $course_length, $course_link, $site, $professor_name);
+    $stmt->bind_result($id, $course_image, $title, $category, $start_date, $course_length, $course_link, $site, $professor_name, $video_link);
     $course_data = array();
                             
     while ($stmt->fetch()) {
@@ -50,7 +51,7 @@
         }
         
         $course = array (
-            '<a class="bw pic" href="' . $course_link . '"><img src="' . $course_image . '"/></a>',
+            '<a class="bw pic" href="' . $video_link . '"><img src="' . $course_image . '"/></a>',
             '<a href="' . $course_link . '">' . $title . '</a>',
             '<div class="raty" value="' . $rating . '"><span>' . $rating . '</span></div>', 
             $category,
