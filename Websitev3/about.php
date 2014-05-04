@@ -47,7 +47,22 @@
                     <p>When you start typing in the search box on the <a href="courses.php">Courses</a> page, our talented chefs will get right to work using ingredients gathered from the 8 <abbr title="Massive Open Online Course">MOOC</abbr>s.</p>
                     <p>As we strive to provide you with the highest quality of <abbr title="Massive Open Online Course">MOOC</abbr>s, our chosen 8 <abbr title="Massive Open Online Course">MOOC</abbr>s are Canvas Network, FutureLearn, Open2Study, Coursera, Iversity, Udacity, EDX, and NovoEd.</p>
                     <p>From here on out, the buffet of courses are yours! We are confident that the courses you have chosen for enrollment will satisfy your hunger for a particular knowledge, if not it may have piqued your interest even more! If you aren't satisfied, have no fear, <code>Educademy</code> is a buffet; meaning, you can feast for as long as you please.</p>
-                    <p><h3> Happy learning! We wish you the best!</h3></p>
+                </div>
+            </div>
+            <hr class="featurette-divider">
+            <div class="row featurette">
+                <div class="col-md-7">
+                    <h2 class="featurette-heading">One Last Thing. <span class="text-muted">Don't forget...</span></h2>
+                    <p class="lead">You have brains in your head. You have feet in your shoes. You can steer yourself in any direction you choose. --Dr. Seuss</p>
+                    <p>We wish you the best.
+                        <br>We hope you'll have fun.
+                        <br>Enjoy browsing for courses,
+                        <br>And getting them done!</p>
+                    <p><strong>Happy learning and best wishes!</strong><br><br</p>
+                    <p>--Course Cookers</p>
+                </div>
+                <div class="col-md-5">
+                    <img title="cat playing with paper" class="thumbnail" src="images/somuchpaper.gif">
                 </div>
             </div>
         </div>
