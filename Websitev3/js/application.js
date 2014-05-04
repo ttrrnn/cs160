@@ -23,7 +23,7 @@ $(document).ready(function() {
                     return $(this).attr("value");
                 },
             
-                readOnly : true
+                readOnly : true,
                 starHalf : 'images/star-half.png',
                 starOff  : 'images/star-off.png',
                 starOn   : 'images/star-on.png'
