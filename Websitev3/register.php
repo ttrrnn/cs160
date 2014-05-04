@@ -179,7 +179,7 @@ if (!empty($_POST)) {
         <script src="js/jquery.validate.min.js"></script>
         <script>
             $(document).ready(function() {
-                $("#form"").validate(
+                $("#form").validate(
                 {
                     rules: {
                         username: {
@@ -194,7 +194,7 @@ if (!empty($_POST)) {
                             minlength: 6,
                             required: true
                         }
-                    }
+                    },
                     highlight: function (element) {
                         $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
                     },
@@ -202,7 +202,7 @@ if (!empty($_POST)) {
                         $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
                     }
                 });
-            });   
+            });
         </script>
         <script src="js/bootstrap.min.js"></script>
     </body>
