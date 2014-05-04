@@ -8,7 +8,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
-        <link href="DataTables-1.9.4/media/css/jquery.dataTables.css" rel="stylesheet">
+        <link href="DataTables-1.10.0/media/css/jquery.dataTables.css" rel="stylesheet">
         <link href="css/style.css" type="text/css" rel="stylesheet">
         <title>Educademy Courses</title>
     </head>
@@ -42,7 +42,7 @@
         <script src="js/jquery-2.1.0.min.js"></script>
         <script src="js/jquery.validate.min.js"></script>
         <script src="js/jquery.raty.js"></script>
-        <script src="DataTables-1.9.4/media/js/jquery.dataTables.min.js"></script>
+        <script src="DataTables-1.10.0/media/js/jquery.dataTables.min.js"></script>
         <script src="js/application.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/back-to-top.js"></script>
