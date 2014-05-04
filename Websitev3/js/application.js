@@ -19,13 +19,14 @@ $(document).ready(function() {
             // Need code here to conditionally check if it hasn't already
             // been initialised on a particular .raty element
             $('.raty').raty({
-                score: function() {
+                score    : function() {
                     return $(this).attr("value");
                 },
             
-                starHalf    : 'images/star-half.png',
-                starOff     : 'images/star-off.png',
-                starOn      : 'images/star-on.png'
+                readOnly : true
+                starHalf : 'images/star-half.png',
+                starOff  : 'images/star-off.png',
+                starOn   : 'images/star-on.png'
             });
         }
     });
