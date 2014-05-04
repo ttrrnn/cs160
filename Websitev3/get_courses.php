@@ -64,6 +64,7 @@
     }
 
     $db->close();
+    $db2->close();
     echo json_encode($course_data);
     
 ?>
