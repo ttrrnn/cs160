@@ -3,17 +3,17 @@ $(document).ready(function() {
         "bDeferRender": true,
         "sPaginationType": "full_numbers",
         "aoColumns": [
-        {
-            "bSortable": false, 
-            "bSearchable": false
-        },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
+            {
+                "bSortable": false, 
+                "bSearchable": false
+            },
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
         ],
         "fnDrawCallback": function (oSettings) {
             // Need code here to conditionally check if it hasn't already

@@ -171,3 +171,7 @@ body {
     margin-top: 120px;
   }
 }
+
+.raty span {
+  display: none;
+}
