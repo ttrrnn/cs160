@@ -21,7 +21,7 @@
                     <table id="table" class="display">
                         <thead>
                             <tr>
-                                <th></th>
+                                <th><span class="glyphicon glyphicon-facetime-video"></span>Intro</th>
                                 <th>Course</th>
                                 <th>Rating</th>
                                 <th>Category</a></th>
