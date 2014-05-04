@@ -177,6 +177,8 @@ if (!empty($_POST)) {
         <!-- JS placed at the end of the document so the page loads faster -->
         <script src="js/jquery-2.1.0.min.js"></script>
         <script src="js/jquery.validate.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/back-to-top.js"></script>
         <script>
             $(document).ready(function() {
                 $("#form").validate(
@@ -204,6 +206,5 @@ if (!empty($_POST)) {
                 });
             });
         </script>
-        <script src="js/bootstrap.min.js"></script>
     </body>
 </html>
