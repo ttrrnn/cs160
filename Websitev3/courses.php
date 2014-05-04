@@ -45,6 +45,7 @@
         <script src="DataTables-1.9.4/media/js/jquery.dataTables.min.js"></script>
         <script src="js/application.js"></script>
         <script src="js/bootstrap.min.js"></script>
+        <script src="js/back-to-top.js"></script>
 
         <?php if (isset($_SESSION['username'])): ?>
         <script>
