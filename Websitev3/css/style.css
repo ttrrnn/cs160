@@ -172,6 +172,7 @@ body {
   }
 }
 
+/* Used for hiding the rating value that DataTables sorts by */
 .raty span {
   display: none;
 }
