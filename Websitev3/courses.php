@@ -18,7 +18,7 @@
             <div class="panel panel-success">
                 <div class="panel-heading">Courses</div>
                 <div class="panel-body">
-                    <table id="table" class='table table-striped table-bordered'>
+                    <table id="table" class="display">
                         <thead>
                             <tr>
                                 <th></th>
