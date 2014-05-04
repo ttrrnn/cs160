@@ -97,5 +97,6 @@
         <script src="js/jquery-2.1.0.min.js"></script>
         <script src="js/jquery.validate.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
+        <script src="js/back-to-top.js"></script>
     </body>
 </html>
