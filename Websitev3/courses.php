@@ -45,5 +45,15 @@
         <script src="DataTables-1.9.4/media/js/jquery.dataTables.min.js"></script>
         <script src="js/application.js"></script>
         <script src="js/bootstrap.min.js"></script>
+
+        <?php if (isset($_SESSION['username'])): ?>
+        <script>
+            var username = "<?= $_SESSION['username'] ?>";
+
+            $.get("get_user_ratings.php", { username: username }, function(result) {
+                console.log(result);
+            });
+        </script>
+        <?php endif; ?>
     </body>
 </html>
