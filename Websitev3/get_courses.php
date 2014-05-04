@@ -51,7 +51,7 @@
         
         $course = array (
             '<a class="bw pic" href="' . $course_link . '"><img src="' . $course_image . '"/></a>',
-            $title,
+            '<a href="' . $course_link . '">' . $title . '</a>',
             '<div class="raty" value="' . $rating . '"></div>', 
             $category,
             $start_date,
