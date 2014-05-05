@@ -33,28 +33,7 @@ function echoActiveClass($requestUri) {
                         <?php if (!isset($_SESSION['username'])): ?>
                         <li <?= echoActiveClass("register") ?>><a href="register.php">Register</a></li>
                         <li class="divider-vertical"></li>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" href="#" data-toggle="dropdown">Log In <strong class="caret"></strong></a>
-                            <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
-                                <form id="login-form" action="login.php" method="post">
-                                    <fieldset>
-                                        <div class="control-group">
-                                            <div class="controls">
-                                                <input type="text" id="username" name="username" value="<?php echo $submitted_username; ?>" placeholder="Username" required>
-                                            </div>
-                                        </div>
-                                        <div class="control-group">
-                                            <div class="controls">
-                                                <input type="password" id="password" name="password" value="" placeholder="Password" required> 
-                                            </div>
-                                        </div>
-                                        <div class="form-actions">
-                                            <button type="submit" class="btn btn-info" value="">Login</button> 
-                                        </div>
-                                    </fieldset>
-                                </form> 
-                            </div>
-                        </li>
+                        <li <?= echoActiveClass("login") ?>><a href="login.php">Login</a></li>
                         <?php else: ?>
                         <li><a href=""><span class="glyphicon glyphicon-user"></span> User Profile</a></li>
                         <li class="divider-vertical"></li>
