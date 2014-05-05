@@ -44,15 +44,9 @@
         <script src="js/jquery.validate.min.js"></script>
         <script src="js/jquery.raty.js"></script>
         <script src="DataTables-1.10.0/media/js/jquery.dataTables.min.js"></script>
-        <script src="js/application.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="fancyBox/source/jquery.fancybox.pack.js"></script>
-        <script>
-            $(document).ready(function() {
-                $(".fancybox").fancybox();
-            });
-        </script>
-        <script src="js/back-to-top.js"></script>
+        <script src="js/application.js"></script>
 
         <?php if (isset($_SESSION['username'])): ?>
         <script>
