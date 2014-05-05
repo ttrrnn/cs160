@@ -144,31 +144,20 @@ if (!empty($_POST)) {
             <div class="panel panel-primary">
                 <div class="panel-heading">Registration</div>
                 <div class="panel-body">
-                <form class="form-horizontal" id="form" action="register.php" method="post" role="form"> 
+                <form id="theform" action="register.php" method="post" role="form"> 
                     <fieldset>
                         <div class="form-group">
-                            <label class="col-sm-2 control-label" for="username">Username</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="username" name="username" value="">
-                            </div>
+                            <input type="text" class="form-control" id="username" name="username" value="" placeholder="Username">
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-2 control-label" for="email">Email</label>                        
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="email" name="email" value=""> 
-                            </div>
+                            <input type="text" class="form-control" id="email" name="email" value="" placeholder="Email"> 
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-2 control-label" for="password">Password</label> 
-                            <div class="col-sm-10">
-                                <input type="password" class="form-control" id="password" name="password" value="">
-                            </div>
+                            <input type="password" class="form-control" id="password" name="password" value="" placeholder="Password">
                         </div>
                         <div class="form-actions">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-primary btn-lg">Register!</button>
-                                <button type="reset" class="btn">Clear</button>
-                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg">Register!</button>
+                            <button type="reset" class="btn">Clear</button>
                         </div>
                     </fieldset>
                 </form>
