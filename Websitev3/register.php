@@ -141,26 +141,28 @@ if (!empty($_POST)) {
     <body>
         <?php include('includes/header.php'); ?>
         <div class="container">
-            <div class="panel panel-primary">
-                <div class="panel-heading">Registration</div>
-                <div class="panel-body">
-                <form id="theform" action="register.php" method="post" role="form"> 
-                    <fieldset>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="username" name="username" value="" placeholder="Username">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="email" name="email" value="" placeholder="Email"> 
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control" id="password" name="password" value="" placeholder="Password">
-                        </div>
-                        <div class="form-actions">
-                            <button type="submit" class="btn btn-primary btn-lg">Register!</button>
-                            <button type="reset" class="btn">Clear</button>
-                        </div>
-                    </fieldset>
-                </form>
+            <div class="col-lg-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Registration</div>
+                    <div class="panel-body">
+                        <form id="theform" action="register.php" method="post" role="form"> 
+                            <fieldset>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="username" name="username" value="" placeholder="Username">
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" id="email" name="email" value="" placeholder="Email"> 
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" id="password" name="password" value="" placeholder="Password">
+                                </div>
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-primary btn-lg">Register</button>
+                                    <button type="reset" class="btn">Clear</button>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
