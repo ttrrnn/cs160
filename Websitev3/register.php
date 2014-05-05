@@ -133,6 +133,8 @@ if (!empty($_POST)) {
         <meta name="description" content="">
         <meta name="author" content="">
         <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
+        <link href="fancyBox/source/jquery.fancybox.css" rel="stylesheet">
+        <link href="DataTables-1.10.0/media/css/jquery.dataTables.css" rel="stylesheet">
         <link href="css/style.css" type="text/css" rel="stylesheet">
         <title>Educademy Register</title>
     </head>
@@ -177,34 +179,10 @@ if (!empty($_POST)) {
         <!-- JS placed at the end of the document so the page loads faster -->
         <script src="js/jquery-2.1.0.min.js"></script>
         <script src="js/jquery.validate.min.js"></script>
+        <script src="js/jquery.raty.js"></script>
+        <script src="DataTables-1.10.0/media/js/jquery.dataTables.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
-        <script src="js/back-to-top.js"></script>
-        <script>
-            $(document).ready(function() {
-                $("#form").validate(
-                {
-                    rules: {
-                        username: {
-                            minlength: 2,
-                            required: true
-                        },
-                        email: {
-                            required: true,
-                            email: true
-                        },
-                        password: {
-                            minlength: 6,
-                            required: true
-                        }
-                    },
-                    highlight: function (element) {
-                        $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
-                    },
-                    unhighlight: function (element) {
-                        $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
-                    }
-                });
-            });
-        </script>
+        <script src="fancyBox/source/jquery.fancybox.pack.js"></script>
+        <script src="js/application.js"></script>
     </body>
 </html>
