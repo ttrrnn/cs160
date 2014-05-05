@@ -8,7 +8,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
-        <link href="//rawgithub.com/ashleydw/lightbox/master/dist/ekko-lightbox.min.css" rel="stylesheet">
+        <link href="fancyBox/source/jquery.fancybox.css" rel="stylesheet">
         <link href="DataTables-1.10.0/media/css/jquery.dataTables.css" rel="stylesheet">
         <link href="css/style.css" type="text/css" rel="stylesheet">
         <title>Educademy Courses</title>
@@ -46,11 +46,10 @@
         <script src="DataTables-1.10.0/media/js/jquery.dataTables.min.js"></script>
         <script src="js/application.js"></script>
         <script src="js/bootstrap.min.js"></script>
-        <script src="//rawgithub.com/ashleydw/lightbox/master/dist/ekko-lightbox.min.js"></script>
+        <script src="fancyBox/source/jquery.fancybox.pack.js"></script>
         <script>
-            $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
-                event.preventDefault();
-                $(this).ekkoLightbox();
+            $(document).ready(function() {
+                $(".fancybox").fancybox();
             });
         </script>
         <script src="js/back-to-top.js"></script>
