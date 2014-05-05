@@ -3,7 +3,7 @@ $(document).ready(function() {
     $(".fancybox").fancybox();
     
     // Validation
-    $("#form").validate(
+    $("#theform").validate(
     {
         rules: {
             username: {
