@@ -20,7 +20,7 @@
             <hr class="featurette-divider">
             <div class="row featurette">
                 <div class="col-md-5">
-                    <a class="fancybox" rel="gallery1" href="images/2JZkmtH.gif"><img title="typing cat gif" class="thumbnail" src="images/2JZkmtH.gif"></a>
+                    <a class="fancybox" rel="gallery1" href="images/2JZkmtH.gif" title="Typo"><img title="typing cat gif" class="thumbnail" src="images/2JZkmtH.gif"></a>
                 </div>
                 <div class="col-md-7">
                     <h2 class="featurette-heading">Who We Are. <span class="text-muted">It will blow your mind.</span></h2>
@@ -36,13 +36,13 @@
                     <p><code>Educademy</code> aims to make your life simpler by helping you search for educational online courses from 8 different <abbr title="Massive Open Online Course">MOOC</abbr>s so you don't have to visit all 8 sites to discover from which site you want to take the particular course.</p>
                 </div>
                 <div class="col-md-5">
-                    <a class="fancybox" rel="gallery1" href="images/whoacatfood.gif"><img title="cat looking at sushi" class="thumbnail" src="images/whoacatfood.gif"></a>
+                    <a class="fancybox" rel="gallery1" href="images/whoacatfood.gif" title="Glutton"><img title="cat looking at sushi" class="thumbnail" src="images/whoacatfood.gif"></a>
                 </div>
             </div>
             <hr class="featurette-divider">
             <div class="row featurette">
                 <div class="col-md-5">
-                    <a class="fancybox" rel="gallery1" href="images/nekocatsohappy.gif"><img title="cat enjoying the bag" class="thumbnail" src="images/nekocatsohappy.gif"></a>
+                    <a class="fancybox" rel="gallery1" href="images/nekocatsohappy.gif" title="Joy"><img title="cat enjoying the bag" class="thumbnail" src="images/nekocatsohappy.gif"></a>
                 </div>
                 <div class="col-md-7">
                     <h2 class="featurette-heading">How We Do. <span class="text-muted">The secret ingredient.</span></h2>
@@ -64,7 +64,7 @@
                     <p>--Course Cookers</p>
                 </div>
                 <div class="col-md-5">
-                    <a class="fancybox" rel="gallery1" href="images/somuchpaper.gif"><img title="cat playing with paper" class="thumbnail" src="images/somuchpaper.gif"></a>
+                    <a class="fancybox" rel="gallery1" href="images/somuchpaper.gif" title="Abs"><img title="cat playing with paper" class="thumbnail" src="images/somuchpaper.gif"></a>
                 </div>
             </div>
         </div>
