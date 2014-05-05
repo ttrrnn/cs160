@@ -66,27 +66,29 @@
     <body>
         <?php include('includes/header.php'); ?>
         <div class="container">
-            <div class="panel panel-info">
-                <div class="panel-heading">Login</div>
-                <div class="panel-body">
-                    <form id="theform" action="login.php" method="post" role="form">
-                        <fieldset>
-                            <div class="form-group">
-                                <div class="controls">
-                                    <input type="text" class="form-control" id="username" name="username" value="<?php echo $submitted_username; ?>" placeholder="Username" required>
+            <div class="col-lg-6">
+                <div class="panel panel-info">
+                    <div class="panel-heading">Login</div>
+                    <div class="panel-body">
+                        <form id="theform" action="login.php" method="post" role="form">
+                            <fieldset>
+                                <div class="form-group">
+                                    <div class="controls">
+                                        <input type="text" class="form-control" id="username" name="username" value="<?php echo $submitted_username; ?>" placeholder="Username">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="controls">
-                                    <input type="password" class="form-control" id="password" name="password" value="" placeholder="Password" required> 
+                                <div class="form-group">
+                                    <div class="controls">
+                                        <input type="password" class="form-control" id="password" name="password" value="" placeholder="Password"> 
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-actions">
-                                <button type="submit" class="btn btn-info btn-lg">Login</button>
-                                <button type="reset" class="btn">Clear</button>
-                            </div>
-                        </fieldset>
-                    </form> 
+                                <div class="form-actions pull-right">
+                                    <button type="reset" class="btn">Clear</button>
+                                    <button type="submit" class="btn btn-info btn-lg">Login</button>
+                                </div>
+                            </fieldset>
+                        </form> 
+                    </div>
                 </div>
             </div>
         </div>
