@@ -1,6 +1,10 @@
 $(document).ready(function() {
-    // Fancybox
-    $(".fancybox").fancybox();
+    // Fancybox with media helper
+    $(".fancybox").fancybox({
+        helpers : {
+            media : {}
+        }
+    });
     
     // Validation
     $("#theform").validate(
