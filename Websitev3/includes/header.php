@@ -35,9 +35,16 @@ function echoActiveClass($requestUri) {
                         <li class="divider-vertical"></li>
                         <li <?= echoActiveClass("login") ?>><a href="login.php">Login</a></li>
                         <?php else: ?>
-                        <li><a href=""><span class="glyphicon glyphicon-user"></span> User Profile</a></li>
-                        <li class="divider-vertical"></li>
-                        <li><a href="logout.php">Log Out</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hi <?php echo $_SESSION['username'] ?> <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li align="center" class="well">
+                                    <div><img class="img-responsive" style="padding:2%;" src="images/user.jpg"/></div>
+                                    <a href="#" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-user"></span> Profile</a>
+                                    <a href="logout.php" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
+                                </li>
+                            </ul>
+                        </li>
                         <?php endif; ?>
                     </ul>
                 </div>
