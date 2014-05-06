@@ -174,6 +174,7 @@ if (!empty($_POST)) {
         <script src="DataTables-1.10.0/media/js/jquery.dataTables.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="fancyBox/source/jquery.fancybox.pack.js"></script>
+        <script src="fancyBox/source/helpers/jquery.fancybox-media.js"></script>
         <script src="js/application.js"></script>
     </body>
 </html>
