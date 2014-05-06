@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    var ratyInitialized = false;
+
     // Fancybox with media helper
     $(".fancybox").fancybox({
         helpers : {
@@ -55,31 +57,36 @@ $(document).ready(function() {
         "bDeferRender": true,
         "sPaginationType": "full_numbers",
         "aoColumns": [
-        {
-            "bSortable": false, 
-            "bSearchable": false
-        },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
+            {
+                "bSortable": false, 
+                "bSearchable": false
+            },
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
         ],
         "fnDrawCallback": function (oSettings) {
-            // Need code here to conditionally check if it hasn't already
-            // been initialised on a particular .raty element
-            $('.raty').raty({
-                score: function() {
-                    return $(this).attr("value");
-                },
-            
-                readOnly    : true,
-                starHalf    : 'images/star-half.png',
-                starOff     : 'images/star-off.png',
-                starOn      : 'images/star-on.png'
-            });
+            if (!ratyInitialized) {
+                ratyInitialized = true;
+
+                $('.raty').raty({
+                    score: function() {
+                        return $(this).attr("value");
+                    },
+                
+                    readOnly    : true,
+                    starHalf    : 'images/star-half.png',
+                    starOff     : 'images/star-off.png',
+                    starOn      : 'images/star-on.png'
+                });
+            }
+        },
+        "fnCreatedRow": function(nRow, aData, iDataIndex) {
+
         }
     });
 
