@@ -79,6 +79,7 @@ $(document).ready(function() {
                 starOn      : 'images/star-on.png'
             });
         },
+        // Pseudo lazy loading. The <a> tag now has an img attribute. Extract the value and embed a new <img> tag.
         "fnCreatedRow": function(nRow, aData, iDataIndex) {
             var anchorTag = nRow.firstChild.firstChild;
             var imgUrl = anchorTag.getAttribute('img');
