@@ -176,3 +176,8 @@ body {
 .raty span {
   display: none;
 }
+
+/* Only for trying to center raty modal */
+.modal-dialog-center {
+  margin-top: 15%;
+}

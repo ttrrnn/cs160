@@ -74,10 +74,10 @@ $(document).ready(function() {
                     return $(this).attr("value");
                 },
             
-                readOnly    : true,
-                starHalf    : 'images/star-half.png',
-                starOff     : 'images/star-off.png',
-                starOn      : 'images/star-on.png'
+                readOnly : true,
+                starHalf : 'images/star-half.png',
+                starOff  : 'images/star-off.png',
+                starOn   : 'images/star-on.png'
             });
 
             // Disable rate button for courses already rated by logged in user
@@ -91,4 +91,13 @@ $(document).ready(function() {
     $.get("get_courses.php", function(result) {
         $("#table").dataTable().fnAddData(JSON.parse(result));
     });
+
+    $("#raty-in-modal").raty({
+        starOff : 'images/star-off.png',
+        starOn  : 'images/star-on.png'
+    });
 });
+
+function rateCourse(course) {
+    console.log("rateCourse function called");
+}
