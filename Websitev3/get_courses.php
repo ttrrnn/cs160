@@ -53,7 +53,7 @@
         $course = array (
             '<a class="bw pic fancybox" data-fancybox-type="iframe" href="' . $video_link . '"><img src="' . $course_image . '"/></a>',
             '<a href="' . $course_link . '">' . $title . '</a>',
-            '<div class="raty" value="' . $rating . '"><span>' . $rating . '</span></div>', 
+            '<button type="button" id="' . $id . '">Rate</button><div class="raty" value="' . $rating . '"><span>' . $rating . '</span></div>', 
             $category,
             $start_date,
             $course_length,

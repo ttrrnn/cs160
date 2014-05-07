@@ -54,7 +54,9 @@
             var username = "<?= $_SESSION['username'] ?>";
 
             $.get("get_user_ratings.php", { username: username }, function(result) {
-                console.log(result);
+                // Store courses rated by user into global variable in application.js
+                // This is kind of hackish, but I don't know how to get around it right now.
+                $ratedCourses = JSON.parse(result);
             });
         </script>
         <?php endif; ?>

@@ -51,6 +51,7 @@ $(document).ready(function() {
     })
     
     // Datatables
+    $ratedCourses = "";
     $("#table").dataTable ( {
         "bDeferRender": true,
         "sPaginationType": "full_numbers",
@@ -77,7 +78,13 @@ $(document).ready(function() {
                 starHalf    : 'images/star-half.png',
                 starOff     : 'images/star-off.png',
                 starOn      : 'images/star-on.png'
-            });            
+            });
+
+            // Disable rate button for courses already rated by logged in user
+            for (var buttonId in $ratedCourses) {
+                $("#" + buttonId).prop("disabled", true);
+                $("#" + buttonId).html("Previously Rated");
+            }
         },
     });
 
