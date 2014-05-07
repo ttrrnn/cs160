@@ -89,16 +89,8 @@ $(document).ready(function() {
     });
 
     $.get("get_courses.php", function(result) {
+        ratyModalInit();
         $("#table").dataTable().fnAddData(JSON.parse(result));
-    });
-
-    $("#raty-in-modal").raty({
-        starOff : 'images/star-off.png',
-        starOn  : 'images/star-on.png',
-
-        click: function(score, evt) {
-            $("#confirmRateButton").prop("disabled", false);
-        }
     });
 });
 
@@ -117,10 +109,18 @@ function rateCourse() {
         $("#" + courseId).prop("disabled", true);
         $("#" + courseId).html("Previously Rated");
         $("#confirmRateButton").prop("disabled", true);
-        $("#raty-in-modal").raty({
-            starOff : 'images/star-off.png',
-            starOn  : 'images/star-on.png',
-            score   : 0
-        });
+        ratyModalInit();
+    });
+}
+
+function ratyModalInit() {
+    $("#raty-in-modal").raty({
+        starOff : 'images/star-off.png',
+        starOn  : 'images/star-on.png',
+        score   : 0,
+
+        click: function(score, evt) {
+            $("#confirmRateButton").prop("disabled", false);
+        }
     });
 }
