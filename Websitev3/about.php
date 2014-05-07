@@ -55,7 +55,10 @@
             <div class="row featurette">
                 <div class="col-md-7">
                     <h2 class="featurette-heading">One Last Thing. <span class="text-muted">Don't forget...</span></h2>
-                    <p class="lead">You have brains in your head. You have feet in your shoes. You can steer yourself in any direction you choose. --Dr. Seuss</p>
+                    <blockquote>
+                        <p class="lead">You have brains in your head. You have feet in your shoes. You can steer yourself in any direction you choose.</p>
+                        <footer>Dr. Seuss</footer>
+                    </blockquote>
                     <p>We wish you the best.
                         <br>We hope you'll have fun.
                         <br>Enjoy browsing for courses,
