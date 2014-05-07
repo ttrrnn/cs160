@@ -77,16 +77,7 @@ $(document).ready(function() {
                 starHalf    : 'images/star-half.png',
                 starOff     : 'images/star-off.png',
                 starOn      : 'images/star-on.png'
-            });
-        },
-        // Pseudo lazy loading. The <a> tag now has an img attribute. Extract the value and embed a new <img> tag.
-        "fnCreatedRow": function(nRow, aData, iDataIndex) {
-            var anchorTag = nRow.firstChild.firstChild;
-            var imgUrl = anchorTag.getAttribute('img');
-            var imgTag = '<img src="' + imgUrl + '" />';
-            
-            anchorTag.innerHTML = imgTag;
-            return nRow;
+            });            
         },
     });
 
