@@ -46,13 +46,11 @@
 
                     <div class="tab-content">
                         <div class="tab-pane active" id="rated">
-                            <a type="button" data-toggle="collapse" data-target="#a1">
                                 <div class="btn-toolbar well well-sm" role="toolbar"  style="margin:0px;">
                                     <div class="btn-group"><input type="checkbox"></div>
                                     <div class="btn-group col-md-3">SHOW STARS HERE</div>
-                                    <div class="btn-group col-md-8"><b>COURSE NAME</b></div>
+                                    <div class="btn-group col-md-8"><a type="button" data-toggle="collapse" data-target="#a1"><b>COURSE NAME</b></a></div>
                                 </div>
-                            </a>
                             <div id="a1" class="collapse out well">MORE DETAILED COURSE STUFF HERE</div>
                             <br>
                             <button class="btn btn-primary btn-xs"><i class="fa fa-check-square-o"></i> Delete Checked Items</button>
