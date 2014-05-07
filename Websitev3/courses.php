@@ -50,7 +50,7 @@
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                      <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="rate()">Confirm</button>
+                      <button onclick="rateCourse()" id="confirmRateButton" type="button" class="btn btn-primary" data-dismiss="modal" disabled>Confirm</button>
                     </div>
                 </div>
             </div>
@@ -73,7 +73,7 @@
             $.get("get_user_ratings.php", { username: username }, function(result) {
                 // Store courses rated by user into global variable in application.js
                 // This is kind of hackish, but I don't know how to get around it right now.
-                $ratedCourses = JSON.parse(result);
+                $userData = { username: username, ratedCourses: JSON.parse(result) };
             });
         </script>
         <?php endif; ?>

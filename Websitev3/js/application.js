@@ -51,7 +51,7 @@ $(document).ready(function() {
     })
     
     // Datatables
-    $ratedCourses = "";
+    $userData = "";
     $("#table").dataTable ( {
         "bDeferRender": true,
         "sPaginationType": "full_numbers",
@@ -81,7 +81,7 @@ $(document).ready(function() {
             });
 
             // Disable rate button for courses already rated by logged in user
-            for (var buttonId in $ratedCourses) {
+            for (var buttonId in $userData.ratedCourses) {
                 $("#" + buttonId).prop("disabled", true);
                 $("#" + buttonId).html("Previously Rated");
             }
@@ -94,10 +94,33 @@ $(document).ready(function() {
 
     $("#raty-in-modal").raty({
         starOff : 'images/star-off.png',
-        starOn  : 'images/star-on.png'
+        starOn  : 'images/star-on.png',
+
+        click: function(score, evt) {
+            $("#confirmRateButton").prop("disabled", false);
+        }
     });
 });
 
-function rateCourse(course) {
-    console.log("rateCourse function called");
+// My hackish way to keep track of which rate button is clicked on the coursePage
+function attachCourseId(courseButton) {
+    $("#confirmRateButton").prop("courseId", courseButton.prop("id"));
+}
+
+function rateCourse() {
+    var courseId = $("#confirmRateButton").prop('courseId');
+    var username = $userData.username;
+    var stars = $("#raty-in-modal input[name=score]").prop('value');
+    
+    $.post("rate_course.php", { courseId: courseId, username: username, stars: stars}, function() {
+        $userData.ratedCourses.push(courseId);
+        $("#" + courseId).prop("disabled", true);
+        $("#" + courseId).html("Previously Rated");
+        $("#confirmRateButton").prop("disabled", true);
+        $("#raty-in-modal").raty({
+            starOff : 'images/star-off.png',
+            starOn  : 'images/star-on.png',
+            score   : 0
+        });
+    });
 }
