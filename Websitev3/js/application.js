@@ -1,6 +1,4 @@
 $(document).ready(function() {
-    var ratyInitialized = false;
-
     // Fancybox with media helper
     $(".fancybox").fancybox({
         helpers : {
@@ -70,24 +68,25 @@ $(document).ready(function() {
             null
         ],
         "fnDrawCallback": function (oSettings) {
-            if (!ratyInitialized) {
-                ratyInitialized = true;
-
-                $('.raty').raty({
-                    score: function() {
-                        return $(this).attr("value");
-                    },
-                
-                    readOnly    : true,
-                    starHalf    : 'images/star-half.png',
-                    starOff     : 'images/star-off.png',
-                    starOn      : 'images/star-on.png'
-                });
-            }
+            $('.raty').raty({
+                score: function() {
+                    return $(this).attr("value");
+                },
+            
+                readOnly    : true,
+                starHalf    : 'images/star-half.png',
+                starOff     : 'images/star-off.png',
+                starOn      : 'images/star-on.png'
+            });
         },
         "fnCreatedRow": function(nRow, aData, iDataIndex) {
-
-        }
+            var anchorTag = nRow.firstChild.firstChild;
+            var imgUrl = anchorTag.getAttribute('img');
+            var imgTag = '<img src="' + imgUrl + '" />';
+            
+            anchorTag.innerHTML = imgTag;
+            return nRow;
+        },
     });
 
     $.get("get_courses.php", function(result) {
