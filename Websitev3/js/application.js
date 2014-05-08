@@ -89,7 +89,7 @@ $(document).ready(function() {
                 $(".rateButton").show();
 
                 for (var buttonId in $userData.ratedCourses) {
-                    $("#" + $userData.ratedCourses[buttonId]).hide();
+                    $("#" + buttonId).hide();
                 }
             }
         },
@@ -111,10 +111,11 @@ function rateCourse() {
     var username = $userData.username;
     var stars = $("#raty-in-modal input[name=score]").prop('value');
     
-    $.post("rate_course.php", { courseId: courseId, username: username, stars: stars}, function() {
-        $userData.ratedCourses.push(courseId);
-        $("#" + courseId).hide();
+    $.post("rate_course.php", { courseId: courseId, username: username, stars: stars}, function(newRating) {
+        $userData.ratedCourses.courseId = newRating;
         ratyModalInit();
+        $("#" + courseId).hide();
+        $("#raty" + courseId).attr("value", newRating); // Not sure why this is not updating the rating
     });
 }
 

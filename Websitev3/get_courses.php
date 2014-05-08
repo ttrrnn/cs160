@@ -53,7 +53,7 @@
         $course = array (
             '<a class="bw pic fancybox" data-fancybox-type="iframe" href="' . $video_link . '"><img src="' . $course_image . '"/></a>',
             '<a href="' . $course_link . '">' . $title . '</a>',
-            '<button onclick="attachCourseId($(this))" type="button" class="rateButton btn btn-primary" data-toggle="modal" data-target="#rate-popup" id="' . $id . '">Rate</button><div class="raty" value="' . $rating . '"><span>' . $rating . '</span></div>', 
+            '<button onclick="attachCourseId($(this))" type="button" class="rateButton btn btn-primary" data-toggle="modal" data-target="#rate-popup" id="' . $id . '">Rate</button><div id="raty' . $id . '" class="raty" value="' . $rating . '"><span>' . $rating . '</span></div>', 
             $category,
             $start_date,
             $course_length,
