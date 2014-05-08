@@ -114,6 +114,7 @@ function rateCourse() {
     $.post("rate_course.php", { courseId: courseId, username: username, stars: stars}, function() {
         $userData.ratedCourses.push(courseId);
         $("#" + courseId).hide();
+        $("#confirmRateButton").prop("disabled", true);
         ratyModalInit();
     });
 }
