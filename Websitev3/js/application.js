@@ -82,13 +82,14 @@ $(document).ready(function() {
 
             // Disable rate button for anonymous users
             if ($userData.username == null) {
-                $(".rateButton").prop("disabled", true);
+                $(".rateButton").hide();
             }
             // Disable rate button for courses already rated by logged in user
             else {
+                $(".rateButton").show();
+
                 for (var buttonId in $userData.ratedCourses) {
-                    $("#" + $userData.ratedCourses[buttonId]).prop("disabled", true);
-                    $("#" + $userData.ratedCourses[buttonId]).html("Previously Rated");
+                    $("#" + $userData.ratedCourses[buttonId]).hide();
                 }
             }
         },
@@ -112,9 +113,7 @@ function rateCourse() {
     
     $.post("rate_course.php", { courseId: courseId, username: username, stars: stars}, function() {
         $userData.ratedCourses.push(courseId);
-        $("#" + courseId).prop("disabled", true);
-        $("#" + courseId).html("Previously Rated");
-        $("#confirmRateButton").prop("disabled", true);
+        $("#" + courseId).hide();
         ratyModalInit();
     });
 }
@@ -126,7 +125,7 @@ function ratyModalInit() {
         score   : 0,
 
         click: function(score, evt) {
-            $("#confirmRateButton").prop("disabled", false);
+            $("#confirmRateButton").show();
         }
     });
 }
