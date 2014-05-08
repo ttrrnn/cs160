@@ -122,9 +122,9 @@ function prepareRate(courseButton) {
 function rateCourse() {
     var courseId = $("#confirmRateButton").prop('courseId');
     var username = $userData.username;
-    var stars = $("#raty-in-modal input[name=score]").prop('value');
+    var rating = $("#raty-in-modal input[name=score]").prop('value');
     
-    $.post("rate_course.php", { courseId: courseId, username: username, stars: stars}, function(newRating) {
+    $.post("rate_course.php", { courseId: courseId, username: username, rating: rating }, function(newRating) {
         newRating = JSON.parse(newRating);
         $userData.ratedCourses[courseId] = parseFloat(newRating);
         $("#" + courseId).hide();
