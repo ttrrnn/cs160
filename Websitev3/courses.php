@@ -19,7 +19,7 @@
             <div class="panel panel-success">
                 <div class="panel-heading">Courses</div>
                 <div class="panel-body">
-                    <table id="table" class="display">
+                    <table id="table" class="display" style="width: 100%;table-layout:fixed;word-wrap:break-word;">
                         <thead>
                             <tr>
                                 <th><span class="glyphicon glyphicon-facetime-video"></span> Intro</th>
