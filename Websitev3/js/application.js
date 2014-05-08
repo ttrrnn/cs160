@@ -55,20 +55,23 @@ $(document).ready(function() {
     $("#table").dataTable ( {
         "bDeferRender": true,
         "sPaginationType": "full_numbers",
+        "bAutoWidth": false,
         "aoColumns": [
             {
                 "bSortable": false, 
-                "bSearchable": false
+                "bSearchable": false,
+                "sWidth": "14%"
             },
-            null,
+            { "sWidth": "12%" },
             {
-                "bSearchable": false
+                "bSearchable": false,
+                "sWidth": "16%"
             },
-            null,
-            null,
-            null,
-            null,
-            null
+            { "sWidth": "12%" },
+            { "sWidth": "12%" },
+            { "sWidth": "10%" },
+            { "sWidth": "12%" },
+            { "sWidth": "12%" }
         ],
         "fnDrawCallback": function (oSettings) {
             $('.raty').raty({
