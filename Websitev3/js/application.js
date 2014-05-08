@@ -88,8 +88,9 @@ $(document).ready(function() {
             else {
                 $(".rateButton").show();
 
-                for (var buttonId in $userData.ratedCourses) {
-                    $("#" + buttonId).hide();
+                for (var courseId in $userData.ratedCourses) {
+                    $("#" + courseId).hide();
+                    $("#" + courseId).prop("disabled", true);
                 }
             }
         },
@@ -115,6 +116,7 @@ function rateCourse() {
         $userData.ratedCourses.courseId = newRating;
         ratyModalInit();
         $("#" + courseId).hide();
+        $("#" + courseId).prop("disabled", true);
         $("#raty" + courseId).attr("value", newRating); // Not sure why this is not updating the rating
     });
 }
