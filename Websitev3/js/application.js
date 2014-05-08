@@ -125,7 +125,7 @@ function ratyModalInit() {
         score   : 0,
 
         click: function(score, evt) {
-            $("#confirmRateButton").show();
+            $("#confirmRateButton").prop("disabled", false);
         }
     });
 }
