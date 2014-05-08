@@ -38,8 +38,6 @@ body {
 
 /*Black and White*/
 .bw img {
-  height: 150px;
-  width: 150px;
   -webkit-transition: all 1s ease;
      -moz-transition: all 1s ease;
        -o-transition: all 1s ease;
