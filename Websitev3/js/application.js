@@ -97,31 +97,13 @@ $(document).ready(function() {
     });
 
     $.get("get_courses.php", function(result) {
-        ratyModalInit();
         $("#table").dataTable().fnAddData(JSON.parse(result));
     });
 });
 
-// My hackish way to keep track of which rate button is clicked on the coursePage
-function attachCourseId(courseButton) {
+function prepareRate(courseButton) {
+    // My hackish way to keep track of which rate button is clicked on the coursePage
     $("#confirmRateButton").prop("courseId", courseButton.prop("id"));
-}
-
-function rateCourse() {
-    var courseId = $("#confirmRateButton").prop('courseId');
-    var username = $userData.username;
-    var stars = $("#raty-in-modal input[name=score]").prop('value');
-    
-    $.post("rate_course.php", { courseId: courseId, username: username, stars: stars}, function(newRating) {
-        $userData.ratedCourses.courseId = newRating;
-        ratyModalInit();
-        $("#" + courseId).hide();
-        $("#" + courseId).prop("disabled", true);
-        $("#raty" + courseId).attr("value", newRating); // Not sure why this is not updating the rating
-    });
-}
-
-function ratyModalInit() {
     $("#confirmRateButton").prop("disabled", true);
 
     $("#raty-in-modal").raty({
@@ -132,5 +114,18 @@ function ratyModalInit() {
         click: function(score, evt) {
             $("#confirmRateButton").prop("disabled", false);
         }
+    });
+}
+
+function rateCourse() {
+    var courseId = $("#confirmRateButton").prop('courseId');
+    var username = $userData.username;
+    var stars = $("#raty-in-modal input[name=score]").prop('value');
+    
+    $.post("rate_course.php", { courseId: courseId, username: username, stars: stars}, function(newRating) {
+        $userData.ratedCourses.courseId = newRating;
+        $("#" + courseId).hide();
+        $("#" + courseId).prop("disabled", true);
+        $("#raty" + courseId).attr("value", newRating); // Not sure why this is not updating the rating
     });
 }
