@@ -91,6 +91,7 @@ $(document).ready(function() {
                 $(".rateButton").show();
 
                 for (var courseId in $userData.ratedCourses) {
+                    console.log(courseId);
                     $("#" + courseId).hide();
                     $("#" + courseId).prop("disabled", true);
                 }
@@ -125,9 +126,16 @@ function rateCourse() {
     var stars = $("#raty-in-modal input[name=score]").prop('value');
     
     $.post("rate_course.php", { courseId: courseId, username: username, stars: stars}, function(newRating) {
-        $userData.ratedCourses.courseId = newRating;
+        newRating = JSON.parse(newRating);
+        $userData.ratedCourses[courseId] = parseFloat(newRating);
         $("#" + courseId).hide();
         $("#" + courseId).prop("disabled", true);
-        $("#raty" + courseId).attr("value", newRating); // Not sure why this is not updating the rating
+        $("#raty" + courseId).raty({
+            score    : newRating,
+            readOnly : true,
+            starHalf : 'images/star-half.png',
+            starOff  : 'images/star-off.png',
+            starOn   : 'images/star-on.png'
+        });
     });
 }
