@@ -91,7 +91,6 @@ $(document).ready(function() {
                 $(".rateButton").show();
 
                 for (var courseId in $userData.ratedCourses) {
-                    console.log(courseId);
                     $("#" + courseId).hide();
                     $("#" + courseId).prop("disabled", true);
                 }
