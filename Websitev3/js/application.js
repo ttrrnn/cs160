@@ -61,7 +61,9 @@ $(document).ready(function() {
                 "bSearchable": false
             },
             null,
-            null,
+            {
+                "bSearchable": false
+            },
             null,
             null,
             null,
