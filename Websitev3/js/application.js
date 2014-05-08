@@ -80,10 +80,16 @@ $(document).ready(function() {
                 starOn   : 'images/star-on.png'
             });
 
+            // Disable rate button for anonymous users
+            if ($userData.username == null) {
+                $(".rateButton").prop("disabled", true);
+            }
             // Disable rate button for courses already rated by logged in user
-            for (var buttonId in $userData.ratedCourses) {
-                $("#" + buttonId).prop("disabled", true);
-                $("#" + buttonId).html("Previously Rated");
+            else {
+                for (var buttonId in $userData.ratedCourses) {
+                    $("#" + buttonId).prop("disabled", true);
+                    $("#" + buttonId).html("Previously Rated");
+                }
             }
         },
     });
