@@ -87,8 +87,8 @@ $(document).ready(function() {
             // Disable rate button for courses already rated by logged in user
             else {
                 for (var buttonId in $userData.ratedCourses) {
-                    $("#" + buttonId).prop("disabled", true);
-                    $("#" + buttonId).html("Previously Rated");
+                    $("#" + $userData.ratedCourses[buttonId]).prop("disabled", true);
+                    $("#" + $userData.ratedCourses[buttonId]).html("Previously Rated");
                 }
             }
         },
