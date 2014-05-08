@@ -130,8 +130,12 @@ function rateCourse() {
         $userData.ratedCourses[courseId] = parseFloat(newRating);
         $("#" + courseId).hide();
         $("#" + courseId).prop("disabled", true);
+        $("#raty" + courseId).attr("value", newRating);
         $("#raty" + courseId).raty({
-            score    : newRating,
+            score: function() {
+                return $(this).attr("value");
+            },
+
             readOnly : true,
             starHalf : 'images/star-half.png',
             starOff  : 'images/star-off.png',
