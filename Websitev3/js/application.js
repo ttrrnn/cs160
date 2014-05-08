@@ -62,16 +62,16 @@ $(document).ready(function() {
                 "bSearchable": false,
                 "sWidth": "14%"
             },
-            { "sWidth": "12%" },
+            { "sWidth": "20%" },
             {
                 "bSearchable": false,
-                "sWidth": "16%"
+                "sWidth": "12%"
             },
             { "sWidth": "12%" },
-            { "sWidth": "12%" },
+            { "sWidth": "10%" },
             { "sWidth": "10%" },
             { "sWidth": "12%" },
-            { "sWidth": "12%" }
+            { "sWidth": "10%" }
         ],
         "fnDrawCallback": function (oSettings) {
             $('.raty').raty({
