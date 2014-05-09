@@ -79,6 +79,7 @@ $(document).ready(function() {
                     return $(this).attr("value");
                 },
             
+                width    : false,
                 readOnly : true,
                 starHalf : 'images/star-half.png',
                 starOff  : 'images/star-off.png',
@@ -138,6 +139,7 @@ function rateCourse() {
                 return $(this).attr("value");
             },
 
+            width    : false,
             readOnly : true,
             starHalf : 'images/star-half.png',
             starOff  : 'images/star-off.png',
