@@ -15,8 +15,8 @@
                                  coursedetails
 
                           WHERE  course_data.id = coursedetails.course_id
-
                           GROUP BY course_data.id
+                          ORDER BY title
                         ");
     $stmt->execute();
     $stmt->bind_result($id, $course_image, $title, $category, $start_date, $course_length, $course_link, $site, $professor_name, $video_link);

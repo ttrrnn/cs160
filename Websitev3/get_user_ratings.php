@@ -5,7 +5,8 @@ session_start();
 $rating_stmt = $db->prepare("SELECT course_id, title, rating
 							 FROM course_data, course_rating
 							 WHERE username = ? 
-							 AND course_data.id = course_rating.course_id");
+							 AND course_data.id = course_rating.course_id
+							 ORDER BY title");
 
 $rating_stmt->bind_param('s', $_SESSION['username']);
 $rating_result = $rating_stmt->execute();
