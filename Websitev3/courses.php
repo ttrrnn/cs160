@@ -65,15 +65,12 @@
         <script src="fancyBox/source/jquery.fancybox.pack.js"></script>
         <script src="fancyBox/source/helpers/jquery.fancybox-media.js"></script>
         <script src="js/application.js"></script>
-
         <?php if (isset($_SESSION['username'])): ?>
         <script>
-            var username = "<?= $_SESSION['username'] ?>";
-
-            $.post("get_user_ratings.php", { username: username }, function(result) {
+            $.post("get_user_ratings.php", function(result) {
                 // Store courses rated by user into global variable in application.js
                 // This is kind of hackish, but I don't know how to get around it right now.
-                $userData = { username: username, userRatings: JSON.parse(result) };
+                $userData = { username: "<?= $_SESSION['username'] ?>", userRatings: JSON.parse(result) };
             });
         </script>
         <?php endif; ?>

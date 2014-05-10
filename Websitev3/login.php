@@ -30,7 +30,7 @@
         if ($login_ok) {
             $_SESSION['username'] = $_POST['username'];         
             unset($row['salt']); 
-            unset($row['password']); 
+            unset($row['password']);
             header("Location: index.php"); 
             die("Redirecting to: index.php"); 
         } 

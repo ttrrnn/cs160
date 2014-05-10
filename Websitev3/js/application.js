@@ -105,6 +105,10 @@ $(document).ready(function() {
     $.get("get_courses.php", function(result) {
         $("#table").dataTable().fnAddData(JSON.parse(result));
     });
+
+    for (var courseId in $userData.userRatings) {
+        console.log(courseId);
+    }
 });
 
 function prepareRate(courseButton) {
@@ -130,10 +134,10 @@ function rateCourse() {
     
     $.post("rate_course.php", { courseId: courseId, username: username, rating: rating }, function(newRating) {
         newRating = JSON.parse(newRating);
-        $userData.userRatings[courseId]["rating"] = parseFloat(newRating);
+        $userData.userRatings[courseId] = newRating;
         $("#" + courseId).hide();
         $("#" + courseId).prop("disabled", true);
-        $("#raty" + courseId).attr("value", newRating);
+        $("#raty" + courseId).attr("value", newRating.rating);
         $("#raty" + courseId).raty({
             score: function() {
                 return $(this).attr("value");
