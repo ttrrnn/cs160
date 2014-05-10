@@ -45,13 +45,27 @@
                     </ul>
 
                     <div class="tab-content">
-                        <div class="tab-pane active">
+                        <div class="tab-pane active" id="rated">
                                 <div class="btn-toolbar well well-sm" role="toolbar"  style="margin:0px;">
-                                    <div class="btn-group"><input type="checkbox"></div>
-                                    <div id="rated"> <!-- We can insert the data here -->
-                                        <div class="btn-group col-md-3">SHOW STARS HERE</div>
+                                    
+                                    
+                                    <div id="rated" class="btn-group col-md-3">
+
+                                    <?php
+                                    foreach ($_SESSION['user_ratings'] as $courseId => $courseInfo) {
+                                        echo '<div class="btn-group"><input type="checkbox"></div>';
+                                        echo '<div id="raty' . $courseId . '" class="raty" value="' . $courseInfo['rating'] . '"></div>';
+                                    }
+                                    ?>
+
                                     </div>
-                                    <div class="btn-group col-md-8"><a type="button" data-toggle="collapse" data-target="#a1"><b>COURSE NAME</b></a></div>
+
+                                    <?php
+                                    foreach ($_SESSION['user_ratings'] as $courseId => $courseInfo) {
+                                        echo '<div class="btn-group col-md-8"><a type="button" data-toggle="collapse" data-target="#a1"><b>' . $courseInfo['title'] . '</b></a></div>';
+                                    }
+                                    ?>
+                                    
                                 </div>
                             <div id="a1" class="collapse out well">MORE DETAILED COURSE STUFF HERE</div>
                             <br>

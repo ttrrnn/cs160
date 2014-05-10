@@ -106,9 +106,17 @@ $(document).ready(function() {
         $("#table").dataTable().fnAddData(JSON.parse(result));
     });
 
-    for (var courseId in $userData.userRatings) {
-        console.log(courseId);
-    }
+    $('.raty').raty({
+        score: function() {
+            return $(this).attr("value");
+        },
+    
+        width    : false,
+        readOnly : true,
+        starHalf : 'images/star-half.png',
+        starOff  : 'images/star-off.png',
+        starOn   : 'images/star-on.png'
+    });
 });
 
 function prepareRate(courseButton) {
