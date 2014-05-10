@@ -146,6 +146,7 @@ function rateCourse() {
         $("#" + courseId).hide();
         $("#" + courseId).prop("disabled", true);
         $("#raty" + courseId).attr("value", newRating.rating);
+        $("#raty" + courseId).html("<span>" + newRating.rating + "</span");
         $("#raty" + courseId).raty({
             score: function() {
                 return $(this).attr("value");
