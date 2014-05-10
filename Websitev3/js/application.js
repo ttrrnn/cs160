@@ -94,7 +94,7 @@ $(document).ready(function() {
             else {
                 $(".rateButton").show();
 
-                for (var courseId in $userData.ratedCourses) {
+                for (var courseId in $userData.userRatings) {
                     $("#" + courseId).hide();
                     $("#" + courseId).prop("disabled", true);
                 }
@@ -130,7 +130,7 @@ function rateCourse() {
     
     $.post("rate_course.php", { courseId: courseId, username: username, rating: rating }, function(newRating) {
         newRating = JSON.parse(newRating);
-        $userData.ratedCourses[courseId] = parseFloat(newRating);
+        $userData.userRatings[courseId]["rating"] = parseFloat(newRating);
         $("#" + courseId).hide();
         $("#" + courseId).prop("disabled", true);
         $("#raty" + courseId).attr("value", newRating);
