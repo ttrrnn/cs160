@@ -51,10 +51,13 @@ $(document).ready(function() {
     })
     
     // Local copy of session
-    $userData = null;
+    $userData = "";
     $.post("get_user_ratings.php", function(result) {
-        $userData = { userRatings: JSON.parse(result) };
-        console.log($userData);
+        result = JSON.parse(result);
+
+        if (result != "") {
+            $userData = { userRatings: JSON.parse(result) };
+        }
     });
 
     // Datatables
@@ -94,7 +97,7 @@ $(document).ready(function() {
             });
 
             // Disable rate button for anonymous users
-            if ($userData == null) {
+            if ($userData == "") {
                 $(".rateButton").hide();
             }
             // Disable rate button for courses already rated by logged in user

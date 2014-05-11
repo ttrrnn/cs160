@@ -2,6 +2,10 @@
 
 session_start();
 
+if (empty($_SESSION['username'])) {
+	echo json_encode("");
+}
+
 $rating_stmt = $db->prepare("SELECT course_id, title, rating
 							 FROM course_data, course_rating
 							 WHERE username = ? 
