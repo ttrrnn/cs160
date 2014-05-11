@@ -175,5 +175,7 @@ function deleteRatedCourses() {
         }
     });
 
-    $.post("delete_rating.php", { deleted_course: checkedCourses });
+    if (checkedCourses.length > 0) {
+        $.post("delete_rating.php", { deleted_course: checkedCourses });
+    }
 }
