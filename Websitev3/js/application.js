@@ -56,6 +56,7 @@ $(document).ready(function() {
         "bDeferRender": true,
         "sPaginationType": "full_numbers",
         "bAutoWidth": false,
+        "order": [[ 1, "asc"]],
         "aoColumns": [
             {
                 "bSortable": false, 
@@ -162,8 +163,7 @@ function rateCourse() {
 }
 
 function deleteRatedCourses() {
-    var rowRating = $("#rated div[courseId]");
-    var rowTitle = $("#rated .ratedTitle");
+    var rowRating = $("#rated tr[courseId]");
     var checkedCourses = [];
 
     $("#rated input[type=checkbox]").each(function(index, checkbox) {
@@ -171,7 +171,6 @@ function deleteRatedCourses() {
             var checkedRow = rowRating[index];
             checkedCourses.push($(checkedRow).attr('courseId'));
             $(checkedRow).remove();
-            $(rowTitle[index]).remove();
         }
     });
 
