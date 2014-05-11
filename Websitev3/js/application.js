@@ -50,8 +50,14 @@ $(document).ready(function() {
         return false;
     })
     
+    // Local copy of session
+    $userData = null;
+    $.post("get_user_ratings.php", function(result) {
+        $userData = { userRatings: JSON.parse(result) };
+        console.log($userData);
+    });
+
     // Datatables
-    $userData = "";
     $("#table").dataTable ( {
         "bDeferRender": true,
         "sPaginationType": "full_numbers",
@@ -88,7 +94,7 @@ $(document).ready(function() {
             });
 
             // Disable rate button for anonymous users
-            if ($userData.username == null) {
+            if ($userData == null) {
                 $(".rateButton").hide();
             }
             // Disable rate button for courses already rated by logged in user
@@ -117,10 +123,6 @@ $(document).ready(function() {
         starHalf : 'images/star-half.png',
         starOff  : 'images/star-off.png',
         starOn   : 'images/star-on.png'
-    });
-
-    $.post("get_user_ratings.php", function(result) {
-        $userData = { userRatings: JSON.parse(result) };
     });
 });
 
