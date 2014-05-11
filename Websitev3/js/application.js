@@ -118,6 +118,10 @@ $(document).ready(function() {
         starOff  : 'images/star-off.png',
         starOn   : 'images/star-on.png'
     });
+
+    $.post("get_user_ratings.php", function(result) {
+        $userData = { userRatings: JSON.parse(result) };
+    });
 });
 
 function prepareRate(courseButton) {
