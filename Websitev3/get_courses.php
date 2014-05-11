@@ -16,8 +16,8 @@
 
                           WHERE  course_data.id = coursedetails.course_id
                           GROUP BY course_data.id
-                          ORDER BY title
-                        ");
+
+                        "); // ORDER BY title is removed for now because blank displayed titles are messing up profile rated courses.
     $stmt->execute();
     $stmt->bind_result($id, $course_image, $title, $category, $start_date, $course_length, $course_link, $site, $professor_name, $video_link);
     $course_data = array();

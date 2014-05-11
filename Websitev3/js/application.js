@@ -160,3 +160,23 @@ function rateCourse() {
         });
     });
 }
+
+function deleteRatedCourses() {
+    var rowRating = $("#rated div[courseId]");
+    var rowTitle = $("#rated .ratedTitle");
+    var checkedCourses = [];
+
+    $("#rated input[type=checkbox]").each(function(index, checkbox) {
+        if ($(checkbox).is(':checked')) {
+            var checkedRow = rowRating[index];
+            checkedCourses.push($(checkedRow).attr('courseId'));
+            $(checkedRow).remove();
+            $(rowTitle[index]).remove();
+        }
+    });
+
+    $.post("delete_rating.php", { deleted_course: checkedCourses }, function(result) {
+        console.log("Delete rating result");
+        console.log(result);
+    })
+}
