@@ -56,7 +56,7 @@ $(document).ready(function() {
         result = JSON.parse(result);
 
         if (result != "") {
-            $userData = { userRatings: JSON.parse(result) };
+            $userData = { userRatings: result };
         }
     });
 
@@ -109,7 +109,7 @@ $(document).ready(function() {
                     $("#" + courseId).prop("disabled", true);
                 }
             }
-        },
+        }
     });
 
     $.get("get_courses.php", function(result) {
