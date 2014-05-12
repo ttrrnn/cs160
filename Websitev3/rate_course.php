@@ -28,7 +28,7 @@ $course_rating = array (
     "rating" => $rating
 );
 
-$_SESSION['user_data']['user_ratings'][$_POST['courseId']] = $course_rating;
+$_SESSION['user_data']['ratedCourses'][$_POST['courseId']] = $course_rating;
 
 echo json_encode($course_rating);
 
