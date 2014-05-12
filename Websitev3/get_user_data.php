@@ -7,7 +7,7 @@ if (empty($_SESSION['username'])) {
 	return;
 }
 
-$statement = $db->prepare("SELECT course_id, title, rating
+$statement = $db->prepare("SELECT course_id, title, rating, course_link
 							 FROM course_data, course_rating
 							 WHERE username = ? 
 							 AND course_data.id = course_rating.course_id
@@ -15,7 +15,7 @@ $statement = $db->prepare("SELECT course_id, title, rating
 
 $statement->bind_param('s', $_SESSION['username']);
 $result = $statement->execute();
-$statement->bind_result($course_id, $title, $rating);
+$statement->bind_result($course_id, $title, $rating, $course_link);
 $user_data = array (
 	"ratedCourses" => array(),
 	"wishlist" => array()
@@ -24,7 +24,8 @@ $user_data = array (
 while ($statement->fetch()) {
     $user_data['ratedCourses'][$course_id] = array (
     	"title" => $title,
-    	"rating" => $rating
+    	"rating" => $rating,
+    	"link" => $course_link
     );
 }
 
