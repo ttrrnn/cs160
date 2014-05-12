@@ -8,10 +8,12 @@ $rating_result = $rating_stmt->execute();
 
 $rating_stmt = $db->prepare("SELECT title, AVG(rating)
 							 FROM course_data, course_rating
-							 WHERE course_data.id = course_rating.course_id AND course_id = ?
+							 WHERE course_data.id = course_rating.course_id
+							 AND course_id = ?
+							 AND username = ?
 							 GROUP BY course_id");
 
-$rating_stmt->bind_param('i', $_POST['courseId']);
+$rating_stmt->bind_param('is', $_POST['courseId'], $_SESSION['username']);
 $rating_result = $rating_stmt->execute();
 $rating_stmt->bind_result($title, $rating);
 
@@ -26,7 +28,7 @@ $course_rating = array (
     "rating" => $rating
 );
 
-$_SESSION['user_ratings'][$_POST['courseId']] = $course_rating;
+$_SESSION['user_data']['user_ratings'][$_POST['courseId']] = $course_rating;
 
 echo json_encode($course_rating);
 

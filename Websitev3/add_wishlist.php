@@ -2,12 +2,23 @@
 
 session_start();
 
-$rating_stmt = $db->prepare("INSERT INTO wishlist VALUES(?, ?)");
-$rating_stmt->bind_param('si', $_SESSION['username'], $_POST['courseId']);
-$rating_result = $rating_stmt->execute();
+$statement = $db->prepare("INSERT INTO wishlist VALUES(?, ?)");
+$statement->bind_param('si', $_SESSION['username'], $_POST['courseId']);
+$result = $statement->execute();
+
+$statement = $db->prepare("SELECT title
+						   FROM course_data
+						   WHERE id = ?");
+
+$statement->bind_param('i', $_POST['courseId']);
+$result = $statement->execute();
+$statement->bind_result($title);
+$statement->fetch();
 
 $db->close();
 
-$_SESSION['wishlist'][] = $_POST['courseId'];
+$_SESSION['user_data']['wishlist'][$_POST['courseId']] = $title;
+
+echo json_encode($title);
 
 ?> 

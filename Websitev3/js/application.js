@@ -196,8 +196,10 @@ function deleteRatedCourses() {
 function addCourse(addButton) {
     var courseId = addButton.attr("courseId");
 
-    $.post("add_wishlist.php", { courseId: courseId }, function() {
+    $.post("add_wishlist.php", { courseId: courseId }, function(addedCourse) {
+        addedCourse = JSON.parse(addedCourse);
         addButton.hide();
+        $userData.wishlist[courseId] = addedCourse;
     });
 }
 
