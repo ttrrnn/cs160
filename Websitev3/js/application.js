@@ -61,7 +61,7 @@ $(document).ready(function() {
     });
 
     // Datatables
-    $("#table").dataTable ( {
+    var table = $("#table").dataTable ( {
         "bDeferRender": true,
         "sPaginationType": "full_numbers",
         "bAutoWidth": false,
@@ -168,6 +168,8 @@ function rateCourse() {
             starOff  : 'images/star-off.png',
             starOn   : 'images/star-on.png'
         });
+        // This is so hackish
+        table.cell(this).invalidate().draw();
     });
 }
 
