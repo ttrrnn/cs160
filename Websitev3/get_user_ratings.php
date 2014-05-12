@@ -3,7 +3,8 @@
 session_start();
 
 if (empty($_SESSION['username'])) {
-	echo json_encode("");
+	echo json_encode(null);
+	return;
 }
 
 $rating_stmt = $db->prepare("SELECT course_id, title, rating

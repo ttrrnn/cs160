@@ -3,7 +3,7 @@
 session_start();
 
 $rating_stmt = $db->prepare("INSERT INTO course_rating VALUES(?, ?, ?)");
-$rating_stmt->bind_param('isi', $_POST['courseId'], $_POST['username'], $_POST['rating']);
+$rating_stmt->bind_param('isi', $_POST['courseId'], $_SESSION['username'], $_POST['rating']);
 $rating_result = $rating_stmt->execute();
 
 $rating_stmt = $db->prepare("SELECT title, AVG(rating)

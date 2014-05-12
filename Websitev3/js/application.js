@@ -51,11 +51,10 @@ $(document).ready(function() {
     })
     
     // Local copy of session
-    $userData = "";
+    $userData = null;
     $.post("get_user_ratings.php", function(result) {
         result = JSON.parse(result);
-
-        if (result != "") {
+        if (result != null) {
             $userData = { userRatings: result };
         }
     });
@@ -97,7 +96,7 @@ $(document).ready(function() {
             });
 
             // Disable rate button for anonymous users
-            if ($userData == "") {
+            if ($userData == null) {
                 $(".rateButton").hide();
             }
             // Disable rate button for courses already rated by logged in user
@@ -147,10 +146,9 @@ function prepareRate(courseButton) {
 
 function rateCourse() {
     var courseId = $("#confirmRateButton").prop('courseId');
-    var username = $userData.username;
     var rating = $("#raty-in-modal input[name=score]").prop('value');
     
-    $.post("rate_course.php", { courseId: courseId, username: username, rating: rating }, function(newRating) {
+    $.post("rate_course.php", { courseId: courseId, rating: rating }, function(newRating) {
         newRating = JSON.parse(newRating);
         $userData.userRatings[courseId] = newRating;
         $("#" + courseId).hide();
