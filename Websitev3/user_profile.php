@@ -48,9 +48,9 @@
                         <div class="tab-pane active" id="rated">
                             <table class="table table-striped table-hover table-responsive">
                                 <thead>
-                                <th></th>
-                                <th>Rating</th>
-                                <th>Course Name</th>
+                                    <th></th>
+                                    <th>Rating</th>
+                                    <th>Course Name</th>
                                 </thead>
                                 <tbody>
                                     <?php
@@ -70,6 +70,7 @@
                         </div>
 
                         <div class="tab-pane" id="wish">
+                            <!-- Old
                             <div class="media">
                                 <a class="pull-left" href="#">
                                     <img class="media-object img-thumbnail" width="100" src="http://cfi-sinergia.epfl.ch/files/content/sites/cfi-sinergia/files/WORKSHOPS/Workshop1.jpg" alt="...">
@@ -79,6 +80,23 @@
                                     <p>How to fall asleep anywhere and get away with it.</p>
                                 </div>
                             </div>
+                            -->
+                            <table class="table table-striped table-hover table-responsive">
+                                <thead>
+                                    <th></th>
+                                    <th>Course Name</th>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    foreach ($_SESSION['user_data']['wishlist'] as $courseId => $courseTitle) {
+                                        echo '<tr courseId="' . $courseId . '">';
+                                        echo '<td><input type="checkbox"></td>';
+                                        echo '<td><a type="button" data-toggle="collapse" data-target="#a1"><b>' . $courseTitle . '</b></a></td>';
+                                        echo '</tr>';
+                                    }
+                                    ?>
+                                <tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

@@ -110,9 +110,9 @@ $(document).ready(function() {
                     $("#" + courseId).prop("disabled", true);
                 }
 
-                for (var index in $userData.wishlist) {
-                    $("#wish" + $userData.wishlist[index]).hide();
-                    $("#wish" + $userData.wishlist[index]).prop("disabled", true);
+                for (var courseId in $userData.wishlist) {
+                    $("#wish" + courseId).hide();
+                    $("#wish" + courseId).prop("disabled", true);
                 }
             }
         }

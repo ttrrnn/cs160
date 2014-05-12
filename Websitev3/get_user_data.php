@@ -28,13 +28,18 @@ while ($statement->fetch()) {
     );
 }
 
-$statement = $db->prepare("SELECT course_id FROM wishlist WHERE username = ?");
+$statement = $db->prepare("SELECT course_id, title
+						   FROM course_data, wishlist
+						   WHERE username = ?
+						   AND course_data.id = wishlist.course_id
+						   ORDER BY title");
+
 $statement->bind_param('s', $_SESSION['username']);
 $result = $statement->execute();
-$statement->bind_result($wishlist_course);
+$statement->bind_result($course_id, $title);
 
 while ($statement->fetch()) {
-    $user_data['wishlist'][] = $wishlist_course;
+    $user_data['wishlist'][$course_id] = $title;
 }
 
 $db->close();
