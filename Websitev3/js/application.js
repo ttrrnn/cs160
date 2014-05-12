@@ -56,7 +56,6 @@ $(document).ready(function() {
         result = JSON.parse(result);
         if (result != null) {
             $userData = result;
-            console.log(result);
         }
     });
 
@@ -111,9 +110,9 @@ $(document).ready(function() {
                     $("#" + courseId).prop("disabled", true);
                 }
 
-                for (var courseId in $userData.wishlist) {
-                    $("#wish" + courseId).hide();
-                    $("#wish" + courseId).prop("disabled", true);
+                for (var index in $userData.wishlist) {
+                    $("#wish" + $userData.wishlist[index]).hide();
+                    $("#wish" + $userData.wishlist[index]).prop("disabled", true);
                 }
             }
         }
@@ -197,8 +196,7 @@ function deleteRatedCourses() {
 function addCourse(addButton) {
     var courseId = addButton.attr("courseId");
 
-    $.post("add_wishlist.php", { courseId: courseId }, function(result) {
-        result = JSON.parse(result);
+    $.post("add_wishlist.php", { courseId: courseId }, function() {
         addButton.hide();
     });
 }

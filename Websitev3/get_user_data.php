@@ -28,6 +28,15 @@ while ($statement->fetch()) {
     );
 }
 
+$statement = $db->prepare("SELECT course_id FROM wishlist WHERE username = ?");
+$statement->bind_param('s', $_SESSION['username']);
+$result = $statement->execute();
+$statement->bind_result($wishlist_course);
+
+while ($statement->fetch()) {
+    $user_data['wishlist'][] = $wishlist_course;
+}
+
 $db->close();
 $_SESSION['user_data'] = $user_data;
 echo json_encode($user_data);

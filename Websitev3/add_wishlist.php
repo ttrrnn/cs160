@@ -10,6 +10,4 @@ $db->close();
 
 $_SESSION['wishlist'][] = $_POST['courseId'];
 
-echo json_encode($_SESSION['wishlist']);
-
 ?> 
