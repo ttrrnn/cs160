@@ -28,7 +28,6 @@
                 <div class="col-md-2">
                     <ul class="nav nav-pills nav-stacked well">
                         <li class="active"><a href="user_profile.php"><i class="fa fa-home"></i> Home</a></li>
-                        <li><a href="#"><i class="fa fa-user"></i> Settings</a></li>
                         <li><a href="logout.php"><i class="fa fa-sign-out"></i> Logout</a></li>
                     </ul>
                 </div>
@@ -58,7 +57,7 @@
                                         echo '<tr courseId="' . $courseId . '">';
                                         echo '<td><input type="checkbox"></td>';
                                         echo '<td class="raty" value="' . $courseInfo['rating'] . '"></td>';
-                                        echo '<td><a type="button" data-toggle="collapse" data-target="#a1"><b>' . $courseInfo['title'] . '</b></a></td>';
+                                        echo '<td><a href="' . $courseInfo['link'] . '" target="_blank"><b>' . $courseInfo['title'] . '</b></a></td>';
                                         echo '</tr>';
                                     }
                                     ?>
@@ -70,17 +69,6 @@
                         </div>
 
                         <div class="tab-pane" id="wish">
-                            <!-- Old
-                            <div class="media">
-                                <a class="pull-left" href="#">
-                                    <img class="media-object img-thumbnail" width="100" src="http://cfi-sinergia.epfl.ch/files/content/sites/cfi-sinergia/files/WORKSHOPS/Workshop1.jpg" alt="...">
-                                </a>
-                                <div class="media-body">
-                                    <h4 class="media-heading">Snooze Workshop</h4>
-                                    <p>How to fall asleep anywhere and get away with it.</p>
-                                </div>
-                            </div>
-                            -->
                             <table class="table table-striped table-hover table-responsive">
                                 <thead>
                                     <th></th>
@@ -91,7 +79,7 @@
                                     foreach ($_SESSION['user_data']['wishlist'] as $courseId => $courseTitle) {
                                         echo '<tr courseId="' . $courseId . '">';
                                         echo '<td><input type="checkbox"></td>';
-                                        echo '<td><a type="button" data-toggle="collapse" data-target="#a1"><b>' . $courseTitle . '</b></a></td>';
+                                        echo '<td><b>' . $courseTitle . '</b></a></td>';
                                         echo '</tr>';
                                     }
                                     ?>
