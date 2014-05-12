@@ -200,3 +200,20 @@ function addCourse(addButton) {
         addButton.hide();
     });
 }
+
+function deleteWishList() {
+    var rowRating = $("#wish tr[courseId]");
+    var checkedCourses = [];
+
+    $("#wish input[type=checkbox]").each(function(index, checkbox) {
+        if ($(checkbox).is(':checked')) {
+            var checkedRow = rowRating[index];
+            checkedCourses.push($(checkedRow).attr('courseId'));
+            $(checkedRow).remove();
+        }
+    });
+
+    if (checkedCourses.length > 0) {
+        $.post("delete_wishlist.php", { deleted_course: checkedCourses });
+    }
+}

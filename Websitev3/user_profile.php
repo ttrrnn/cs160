@@ -97,6 +97,7 @@
                                     ?>
                                 <tbody>
                             </table>
+                            <button onclick="deleteWishList()" class="btn btn-primary btn-xs"><i class="fa fa-check-square-o"></i> Delete Checked Items</button>
                         </div>
                     </div>
                 </div>
