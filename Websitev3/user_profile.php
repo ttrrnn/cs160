@@ -41,7 +41,7 @@
                     <br><br><br>
                     <ul class="nav nav-tabs" id="myTab">
                         <li class="active"><a href="#rated" data-toggle="tab"><i class="fa fa-star-o"></i> Rated Courses</a></li>
-                        <li><a href="#wish" data-toggle="tab"><i class="fa fa-list-ol"></i> Wish List (MAYBE)</a></li>
+                        <li><a href="#wish" data-toggle="tab"><i class="fa fa-list-ol"></i> Wish List</a></li>
                     </ul>
 
                     <div class="tab-content">
