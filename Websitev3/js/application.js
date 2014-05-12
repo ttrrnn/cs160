@@ -157,7 +157,7 @@ function rateCourse() {
     
     $.post("rate_course.php", { courseId: courseId, rating: rating }, function(newRating) {
         newRating = JSON.parse(newRating);
-        $userData.userRatings[courseId] = newRating;
+        $userData.ratedCourses[courseId] = newRating;
         $("#" + courseId).hide();
         $("#" + courseId).prop("disabled", true);
         $("#raty" + courseId).attr("value", newRating.rating);
