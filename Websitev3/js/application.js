@@ -97,15 +97,21 @@ $(document).ready(function() {
 
             // Disable rate button for anonymous users
             if ($userData == null) {
+                $(".addButton").hide();
                 $(".rateButton").hide();
             }
             // Disable rate button for courses already rated by logged in user
             else {
+                $(".addButton").show();
                 $(".rateButton").show();
 
                 for (var courseId in $userData.userRatings) {
                     $("#" + courseId).hide();
                     $("#" + courseId).prop("disabled", true);
+                }
+
+                for (var courseId in $userData.wishlist) {
+                    // This secion is for hiding the Add button that adds to the wishlist
                 }
             }
         }
