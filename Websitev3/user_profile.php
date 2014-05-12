@@ -54,7 +54,7 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                    foreach ($_SESSION['user_ratings'] as $courseId => $courseInfo) {
+                                    foreach ($_SESSION['user_data']['ratedCourses'] as $courseId => $courseInfo) {
                                         echo '<tr courseId="' . $courseId . '">';
                                         echo '<td><input type="checkbox"></td>';
                                         echo '<td class="raty" value="' . $courseInfo['rating'] . '"></td>';

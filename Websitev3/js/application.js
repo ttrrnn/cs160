@@ -52,10 +52,11 @@ $(document).ready(function() {
     
     // Local copy of session
     $userData = null;
-    $.post("get_user_ratings.php", function(result) {
+    $.post("get_user_data.php", function(result) {
         result = JSON.parse(result);
         if (result != null) {
-            $userData = { userRatings: result };
+            $userData = result;
+            console.log(result);
         }
     });
 
@@ -105,13 +106,14 @@ $(document).ready(function() {
                 $(".addButton").show();
                 $(".rateButton").show();
 
-                for (var courseId in $userData.userRatings) {
+                for (var courseId in $userData.ratedCourses) {
                     $("#" + courseId).hide();
                     $("#" + courseId).prop("disabled", true);
                 }
 
                 for (var courseId in $userData.wishlist) {
-                    // This secion is for hiding the Add button that adds to the wishlist
+                    $("#wish" + courseId).hide();
+                    $("#wish" + courseId).prop("disabled", true);
                 }
             }
         }
