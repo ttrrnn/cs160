@@ -74,12 +74,12 @@ $(document).ready(function() {
             { "sWidth": "20%" },
             {
                 "bSearchable": false,
-                "sWidth": "12%"
+                "sWidth": "14%"
             },
             { "sWidth": "12%" },
             { "sWidth": "10%" },
             { "sWidth": "10%" },
-            { "sWidth": "12%" },
+            { "sWidth": "10%" },
             { "sWidth": "10%" }
         ],
         "fnDrawCallback": function (oSettings) {
@@ -90,9 +90,14 @@ $(document).ready(function() {
             
                 width    : false,
                 readOnly : true,
-                starHalf : 'images/star-half.png',
-                starOff  : 'images/star-off.png',
-                starOn   : 'images/star-on.png'
+                starHalf : 'images/half_desert3.png',
+                iconRange: [
+                    { range: 1, on: 'images/colored_pott.png', off: 'images/pot.png' },
+                    { range: 2, on: 'images/colored_saladd.png', off: 'images/salad.png' },
+                    { range: 3, on: 'images/colored_turkeyy.png', off: 'images/turkey.png' },
+                    { range: 4, on: 'images/colored_piee.png', off: 'images/pie.png' },
+                    { range: 5, on: 'images/colored_desertt.png', off: 'images/desert.png' }
+                ]
             });
 
             // Disable rate button for anonymous users
@@ -129,9 +134,14 @@ $(document).ready(function() {
     
         width    : false,
         readOnly : true,
-        starHalf : 'images/star-half.png',
-        starOff  : 'images/star-off.png',
-        starOn   : 'images/star-on.png'
+        starHalf : 'images/half_desert3.png',
+        iconRange: [
+                    { range: 1, on: 'images/colored_pott.png', off: 'images/pot.png' },
+                    { range: 2, on: 'images/colored_saladd.png', off: 'images/salad.png' },
+                    { range: 3, on: 'images/colored_turkeyy.png', off: 'images/turkey.png' },
+                    { range: 4, on: 'images/colored_piee.png', off: 'images/pie.png' },
+                    { range: 5, on: 'images/colored_desertt.png', off: 'images/desert.png' }
+        ]
     });
 });
 
@@ -141,9 +151,15 @@ function prepareRate(courseButton) {
     $("#confirmRateButton").prop("disabled", true);
 
     $("#raty-in-modal").raty({
-        starOff : 'images/star-off.png',
-        starOn  : 'images/star-on.png',
+        iconRange: [
+                    { range: 1, on: 'images/colored_pott.png', off: 'images/pot.png' },
+                    { range: 2, on: 'images/colored_saladd.png', off: 'images/salad.png' },
+                    { range: 3, on: 'images/colored_turkeyy.png', off: 'images/turkey.png' },
+                    { range: 4, on: 'images/colored_piee.png', off: 'images/pie.png' },
+                    { range: 5, on: 'images/colored_desertt.png', off: 'images/desert.png' }
+        ],
         score   : 0,
+        width   : 120,
 
         click: function(score, evt) {
             $("#confirmRateButton").prop("disabled", false);
@@ -169,9 +185,14 @@ function rateCourse() {
 
             width    : false,
             readOnly : true,
-            starHalf : 'images/star-half.png',
-            starOff  : 'images/star-off.png',
-            starOn   : 'images/star-on.png'
+            starHalf : 'images/half_desert3.png',
+            iconRange: [
+                    { range: 1, on: 'images/colored_pott.png', off: 'images/pot.png' },
+                    { range: 2, on: 'images/colored_saladd.png', off: 'images/salad.png' },
+                    { range: 3, on: 'images/colored_turkeyy.png', off: 'images/turkey.png' },
+                    { range: 4, on: 'images/colored_piee.png', off: 'images/pie.png' },
+                    { range: 5, on: 'images/colored_desertt.png', off: 'images/desert.png' }
+            ]
         });
     });
 }
