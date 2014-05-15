@@ -26,7 +26,13 @@ function echoActiveClass($requestUri) {
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li <?= echoActiveClass("index") ?>><a href="index.php"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-                        <li <?= echoActiveClass("courses") ?>><a href="courses.php"><span class="glyphicon glyphicon-book"></span> Courses</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-book"></span> Courses<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="courses.php">Standard</a></li>
+                                <li><a href="flare/index.html">FLARE</a></li>
+                            </ul>
+                        </li>
                         <li <?= echoActiveClass("about") ?>><a href="about.php"><span class="glyphicon glyphicon-bookmark"></span> About</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
