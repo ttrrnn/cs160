@@ -49,8 +49,7 @@ foreach ($course_data['children'] as $index => &$mooc) {
 
     while ($stmt->fetch()) {
       $category["children"][] = array (
-        "name" => $title,
-        "children" => array()
+        "name" => $title
       );
     }
   }
